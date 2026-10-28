@@ -4,7 +4,7 @@ NEXORA Website — Final package
 Contents
 - index.html: responsive Arabic/English website
 - assets/nexora-logo.png: supplied official logo asset, used without alteration
-- assets/nexora-background.jpg: supplied official NEXORA background
+- assets/nexora-background.jpg: supplied official NEXORA background.
 
 Included functionality
 - Responsive navigation, mobile menu, smooth scrolling, active section indication, back-to-top
