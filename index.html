@@ -402,7 +402,7 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
     const formCard = document.getElementById('contactFormCard');
     if (formCard) {
       formCard.classList.remove('glow-highlight');
-      void formCard.offsetWidth; // إعادة تهيئة الـ DOM لضمان إعادة تشغيل الـ Animation بالكامل في كل ضغطة
+      void formCard.offsetWidth; // إعادة تهيئة الـ DOM لإعادة تشغيل الـ Animation
       formCard.classList.add('glow-highlight');
     }
   }
