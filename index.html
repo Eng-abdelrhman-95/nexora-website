@@ -30,7 +30,7 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
 .btn-muted:hover{border-color:var(--purple);background:rgba(139,63,232,.15);color:#e2c9ff}
 .btn-small{padding:8px 12px;font-size:.86rem}
 
-/* زر تفاصيل الخدمة (مُعدّل ليكون واضحاً وسهل القراءة) */
+/* زر تفاصيل الخدمة */
 .text-link {
   color: var(--cyan);
   font-weight: 700;
@@ -136,8 +136,22 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
   <div class="demo">
    <article class="card demo-visual"><div class="iconbox">▦</div><h3>NEXORA ERP — Demo</h3><p>مساحة مخصصة لاستعراض تجربة النظام. لا تستخدم بيانات شخصية أو مالية حقيقية في الحساب التجريبي.</p><div><a class="btn btn-primary" href="https://nexora-erp-eta.vercel.app/login" target="_blank" rel="noopener noreferrer">فتح النظام في نافذة جديدة ↗</a></div><p class="notice">بيانات الحساب التجريبي متاحة علنًا على هذه الصفحة؛ لذلك يجب أن يظل الحساب خاليًا من المعلومات الحساسة.</p></article>
    <article class="card"><h3>بيانات الدخول التجريبية</h3><p>انسخ بيانات الدخول ثم افتح صفحة النظام.</p>
-    <label for="demoUser">اسم المستخدم</label><div class="credential"><code id="demoUser">demo.nexora</code><div class="credential-actions"><button class="icon-btn copy-btn" data-copy="demoUser" type="button">نسخ</button></div></div>
-    <label for="demoPass">كلمة المرور</label><div class="credential"><code id="demoPass" data-password="nexora@3595.com">••••••••••••</code><div class="credential-actions"><button class="icon-btn" id="showPass" type="button">إظهار</button><button class="icon-btn copy-btn" data-copy="demoPass" type="button">نسخ</button></div></div>
+    
+    <label for="demoUser">اسم المستخدم</label>
+    <div class="credential">
+      <code id="demoUser">demo.nexora</code>
+      <div class="credential-actions"><button class="icon-btn copy-btn" data-copy="demoUser" type="button">نسخ</button></div>
+    </div>
+    
+    <label for="demoPass">كلمة المرور</label>
+    <div class="credential">
+      <code id="demoPass" data-password="nexora@3595.com">••••••••••••</code>
+      <div class="credential-actions">
+        <button class="icon-btn" id="showPass" type="button">إظهار</button>
+        <button class="icon-btn copy-btn" data-copy="demoPass" type="button">نسخ</button>
+      </div>
+    </div>
+
     <p class="notice">هذه البيانات للعرض فقط. إذا تغيّرت بيانات الحساب، حدّثها هنا قبل نشر الموقع.</p>
    </article>
   </div>
@@ -180,6 +194,50 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
 <button class="backtop" id="backtop" type="button" aria-label="العودة إلى الأعلى">↑</button>
 
 <script>
+  // تفعيل وظائف النسخ والإظهار لبيانات النظام
+  document.addEventListener('click', function (e) {
+    // زر النسخ
+    if (e.target && e.target.classList.contains('copy-btn')) {
+      const btn = e.target;
+      const targetId = btn.getAttribute('data-copy');
+      const el = document.getElementById(targetId);
+      let textToCopy = '';
+      
+      if (el) {
+        textToCopy = el.getAttribute('data-password') || el.innerText;
+      }
+
+      if (textToCopy) {
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          const originalText = btn.innerText;
+          btn.innerText = 'تم النسخ!';
+          btn.style.background = '#29B6FF';
+          btn.style.color = '#000';
+          setTimeout(() => {
+            btn.innerText = originalText;
+            btn.style.background = '';
+            btn.style.color = '';
+          }, 1500);
+        });
+      }
+    }
+
+    // زر إظهار / إخفاء كلمة المرور
+    if (e.target && e.target.id === 'showPass') {
+      const passEl = document.getElementById('demoPass');
+      const realPass = passEl.getAttribute('data-password');
+      const btn = e.target;
+
+      if (passEl.innerText === '••••••••••••') {
+        passEl.innerText = realPass;
+        btn.innerText = 'إخفاء';
+      } else {
+        passEl.innerText = '••••••••••••';
+        btn.innerText = 'إظهار';
+      }
+    }
+  });
+
   // كود تشغيل الصوت الذكي المتوافق مع آيفون وأندرويد واللاب توب
   (function () {
     const audio = document.getElementById('ambientAudio');
@@ -342,7 +400,7 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
     }
   })();
 
-  // تفعيل سنة الفوتر وسلوك النشر الأساسي
+  // تفعيل سنة الفوتر
   document.getElementById('year').innerText = new Date().getFullYear();
 </script>
 </body>
