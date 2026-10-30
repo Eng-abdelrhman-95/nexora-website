@@ -96,7 +96,7 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
   </nav>
   <div class="nav-actions">
     <button class="lang-btn" id="langToggle" type="button" aria-label="Switch language">EN</button>
-    <a class="btn btn-primary btn-small glow-trigger" href="#contact" data-i18n="navStart">ناقش مشروعك</a>
+    <a class="btn btn-primary btn-small glow-trigger" href="#contactFormCard" data-i18n="navStart">ناقش مشروعك</a>
     <button class="menu-btn" id="menuToggle" type="button" aria-label="فتح القائمة" aria-expanded="false">☰</button>
   </div>
  </div>
@@ -128,7 +128,7 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
   <div class="section-head"><span class="kicker" data-i18n="aboutKicker">من نحن</span><h2 data-i18n="aboutTitle">حلول تُبنى على احتياج العمل الفعلي</h2><p data-i18n="aboutIntro">NEXORA | نكسورا علامة متخصصة في تقديم حلول ذكية وعملية تساعد الشركات والمشروعات على تنظيم وإدارة الأعمال، وتطوير العمليات، وبناء الأنظمة المناسبة لاحتياجاتها الفعلية.</p></div>
   <div class="about-layout">
    <article class="card about-panel"><div class="iconbox">⌘</div><h3 data-i18n="philosophyTitle">فلسفتنا</h3><p data-i18n="philosophyCopy">الحل الجيد ليس مجرد برنامج أو ملف أو دراسة؛ بل منظومة عملية مصممة لخدمة طبيعة العمل. لا نعتمد على حل واحد لجميع العملاء، بل نبدأ بفهم النشاط وحجم المشروع وطريقة العمل الحالية، ثم ندرس الخيارات ونقترح الأنسب.</p><ul class="list-check"><li data-i18n="aboutPoint1">فهم الاحتياج قبل اقتراح الحل</li><li data-i18n="aboutPoint2">وضوح نطاق العمل والمخرجات</li><li data-i18n="aboutPoint3">حلول قابلة للتطوير بحسب المتطلبات</li></ul></article>
-   <article class="card about-panel"><div class="iconbox">◎</div><h3 data-i18n="whatWeDoTitle">ماذا نقدم؟</h3><p data-i18n="whatWeDoCopy">نعمل عبر الإنترنت مع المشروعات والشركات في مختلف الأنشطة، ونساعد في تنظيم العمل واختيار الحلول التقنية وتطوير الإجراءات الداخلية.</p><ul class="list-check"><li data-i18n="aboutPoint4">استشارات وتحليل احتياجات المشروعات</li><li data-i18n="aboutPoint5">أنظمة إدارية ومحاسبية وحلول ERP</li><li data-i18n="aboutPoint6">أتمتة وتوثيق وتدريب ودعم</li></ul><a class="text-link glow-trigger" href="#contact" data-i18n="discussNeed">ناقش احتياج مشروعك ←</a></article>
+   <article class="card about-panel"><div class="iconbox">◎</div><h3 data-i18n="whatWeDoTitle">ماذا نقدم؟</h3><p data-i18n="whatWeDoCopy">نعمل عبر الإنترنت مع المشروعات والشركات في مختلف الأنشطة، ونساعد في تنظيم العمل واختيار الحلول التقنية وتطوير الإجراءات الداخلية.</p><ul class="list-check"><li data-i18n="aboutPoint4">استشارات وتحليل احتياجات المشروعات</li><li data-i18n="aboutPoint5">أنظمة إدارية ومحاسبية وحلول ERP</li><li data-i18n="aboutPoint6">أتمتة وتوثيق وتدريب ودعم</li></ul><a class="text-link glow-trigger" href="#contactFormCard" data-i18n="discussNeed">ناقش احتياج مشروعك ←</a></article>
   </div>
  </div>
 </section>
@@ -396,7 +396,7 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
     if (e.target === modal) modal.classList.remove('open');
   });
 
-  // دالة متواقفة مع أجهزة الموبايل للوميض والانتقال السلس
+  // دالة متوافقة مع الموبايل للنزول مباشرة إلى صندوق "أرسل تفاصيل طلبك" وإحداث الوميض
   function triggerFormGlow() {
     const formCard = document.getElementById('contactFormCard');
     if (formCard) {
@@ -406,18 +406,17 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
     }
   }
 
-  function goToContactAndGlow() {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // استخدام مهلة زمنية ناعمة لضمان انتهاء التمرير أو إغلاق النافذة المنبثقة في الموبايل
+  function scrollToFormAndGlow() {
+    const formCard = document.getElementById('contactFormCard');
+    if (formCard) {
+      formCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
       setTimeout(() => {
         triggerFormGlow();
-      }, 350);
+      }, 300);
     }
   }
 
-  // ربط زر "ناقش الخدمة معنا" داخل النافذة المنبثقة للعمل على الموبايل والكمبيوتر
+  // ربط زر "ناقش الخدمة معنا" داخل النافذة المنبثقة بالوصول لبطاقة النموذج مباشرة
   modalContact.addEventListener('click', function(e) {
     e.preventDefault();
     modal.classList.remove('open');
@@ -432,22 +431,19 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
       }
     }
 
-    goToContactAndGlow();
+    scrollToFormAndGlow();
   });
 
-  // ربط أزرار "ناقش مشروعك" وغيرها ممن تحمل الكلاس glow-trigger
+  // ربط أزرار "ناقش مشروعك" والروابط بالانتقال لصندوق النموذج مباشرة
   document.querySelectorAll('.glow-trigger').forEach(trigger => {
-    const handleAction = function(e) {
+    trigger.addEventListener('click', function(e) {
       e.preventDefault();
       
-      // إغلاق القائمة في الهواتف المحمولة في حال تم الضغط عليها داخل الموبايل
       const navlinks = document.getElementById('navlinks');
       if (navlinks) navlinks.classList.remove('open');
 
-      goToContactAndGlow();
-    };
-
-    trigger.addEventListener('click', handleAction);
+      scrollToFormAndGlow();
+    });
   });
 
   // تفعيل إرسال النموذج عبر واتساب بشكل صحيح
