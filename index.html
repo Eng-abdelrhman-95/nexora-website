@@ -59,6 +59,77 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
 .sound-btn.is-playing{background:linear-gradient(135deg,var(--cyan),var(--purple));color:#04101b;border-color:transparent;animation:pulseSound 2s infinite}
 @keyframes pulseSound{0%{box-shadow:0 0 0 0 rgba(41,182,255,0.4)}70%{box-shadow:0 0 0 12px rgba(41,182,255,0)}100%{box-shadow:0 0 0 0 rgba(41,182,255,0)}}
 
+/* إشعار الصوت الاحترافي (Toast Notification) */
+.audio-toast {
+  position: fixed;
+  bottom: 86px;
+  left: 24px;
+  z-index: 105;
+  background: rgba(11, 24, 48, 0.95);
+  border: 1px solid rgba(41, 182, 255, 0.35);
+  backdrop-filter: blur(14px);
+  padding: 14px 18px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: min(340px, calc(100vw - 48px));
+  animation: slideUpToast 0.4s ease;
+  direction: rtl;
+}
+.audio-toast p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #d8e3f2;
+  line-height: 1.5;
+}
+.audio-toast p strong {
+  display: block;
+  color: var(--cyan);
+  margin-bottom: 2px;
+}
+.audio-toast-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.audio-toast-btn {
+  background: var(--cyan);
+  color: #04101b;
+  border: none;
+  padding: 7px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.audio-toast-btn:hover {
+  background: #69d2ff;
+}
+.audio-toast-close {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: 0.2s;
+}
+.audio-toast-close:hover {
+  color: var(--text);
+  border-color: var(--text);
+}
+@keyframes slideUpToast {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* تأثير الوميض (Glow Pulse) لصندوق أرسل تفاصيل طلبك متوافق تماماً مع الموبايل */
 @keyframes formGlow {
   0% { border-color: var(--line); box-shadow: var(--shadow); background: rgba(11,24,48,0.94); }
@@ -107,6 +178,18 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
 <button type="button" id="soundToggle" class="sound-btn" aria-label="تشغيل الصوت" aria-pressed="false" title="تشغيل / إيقاف الصوت">
   <i class="fas fa-volume-xmark" aria-hidden="true"></i>
 </button>
+
+<!-- إشعار الصوت الاحترافي -->
+<div id="audioToast" class="audio-toast" style="display:none;">
+  <div>
+    <p><strong>🎧 تلاوة عطرة للخلفية</strong>هل تود الاستماع إلى تلاوة هادئة أثناء تصفحك للموقع؟</p>
+  </div>
+  <div class="audio-toast-actions">
+    <button type="button" id="toastPlayBtn" class="audio-toast-btn">استماع الآن</button>
+    <button type="button" id="toastCloseBtn" class="audio-toast-close" aria-label="إغلاق">✕</button>
+  </div>
+</div>
+
 <audio id="ambientAudio" src="Quran_Naseer EL-Ktamy.mp3" loop preload="auto" playsinline></audio>
 
 <section class="container hero" id="home">
@@ -518,20 +601,20 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
   }
 
   // ==========================================
-  // منظومة الصوت الذكية والاحترافية المتكاملة
+  // منظومة الصوت الذكية مع الإشعار الاحترافي
+  // (بدون تشغيل تلقائي عند التفاعل/اللمس)
   // ==========================================
   (function () {
     const audio = document.getElementById('ambientAudio');
     const btn = document.getElementById('soundToggle');
     const icon = btn.querySelector('i');
+    const toast = document.getElementById('audioToast');
+    const toastPlayBtn = document.getElementById('toastPlayBtn');
+    const toastCloseBtn = document.getElementById('toastCloseBtn');
+    
     const TARGET_VOLUME = 0.35;
-    const KEY = 'nexoraSoundOff';
     let fadeTimer = null;
     let resumeAfterHidden = false;
-    let busy = false;
-    let userMuted = false;
-
-    try { userMuted = sessionStorage.getItem(KEY) === '1'; } catch (e) {}
 
     let ctx = null;   
     let gain = null;  
@@ -604,85 +687,74 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
       icon.className = on ? 'fas fa-volume-high' : 'fas fa-volume-xmark';
     }
 
-    function remember(off) {
-      userMuted = off;
-      try { sessionStorage.setItem(KEY, off ? '1' : '0'); } catch (e) {}
-    }
-
-    function start(fromGesture) {
-      if (fromGesture) ensureGraph();
+    function startSound() {
+      ensureGraph();
       audio.muted = false;
       if (gain) muteGain(); else audio.volume = 0;
+      
       let p;
       try { p = audio.play(); } catch (e) { p = Promise.reject(e); }
       const resumed = (ctx && ctx.state !== 'running') ? ctx.resume().catch(() => {}) : null;
-      return Promise.resolve(p).then(() => resumed).then(() => {
+
+      Promise.resolve(p).then(() => resumed).then(() => {
         if (ctx && ctx.state !== 'running') {
-          audio.pause(); setUI(false); return false;
+          audio.pause(); setUI(false); return;
         }
         setUI(true);
         if (gain) rampGain(TARGET_VOLUME); else fadeTo(TARGET_VOLUME);
-        return true;
       }).catch(() => {
-        audio.muted = true;
-        const q = audio.play();
-        if (q && q.catch) q.catch(() => {});
         setUI(false);
-        return false;
       });
     }
 
-    function stop() {
+    function stopSound() {
       setUI(false);
       if (gain) muteGain();
       fadeTo(0, () => audio.pause());
     }
 
-    // تفعيل التشغيل بمجرد التفاعل والضغط في أي مكان في الموقع (أندرويد، آيفون، ولاب توب)
-    const UNLOCKING = ['pointerdown', 'pointerup', 'touchend', 'click', 'keydown'];
-    const BEST_EFFORT = ['touchstart', 'scroll', 'wheel'];
+    // إظهار إشعار الصوت بعد ثانيتين من فتح الموقع
+    setTimeout(() => {
+      if (toast && !isOn()) {
+        toast.style.display = 'flex';
+      }
+    }, 2000);
 
-    function onInteract(e) {
-      if (e.target && e.target.nodeType === 1 && btn.contains(e.target)) return;
-      if (userMuted) { disarm(); return; }
-      if (isOn()) { disarm(); return; }
-      const fromGesture = !['pointerdown', 'touchstart', 'scroll', 'wheel'].includes(e.type);
-      if (useGain && !fromGesture) return;
-      if (busy) return;
-      busy = true;
-      start(fromGesture).then(ok => { busy = false; if (ok) disarm(); });
+    // إخفاء الإشعار
+    function hideToast() {
+      if (toast) toast.style.display = 'none';
     }
 
-    function arm() {
-      UNLOCKING.forEach(ev => document.addEventListener(ev, onInteract, { passive: true }));
-      BEST_EFFORT.forEach(ev => window.addEventListener(ev, onInteract, { passive: true }));
+    if (toastCloseBtn) {
+      toastCloseBtn.addEventListener('click', hideToast);
     }
 
-    function disarm() {
-      UNLOCKING.forEach(ev => document.removeEventListener(ev, onInteract));
-      BEST_EFFORT.forEach(ev => window.removeEventListener(ev, onInteract));
+    // عند الضغط على "استماع الآن" من الإشعار
+    if (toastPlayBtn) {
+      toastPlayBtn.addEventListener('click', () => {
+        startSound();
+        hideToast();
+      });
     }
 
+    // التحكم عبر زر الصوت الأساسي في الشاشة
     btn.addEventListener('click', () => {
+      hideToast();
       if (isOn()) {
-        remember(true); disarm(); stop();
+        stopSound();
       } else {
-        remember(false); disarm(); start(true);
+        startSound();
       }
     });
 
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
         if (isOn()) { resumeAfterHidden = true; audio.pause(); setUI(false); }
-      } else if (resumeAfterHidden && !userMuted) {
+      } else if (resumeAfterHidden) {
         resumeAfterHidden = false;
-        start().then(ok => { if (!ok) arm(); });
+        startSound();
       }
     });
-
-    if (!userMuted) {
-      start().then(ok => { if (!ok) arm(); });
-    }
   })();
 
   // ضبط سنة الفوتر تلقائياً
