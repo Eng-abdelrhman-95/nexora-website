@@ -127,16 +127,39 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
 .step b{display:block;color:var(--cyan);font-size:.8rem;margin-bottom:5px}.step span{font-weight:700}
 .service-tag{display:inline-block;padding:4px 9px;border-radius:99px;border:1px solid rgba(139,63,232,.35);color:var(--purple);font-size:.75rem;margin-bottom:14px}
 
-/* معرض شاشات النظام الـ ERP المحدث داخل مجلد صور النظام */
-.erp-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:30px}
-.erp-mockup-card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);transition:all 0.3s ease}
+/* التابات (Tabs) لمعرض الشاشات */
+.gallery-tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.gallery-tab-btn{background:var(--card);border:1px solid var(--line);color:var(--muted);padding:10px 18px;border-radius:12px;font-weight:700;font-size:0.9rem;transition:all 0.25s}
+.gallery-tab-btn:hover, .gallery-tab-btn.active{background:var(--cyan);color:#04101b;border-color:var(--cyan);box-shadow:0 0 20px rgba(41,182,255,0.3)}
+
+/* معرض شاشات النظام الـ ERP المحدث */
+.erp-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.erp-mockup-card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);transition:all 0.3s ease;display:flex;flex-direction:column}
 .erp-mockup-card:hover{border-color:var(--cyan);transform:translateY(-4px);box-shadow:0 15px 45px rgba(41,182,255,0.18)}
-.erp-mockup-img-wrap{position:relative;width:100%;aspect-ratio:16/9;background:#03050c;overflow:hidden;border-bottom:1px solid var(--line)}
-.erp-mockup-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 0.5s ease}
+.erp-mockup-img-wrap{position:relative;width:100%;aspect-ratio:16/9;background:#03050c;overflow:hidden;border-bottom:1px solid var(--line);cursor:pointer}
+.erp-mockup-img-wrap img{width:100%;height:100%;object-fit:contain;background:#03050c;transition:transform 0.5s ease}
 .erp-mockup-card:hover .erp-mockup-img-wrap img{transform:scale(1.03)}
-.erp-mockup-content{padding:20px}
+.zoom-hint{position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,0.7);color:var(--cyan);padding:5px 10px;border-radius:8px;font-size:0.75rem;backdrop-filter:blur(5px);border:1px solid rgba(41,182,255,0.3);opacity:0;transition:opacity 0.3s}
+.erp-mockup-img-wrap:hover .zoom-hint{opacity:1}
+.erp-mockup-content{padding:20px;flex-grow:1}
 .erp-mockup-content h3{font-size:1.15rem;margin:0 0 8px;color:var(--text)}
 .erp-mockup-content p{color:var(--muted);font-size:0.9rem;margin:0}
+
+/* نافذة تكبير الصورة (Lightbox Modal) */
+.lightbox-modal{position:fixed;inset:0;z-index:150;background:rgba(2,4,10,0.92);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:30px}
+.lightbox-modal.open{display:flex}
+.lightbox-content{position:relative;max-width:92vw;max-height:92vh;display:flex;flex-direction:column;align-items:center}
+.lightbox-content img{max-width:100%;max-height:82vh;object-fit:contain;border-radius:12px;border:1px solid rgba(41,182,255,0.4);box-shadow:0 0 50px rgba(0,0,0,0.8)}
+.lightbox-caption{color:var(--text);margin-top:15px;font-size:1.1rem;font-weight:700;text-align:center}
+.lightbox-close{position:absolute;top:-45px;left:0;background:var(--card);border:1px solid rgba(41,182,255,0.4);color:var(--cyan);width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:1.1rem;cursor:pointer;transition:0.2s}
+.lightbox-close:hover{background:var(--cyan);color:#000}
+
+/* قسم فيديو يوتيوب التوضيحي */
+.video-showcase-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px;box-shadow:var(--shadow);margin-top:50px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.video-frame-wrap{width:100%;aspect-ratio:16/9;background:#03050c;border-radius:14px;overflow:hidden;border:1px solid var(--line);display:grid;place-items:center;position:relative}
+.video-frame-wrap iframe{width:100%;height:100%;border:none}
+.video-placeholder-text{text-align:center;color:var(--muted);padding:20px}
+.video-placeholder-text i{font-size:3rem;color:#ff0000;margin-bottom:12px;display:block}
 
 .demo{display:grid;grid-template-columns:1fr .9fr;gap:22px;align-items:stretch}
 .demo-visual{min-height:320px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
@@ -215,7 +238,7 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
 .modal-body{color:var(--muted);margin:18px 0}.hidden{display:none!important}
 [dir="ltr"] .list-check li{padding:7px 0 7px 28px}[dir="ltr"] .list-check li:before{right:auto;left:0}
 
-@media(max-width:900px){.navlinks{gap:13px}.hero{grid-template-columns:1fr .72fr;gap:15px}.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}.about-layout,.demo,.contact-layout,.erp-gallery{grid-template-columns:1fr}}
+@media(max-width:900px){.navlinks{gap:13px}.hero{grid-template-columns:1fr .72fr;gap:15px}.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}.about-layout,.demo,.contact-layout,.video-showcase-card,.erp-gallery{grid-template-columns:1fr}}
 @media(max-width:700px){.container{width:min(100% - 26px,1160px)}.nav{min-height:70px}.brand img{width:48px;height:48px}.menu-btn{display:inline-flex}.navlinks{display:none;position:absolute;top:70px;left:13px;right:13px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;flex-direction:column;align-items:stretch;gap:0;box-shadow:var(--shadow)}.navlinks.open{display:flex}.navlinks a{padding:11px 9px;border-bottom:1px solid var(--line);font-size:.95rem}.nav-actions .btn{display:none}.hero{padding:48px 0 36px;grid-template-columns:1fr}.hero-art{grid-row:1;min-height:220px}.hero-logo{width:210px}h1{font-size:2.45rem}}
 </style>
 </head>
@@ -303,19 +326,31 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
  </div>
 </section>
 
-<!-- معرض صور الواجهات الحقيقية لنظام ERP الشامل مسحوبة من مجلد صور النظام -->
+<!-- معرض صور الواجهات الحقيقية لنظام ERP مع التابات (Tabs) -->
 <section class="section" id="gallery">
  <div class="container">
   <div class="section-head">
     <span class="kicker">معرض النظام (Screenshots)</span>
     <h2>جولة بصرية داخل واجهات NEXORA ERP</h2>
-    <p>لقطات حقيقية من الشاشات التفاعلية للمنظومة تبرز السهولة والدقة المتناهية.</p>
+    <p>لقطات حقيقية من الشاشات التفاعلية للمنظومة تبرز السهولة والدقة المتناهية. (اضغط على أي صورة لتكبيرها بوضوح).</p>
   </div>
-  <div class="erp-gallery">
+
+  <!-- تابات تصفية الصور -->
+  <div class="gallery-tabs">
+    <button class="gallery-tab-btn active" data-filter="all">عرض الكل</button>
+    <button class="gallery-tab-btn" data-filter="sales">المبيعات والمشتريات</button>
+    <button class="gallery-tab-btn" data-filter="inventory">المخزون والجرد والأصناف</button>
+    <button class="gallery-tab-btn" data-filter="finance">الحسابات والخزينة</button>
+    <button class="gallery-tab-btn" data-filter="hr">الموارد البشرية والموظفين</button>
+    <button class="gallery-tab-btn" data-filter="admin">الإدارة والتقارير</button>
+  </div>
+
+  <div class="erp-gallery" id="erpGalleryGrid">
     <!-- 1. لوحة التحكم التفصيلية -->
-    <div class="erp-mockup-card">
-      <div class="erp-mockup-img-wrap">
-        <img src="صور النظام/لوحة التحكم.png" alt="لوحة التحكم والسيولة والنسب المالية">
+    <div class="erp-mockup-card" data-category="admin">
+      <div class="erp-mockup-img-wrap" onclick="openLightbox('صور النظام/لوحة التحكم.png', 'لوحة التحكم الشاملة والنسب المالية')">
+        <img src="صور النظام/لوحة التحكم.png" alt="لوحة التحكم والسيولة والنسب المالية" loading="lazy">
+        <span class="zoom-hint"><i class="fas fa-search-plus"></i> تكبير الصورة</span>
       </div>
       <div class="erp-mockup-content">
         <h3>لوحة التحكم الشاملة والنسب المالية</h3>
@@ -324,9 +359,10 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     </div>
 
     <!-- 2. لوحة تحكم الموارد البشرية والعمالة -->
-    <div class="erp-mockup-card">
-      <div class="erp-mockup-img-wrap">
-        <img src="صور النظام/تاب-لوحة التحكم.png" alt="لوحة التحكم والموارد البشرية">
+    <div class="erp-mockup-card" data-category="hr">
+      <div class="erp-mockup-img-wrap" onclick="openLightbox('صور النظام/تاب-لوحة التحكم.png', 'مؤشرات أفضل الأصناف والموارد البشرية')">
+        <img src="صور النظام/تاب-لوحة التحكم.png" alt="لوحة التحكم والموارد البشرية" loading="lazy">
+        <span class="zoom-hint"><i class="fas fa-search-plus"></i> تكبير الصورة</span>
       </div>
       <div class="erp-mockup-content">
         <h3>مؤشرات أفضل الأصناف والموارد البشرية</h3>
@@ -335,9 +371,10 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     </div>
 
     <!-- 3. فواتير البيع -->
-    <div class="erp-mockup-card">
-      <div class="erp-mockup-img-wrap">
-        <img src="صور النظام/فواتير البيع.png" alt="إدارة فواتير البيع">
+    <div class="erp-mockup-card" data-category="sales">
+      <div class="erp-mockup-img-wrap" onclick="openLightbox('صور النظام/فواتير البيع.png', 'إدارة فواتير البيع الآجلة والنقدية')">
+        <img src="صور النظام/فواتير البيع.png" alt="إدارة فواتير البيع" loading="lazy">
+        <span class="zoom-hint"><i class="fas fa-search-plus"></i> تكبير الصورة</span>
       </div>
       <div class="erp-mockup-content">
         <h3>إدارة فواتير البيع الآجلة والنقدية</h3>
@@ -346,9 +383,10 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     </div>
 
     <!-- 4. فواتير الشراء -->
-    <div class="erp-mockup-card">
-      <div class="erp-mockup-img-wrap">
-        <img src="صور النظام/فواتير الشراء.png" alt="إدارة فواتير الشراء">
+    <div class="erp-mockup-card" data-category="sales">
+      <div class="erp-mockup-img-wrap" onclick="openLightbox('صور النظام/فواتير الشراء.png', 'إدارة فواتير المشتريات والموردين')">
+        <img src="صور النظام/فواتير الشراء.png" alt="إدارة فواتير الشراء" loading="lazy">
+        <span class="zoom-hint"><i class="fas fa-search-plus"></i> تكبير الصورة</span>
       </div>
       <div class="erp-mockup-content">
         <h3>إدارة فواتير المشتريات والموردين</h3>
@@ -357,9 +395,10 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     </div>
 
     <!-- 5. سندات القبض والصرف -->
-    <div class="erp-mockup-card">
-      <div class="erp-mockup-img-wrap">
-        <img src="صور النظام/سندات القبض والصرف.png" alt="سندات القبض والصرف">
+    <div class="erp-mockup-card" data-category="finance">
+      <div class="erp-mockup-img-wrap" onclick="openLightbox('صور النظام/سندات القبض والصرف.png', 'سندات القبض والصرف النقدية والبنكية')">
+        <img src="صور النظام/سندات القبض والصرف.png" alt="سندات القبض والصرف" loading="lazy">
+        <span class="zoom-hint"><i class="fas fa-search-plus"></i> تكبير الصورة</span>
       </div>
       <div class="erp-mockup-content">
         <h3>سندات القبض والصرف النقدية والبنكية</h3>
@@ -368,9 +407,10 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     </div>
 
     <!-- 6. الأصناف -->
-    <div class="erp-mockup-card">
-      <div class="erp-mockup-img-wrap">
-        <img src="صور النظام/الأصناف.png" alt="إدارة الأصناف والمخزون">
+    <div class="erp-mockup-card" data-category="inventory">
+      <div class="erp-mockup-img-wrap" onclick="openLightbox('صور النظام/الأصناف.png', 'دليل الأصناف وتسعير المنتجات')">
+        <img src="صور النظام/الأصناف.png" alt="إدارة الأصناف والمخزون" loading="lazy">
+        <span class="zoom-hint"><i class="fas fa-search-plus"></i> تكبير الصورة</span>
       </div>
       <div class="erp-mockup-content">
         <h3>دليل الأصناف وتسعير المنتجات</h3>
@@ -379,9 +419,10 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     </div>
 
     <!-- 7. المخزون والحركة -->
-    <div class="erp-mockup-card">
-      <div class="erp-mockup-img-wrap">
-        <img src="صور النظام/المخزون والحركة.png" alt="مخزون ومتابعة الحركة">
+    <div class="erp-mockup-card" data-category="inventory">
+      <div class="erp-mockup-img-wrap" onclick="openLightbox('صور النظام/المخزون والحركة.png', 'تقييم المخزون وحركة الأصناف')">
+        <img src="صور النظام/المخزون والحركة.png" alt="مخزون ومتابعة الحركة" loading="lazy">
+        <span class="zoom-hint"><i class="fas fa-search-plus"></i> تكبير الصورة</span>
       </div>
       <div class="erp-mockup-content">
         <h3>تقييم المخزون وحركة الأصناف</h3>
@@ -390,9 +431,10 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     </div>
 
     <!-- 8. تسويات الجرد -->
-    <div class="erp-mockup-card">
-      <div class="erp-mockup-img-wrap">
-        <img src="صور النظام/تسويات الجرد.png" alt="تسويات الجرد والعجز والتالف">
+    <div class="erp-mockup-card" data-category="inventory">
+      <div class="erp-mockup-img-wrap" onclick="openLightbox('صور النظام/تسويات الجرد.png', 'تسويات الجرد (عجز وتالف)')">
+        <img src="صور النظام/تسويات الجرد.png" alt="تسويات الجرد والعجز والتالف" loading="lazy">
+        <span class="zoom-hint"><i class="fas fa-search-plus"></i> تكبير الصورة</span>
       </div>
       <div class="erp-mockup-content">
         <h3>تسويات الجرد (عجز وتالف)</h3>
@@ -401,9 +443,10 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     </div>
 
     <!-- 9. العملاء -->
-    <div class="erp-mockup-card">
-      <div class="erp-mockup-img-wrap">
-        <img src="صور النظام/العملاء.png" alt="إدارة العملاء">
+    <div class="erp-mockup-card" data-category="sales">
+      <div class="erp-mockup-img-wrap" onclick="openLightbox('صور النظام/العملاء.png', 'إدارة بيانات وحسابات العملاء')">
+        <img src="صور النظام/العملاء.png" alt="إدارة العملاء" loading="lazy">
+        <span class="zoom-hint"><i class="fas fa-search-plus"></i> تكبير الصورة</span>
       </div>
       <div class="erp-mockup-content">
         <h3>إدارة بيانات وحسابات العملاء</h3>
@@ -412,9 +455,10 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     </div>
 
     <!-- 10. الموردون -->
-    <div class="erp-mockup-card">
-      <div class="erp-mockup-img-wrap">
-        <img src="صور النظام/الموردون.png" alt="إدارة الموردين">
+    <div class="erp-mockup-card" data-category="sales">
+      <div class="erp-mockup-img-wrap" onclick="openLightbox('صور النظام/الموردون.png', 'سجل الموردين والمستحقات')">
+        <img src="صور النظام/الموردون.png" alt="إدارة الموردين" loading="lazy">
+        <span class="zoom-hint"><i class="fas fa-search-plus"></i> تكبير الصورة</span>
       </div>
       <div class="erp-mockup-content">
         <h3>سجل الموردين والمستحقات</h3>
@@ -423,9 +467,10 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     </div>
 
     <!-- 11. ملفات الموظفين HR -->
-    <div class="erp-mockup-card">
-      <div class="erp-mockup-img-wrap">
-        <img src="صور النظام/ملفات الموظفون.png" alt="ملفات الموظفين المتقدمة">
+    <div class="erp-mockup-card" data-category="hr">
+      <div class="erp-mockup-img-wrap" onclick="openLightbox('صور النظام/ملفات الموظفون.png', 'ملفات الموظفين المتقدمة (HR)')">
+        <img src="صور النظام/ملفات الموظفون.png" alt="ملفات الموظفين المتقدمة" loading="lazy">
+        <span class="zoom-hint"><i class="fas fa-search-plus"></i> تكبير الصورة</span>
       </div>
       <div class="erp-mockup-content">
         <h3>ملفات الموظفين المتقدمة (HR)</h3>
@@ -434,9 +479,10 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     </div>
 
     <!-- 12. شاشة الإدخال الموحدة -->
-    <div class="erp-mockup-card">
-      <div class="erp-mockup-img-wrap">
-        <img src="صور النظام/شاشة الأدخال الموحده.png" alt="شاشة الإدخال الموحدة السريعة">
+    <div class="erp-mockup-card" data-category="admin">
+      <div class="erp-mockup-img-wrap" onclick="openLightbox('صور النظام/شاشة الأدخال الموحده.png', 'شاشة الإدخال الموحدة والسريعة')">
+        <img src="صور النظام/شاشة الأدخال الموحده.png" alt="شاشة الإدخال الموحدة السريعة" loading="lazy">
+        <span class="zoom-hint"><i class="fas fa-search-plus"></i> تكبير الصورة</span>
       </div>
       <div class="erp-mockup-content">
         <h3>شاشة الإدخال الموحدة والسريعة</h3>
@@ -445,9 +491,10 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     </div>
 
     <!-- 13. ميزان المراجعة والتقارير -->
-    <div class="erp-mockup-card">
-      <div class="erp-mockup-img-wrap">
-        <img src="صور النظام/التقارير.png" alt="التقارير وميزان المراجعة">
+    <div class="erp-mockup-card" data-category="admin">
+      <div class="erp-mockup-img-wrap" onclick="openLightbox('صور النظام/التقارير.png', 'ميزان المراجعة والتقارير المالية')">
+        <img src="صور النظام/التقارير.png" alt="التقارير وميزان المراجعة" loading="lazy">
+        <span class="zoom-hint"><i class="fas fa-search-plus"></i> تكبير الصورة</span>
       </div>
       <div class="erp-mockup-content">
         <h3>ميزان المراجعة والتقارير المالية</h3>
@@ -455,10 +502,11 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
       </div>
     </div>
 
-    <!-- 14. اليومية العامة -->
-    <div class="erp-mockup-card">
-      <div class="erp-mockup-img-wrap">
-        <img src="صور النظام/اليوميه العاكة.png" alt="اليومية العامة والقيود">
+    <!-- 14. اليومية العامة (التصحيح الإملائي للاسم) -->
+    <div class="erp-mockup-card" data-category="finance">
+      <div class="erp-mockup-img-wrap" onclick="openLightbox('صور النظام/اليومية العامة.png', 'سجل اليومية العامة (Journal)')">
+        <img src="صور النظام/اليومية العامة.png" alt="اليومية العامة والقيود" loading="lazy">
+        <span class="zoom-hint"><i class="fas fa-search-plus"></i> تكبير الصورة</span>
       </div>
       <div class="erp-mockup-content">
         <h3>سجل اليومية العامة (Journal)</h3>
@@ -467,9 +515,10 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     </div>
 
     <!-- 15. عكس القيود -->
-    <div class="erp-mockup-card">
-      <div class="erp-mockup-img-wrap">
-        <img src="صور النظام/عكس القيود.png" alt="عكس القيود المحاسبية">
+    <div class="erp-mockup-card" data-category="finance">
+      <div class="erp-mockup-img-wrap" onclick="openLightbox('صور النظام/عكس القيود.png', 'أداة عكس القيود الآمنة')">
+        <img src="صور النظام/عكس القيود.png" alt="عكس القيود المحاسبية" loading="lazy">
+        <span class="zoom-hint"><i class="fas fa-search-plus"></i> تكبير الصورة</span>
       </div>
       <div class="erp-mockup-content">
         <h3>أداة عكس القيود الآمنة</h3>
@@ -478,9 +527,10 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     </div>
 
     <!-- 16. الإعدادات -->
-    <div class="erp-mockup-card">
-      <div class="erp-mockup-img-wrap">
-        <img src="صور النظام/الأعدادات.png" alt="إعدادات النظام">
+    <div class="erp-mockup-card" data-category="admin">
+      <div class="erp-mockup-img-wrap" onclick="openLightbox('صور النظام/الأعدادات.png', 'إعدادات المنظومة والصلاحيات')">
+        <img src="صور النظام/الأعدادات.png" alt="إعدادات النظام" loading="lazy">
+        <span class="zoom-hint"><i class="fas fa-search-plus"></i> تكبير الصورة</span>
       </div>
       <div class="erp-mockup-content">
         <h3>إعدادات المنظومة والصلاحيات</h3>
@@ -489,8 +539,38 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     </div>
 
   </div>
+
+  <!-- قسم عرض فيديو يوتيوب التوضيحي -->
+  <div class="video-showcase-card">
+    <div>
+      <span class="kicker">فيديو ترويجي وتعريفي</span>
+      <h3 style="font-size: 1.8rem; margin: 10px 0 15px;">شاهد جولة سريعة داخل NEXORA ERP</h3>
+      <p style="color: var(--muted); margin-bottom: 20px;">تعرف في دقائق معدودة على كيفية عمل النظام وقوته في إدارة الأعمال من خلال قناتنا الرسمية على يوتيوب <strong style="color: var(--cyan);">@Nexorabs0</strong>.</p>
+      <a class="btn btn-outline" href="https://www.youtube.com/@Nexorabs0" target="_blank" rel="noopener noreferrer"><i class="fab faس-youtube" style="color: #ff0000;"></i> زيارة القناة الرسمية ↗</a>
+    </div>
+    <div class="video-frame-wrap">
+      <!-- استبدل الرابط أدناه برابط الـ Embed الخاص بفيديو يوتيوب عندما ترسله -->
+      <!-- مثال: src="https://www.youtube.com/embed/رابط_الفيديو" -->
+      <div class="video-placeholder-text">
+        <i class="fab fa-youtube"></i>
+        <strong>قريباً: الفيديو التعريفي للنظام</strong>
+        <p style="font-size: 0.85rem; margin-top: 5px;">سيتم عرض الفيديو التوضيحي هنا فور جاهزيته.</p>
+      </div>
+      <!-- <iframe src="" title="NEXORA ERP Demo Video" allowfullscreen></iframe> -->
+    </div>
+  </div>
+
  </div>
 </section>
+
+<!-- نافذة عرض الصورة المكبرة (Lightbox Modal) -->
+<div class="lightbox-modal" id="lightboxModal">
+  <div class="lightbox-content">
+    <button class="lightbox-close" type="button" onclick="closeLightbox()">✕</button>
+    <img id="lightboxImg" src="" alt="شاشة تكبير النظام">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+</div>
 
 <section class="section" id="method">
  <div class="container">
@@ -567,6 +647,45 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
 </div>
 
 <script>
+  // وظائف التاب (Tabs) لمعرض الشاشات
+  const tabButtons = document.querySelectorAll('.gallery-tab-btn');
+  const galleryCards = document.querySelectorAll('.erp-mockup-card');
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+
+      galleryCards.forEach(card => {
+        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // نافذة Lightbox لتكبير الصور
+  function openLightbox(imgSrc, captionText) {
+    const modal = document.getElementById('lightboxModal');
+    const img = document.getElementById('lightboxImg');
+    const caption = document.getElementById('lightboxCaption');
+    img.src = imgSrc;
+    caption.innerText = captionText;
+    modal.classList.add('open');
+  }
+
+  function closeLightbox() {
+    const modal = document.getElementById('lightboxModal');
+    modal.classList.remove('open');
+  }
+
+  document.getElementById('lightboxModal').addEventListener('click', (e) => {
+    if (e.target.id === 'lightboxModal') closeLightbox();
+  });
+
   const serviceDetails = {
     erp: {
       ar: { title: "فواتير البيع والشراء", desc: "نظام إدارة المبيعات والمشتريات الآجلة والنقدية، وتوليد الفواتير التلقائي مع ربط مباشر مع المخزون والعملاء والموردين." },
