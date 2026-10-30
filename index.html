@@ -130,6 +130,48 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* إشعار إرسال النموذج التفاعلي (Interactive Form Toast) */
+.form-toast {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  z-index: 130;
+  background: rgba(11, 24, 48, 0.96);
+  border: 1px solid var(--cyan);
+  backdrop-filter: blur(14px);
+  padding: 16px 22px;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(41,182,255,0.25);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  max-width: min(90vw, 420px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  direction: rtl;
+}
+.form-toast.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.form-toast i {
+  color: var(--cyan);
+  font-size: 1.5rem;
+}
+.form-toast p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #d8e3f2;
+}
+.form-toast p strong {
+  display: block;
+  color: var(--cyan);
+  margin-bottom: 3px;
+}
+
 /* تأثير الوميض (Glow Pulse) لصندوق أرسل تفاصيل طلبك متوافق تماماً مع الموبايل */
 @keyframes formGlow {
   0% { border-color: var(--line); box-shadow: var(--shadow); background: rgba(11,24,48,0.94); }
@@ -146,8 +188,8 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
 .service-tag{display:inline-block;padding:4px 9px;border-radius:99px;border:1px solid rgba(139,63,232,.35);color:#d7bfff;font-size:.75rem;margin-bottom:14px}
 .demo{display:grid;grid-template-columns:1fr .9fr;gap:22px;align-items:stretch}.demo-visual{min-height:320px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}.demo-visual:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;border:1px solid rgba(41,182,255,.25);box-shadow:0 0 0 28px rgba(139,63,232,.05),0 0 0 58px rgba(41,182,255,.04);left:-80px;bottom:-120px}.demo-visual>*{position:relative;z-index:1}.credential{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 13px;border-radius:12px;background:rgba(5,7,15,.65);border:1px solid var(--line);margin:10px 0}.credential code{font-family:Consolas,monospace;direction:ltr;unicode-bidi:plaintext;overflow-wrap:anywhere;color:#e4f5ff}.credential-actions{display:flex;gap:6px;flex-shrink:0}.icon-btn{background:rgba(41,182,255,.09);border:1px solid rgba(41,182,255,.23);border-radius:9px;padding:7px 9px;color:var(--cyan);transition:all 0.2s}.icon-btn:hover{background:var(--cyan);color:#000}.notice{font-size:.82rem;color:#a9bad0;border-inline-start:3px solid var(--purple);padding-inline-start:12px;margin:14px 0 0}
 .contact-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:20px}.contact-links{display:grid;gap:11px}.contact-link{display:flex;align-items:center;gap:13px;border:1px solid var(--line);border-radius:15px;padding:13px;background:rgba(11,24,48,.55);transition:all .2s}.contact-link:hover{border-color:rgba(41,182,255,.5);transform:translateY(-1px);background:rgba(41,182,255,.08)}.contact-link .iconbox{width:40px;height:40px;margin:0;flex-shrink:0;font-size:1rem}.contact-link span small{display:block;color:var(--muted);font-size:.8rem}.contact-link strong{font-size:.94rem;overflow-wrap:anywhere}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:.88rem;color:#d8e3f2}.field input,.field textarea,.field select{width:100%;background:#060c18;border:1px solid #263a55;border-radius:12px;padding:12px 13px;color:var(--text);outline:none;transition:border-color 0.2s}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(41,182,255,.09)}.field textarea{min-height:120px;resize:vertical}.form-help{font-size:.8rem;color:var(--muted);margin:12px 0 18px}.footer{border-top:1px solid var(--line);padding:30px 0 22px;background:rgba(5,7,15,.75)}.footer-main{display:flex;justify-content:space-between;align-items:center;gap:24px}.footer-links{display:flex;flex-wrap:wrap;gap:15px;color:var(--muted);font-size:.86rem}.copyright{color:#75869e;font-size:.8rem;margin:20px 0 0}.backtop{position:fixed;bottom:20px;inset-inline-end:20px;z-index:40;width:44px;height:44px;border-radius:50%;border:1px solid rgba(41,182,255,.4);background:#0B1830;color:var(--cyan);box-shadow:var(--shadow);display:none}.backtop.show{display:block}
-.modal{position:fixed;inset:0;z-index:100;background:rgba(1,3,8,.78);backdrop-filter:blur(9px);display:none;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modal-box{width:min(640px,100%);max-height:85vh;overflow:auto;background:#09152a;border:1px solid rgba(41,182,255,.3);border-radius:22px;padding:28px;box-shadow:0 30px 90px #000}.modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.modal-head h3{font-size:1.5rem;margin:0}.modal-close{border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--text);padding:6px 11px}.modal-body{color:#c4d0e1;margin:18px 0}.toast{position:fixed;left:20px;bottom:20px;z-index:120;padding:12px 16px;border-radius:12px;background:#0B1830;border:1px solid rgba(41,182,255,.45);color:var(--text);box-shadow:var(--shadow);display:none;max-width:min(90vw,420px)}.toast.show{display:block;animation:fadein .2s ease}@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}.hidden{display:none!important}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:.88rem;color:#d8e3f2}.field input,.field textarea,.field select{width:100%;background:#060c18;border:1px solid #263a55;border-radius:12px;padding:12px 13px;color:var(--text);outline:none;transition:border-color 0.2s}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(41,182,255,.09)}.field textarea{min-height:120px;resize:vertical}.form-help{font-size:.8rem;color:var(--muted);margin:12px 0 18px}.footer{border-top:1px solid var(--line);padding:30px 0 22px;background:rgba(5,7,15,.75)}.footer-main{display:flex;justify-content:space-between;align-items:center;gap:24px}.footer-links{display:flex;flex-wrap:wrap;gap:15px;color:var(--muted);font-size:.86rem}.copyright{color:#75869e;font-size:.8rem;margin:20px 0 0}.backtop{position:fixed;bottom:20px;inset-inline-end:20px;z-index:40;width:44px;height:44px;border-radius:50%;border:1px solid rgba(41,182,255,.4);background:#0B1830;color:var(--cyan);box-shadow:var(--shadow);display:none;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;transition:all 0.3s}.backtop.show{display:flex}
+.modal{position:fixed;inset:0;z-index:100;background:rgba(1,3,8,.78);backdrop-filter:blur(9px);display:none;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modal-box{width:min(640px,100%);max-height:85vh;overflow:auto;background:#09152a;border:1px solid rgba(41,182,255,.3);border-radius:22px;padding:28px;box-shadow:0 30px 90px #000}.modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.modal-head h3{font-size:1.5rem;margin:0}.modal-close{border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--text);padding:6px 11px}.modal-body{color:#c4d0e1;margin:18px 0}.hidden{display:none!important}
 [dir="ltr"] .list-check li{padding:7px 0 7px 28px}[dir="ltr"] .list-check li:before{right:auto;left:0}[dir="ltr"] .notice{border-inline-start:0;border-inline-end:3px solid var(--purple);padding-inline-start:0;padding-inline-end:12px}
 @media(max-width:900px){.navlinks{gap:13px}.navlinks a{font-size:.82rem}.hero{grid-template-columns:1fr .72fr;gap:15px}.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}.about-layout,.demo,.contact-layout{grid-template-columns:1fr}.hero-art{min-height:300px}.hero-logo{width:min(270px,75%)}}
 @media(max-width:700px){.container{width:min(100% - 26px,1160px)}.nav{min-height:70px}.brand img{width:48px;height:48px}.menu-btn{display:inline-flex}.navlinks{display:none;position:absolute;top:70px;left:13px;right:13px;background:#071021;border:1px solid var(--line);border-radius:16px;padding:14px;flex-direction:column;align-items:stretch;gap:0;box-shadow:var(--shadow)}.navlinks.open{display:flex}.navlinks a{padding:11px 9px;border-bottom:1px solid rgba(117,164,220,.1);font-size:.95rem}.navlinks a:last-child{border:0}.nav-actions .btn{display:none}.hero{padding:48px 0 36px;grid-template-columns:1fr;min-height:0}.hero-art{grid-row:1;min-height:220px}.hero-logo{width:210px}h1{font-size:2.45rem;letter-spacing:-.8px}.hero-copy{font-size:1rem}.hero-actions .btn{flex:1}.section{padding:55px 0}.grid-3,.grid-2{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.card{padding:21px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.footer-main{align-items:flex-start;flex-direction:column}.credential{align-items:flex-start;flex-direction:column}.credential-actions{width:100%}.credential-actions button{flex:1}}
@@ -187,6 +229,14 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
   <div class="audio-toast-actions">
     <button type="button" id="toastPlayBtn" class="audio-toast-btn">استماع الآن</button>
     <button type="button" id="toastCloseBtn" class="audio-toast-close" aria-label="إغلاق">✕</button>
+  </div>
+</div>
+
+<!-- إشعار إرسال النموذج الذكي (Form Toast) -->
+<div id="formToast" class="form-toast">
+  <i class="fab fa-whatsapp"></i>
+  <div>
+    <p><strong data-i18n="toastFormTitle">جاري تحويل بياناتك...</strong><span data-i18n="toastFormDesc">تم تجهيز رسالتك باحترافية، سيتم فتح واتساب الآن.</span></p>
   </div>
 </div>
 
@@ -346,7 +396,7 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
       navHome: "الرئيسية", navAbout: "عن نكسورا", navServices: "الخدمات", navMethod: "منهجية العمل", navDemo: "عرض النظام", navContact: "تواصل معنا", navStart: "ناقش مشروعك",
       eyebrow: "Business Solutions · Digital Transformation",
       heroTitle: 'حلول ذكية<br>لإدارة <span class="gradient">وتطوير الأعمال</span>',
-      heroCopy: "نحلل احتياجاتك، نفهم تحدياتك، ونصمم حلولًا عملية تساعدك على تنظيم أعمالك وتطويرها — من الأنظمة الإدارية والمحاسبية إلى الأتمتة وتحسين العمليات.",
+      heroCopy: "NEXORA علامة متخصصة في تقديم حلول ذكية وعملية تساعد الشركات والمشروعات على تنظيم وإدارة الأعمال.",
       exploreServices: "استكشف خدماتنا ←", viewDemo: "استعرض النظام",
       heroNote: "نبدأ بفهم طبيعة نشاطك ووضعك الحالي، ثم نحدد نطاق العمل والحل المناسب قبل التنفيذ.",
       aboutKicker: "من نحن", aboutTitle: "حلول تُبنى على احتياج العمل الفعلي",
@@ -381,14 +431,16 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
       sendWhatsApp: "متابعة عبر واتساب ↗",
       formsTitle: "نماذج نكسورا", formsIntro: "استخدم النموذج المناسب حسب نوع الطلب.",
       footerTagline: "حلول ذكية لإدارة وتطوير الأعمال", rights: "جميع الحقوق محفوظة.",
-      discussService: "ناقش الخدمة معنا"
+      discussService: "ناقش الخدمة معنا",
+      toastFormTitle: "جاري تحويل بياناتك...",
+      toastFormDesc: "تم تجهيز رسالتك باحترافية، سيتم فتح واتساب الآن."
     },
     en: {
       brandSub: "NEXORA | Business Solutions",
       navHome: "Home", navAbout: "About Us", navServices: "Services", navMethod: "Workflow", navDemo: "Live Demo", navContact: "Contact Us", navStart: "Discuss Project",
       eyebrow: "Business Solutions · Digital Transformation",
       heroTitle: 'Smart Solutions<br>for <span class="gradient">Business Growth</span>',
-      heroCopy: "We analyze your needs, understand your challenges, and design practical solutions to organize and develop your business — from ERP systems to automation.",
+      heroCopy: "We analyze your needs, understand your challenges, and design practical solutions to organize and develop your business.",
       exploreServices: "Explore Services →", viewDemo: "View Demo",
       heroNote: "We start by understanding your current status and scope before execution.",
       aboutKicker: "About Us", aboutTitle: "Solutions Built on Real Business Needs",
@@ -423,14 +475,17 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
       sendWhatsApp: "Continue via WhatsApp ↗",
       formsTitle: "Nexora Forms", formsIntro: "Use the appropriate form based on your request type.",
       footerTagline: "Smart Solutions for Business Management & Growth", rights: "All rights reserved.",
-      discussService: "Discuss This Service"
+      discussService: "Discuss This Service",
+      toastFormTitle: "Preparing your data...",
+      toastFormDesc: "Your message is ready. Opening WhatsApp now."
     }
   };
 
-  let currentLang = 'ar';
+  let currentLang = localStorage.getItem('nexoraLang') || 'ar';
 
   function switchLanguage(lang) {
     currentLang = lang;
+    localStorage.setItem('nexoraLang', lang);
     const htmlTag = document.documentElement;
     htmlTag.setAttribute('lang', lang);
     htmlTag.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
@@ -447,6 +502,9 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
       if (translations[lang][key]) el.innerHTML = translations[lang][key];
     });
   }
+
+  // تطبيق اللغة المحفوظة تلقائياً عند الفتح
+  switchLanguage(currentLang);
 
   document.getElementById('langToggle').addEventListener('click', () => {
     switchLanguage(currentLang === 'ar' ? 'en' : 'ar');
@@ -479,12 +537,12 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
     if (e.target === modal) modal.classList.remove('open');
   });
 
-  // دالة متوافقة مع الموبايل للنزول مباشرة إلى صندوق "أرسل تفاصيل طلبك" وإحداث الوميض
+  // دالة النزول لنموذج التواصل وإحداث الوميض
   function triggerFormGlow() {
     const formCard = document.getElementById('contactFormCard');
     if (formCard) {
       formCard.classList.remove('glow-highlight');
-      void formCard.offsetWidth; // Force Reflow
+      void formCard.offsetWidth; 
       formCard.classList.add('glow-highlight');
     }
   }
@@ -499,7 +557,6 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
     }
   }
 
-  // ربط زر "ناقش الخدمة معنا" داخل النافذة المنبثقة بالوصول لبطاقة النموذج مباشرة
   modalContact.addEventListener('click', function(e) {
     e.preventDefault();
     modal.classList.remove('open');
@@ -517,20 +574,19 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
     scrollToFormAndGlow();
   });
 
-  // ربط أزرار "ناقش مشروعك" والروابط بالانتقال لصندوق النموذج مباشرة
   document.querySelectorAll('.glow-trigger').forEach(trigger => {
     trigger.addEventListener('click', function(e) {
       e.preventDefault();
-      
       const navlinks = document.getElementById('navlinks');
       if (navlinks) navlinks.classList.remove('open');
-
       scrollToFormAndGlow();
     });
   });
 
-  // تفعيل إرسال النموذج عبر واتساب بشكل صحيح
+  // إشعار إرسال النموذج التفاعلي (Interactive Form Toast)
   const contactForm = document.getElementById('contactForm');
+  const formToast = document.getElementById('formToast');
+
   if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
@@ -547,7 +603,18 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
 
       const encodedText = encodeURIComponent(text);
       const whatsappUrl = `https://wa.me/201041554942?text=${encodedText}`;
-      window.open(whatsappUrl, '_blank');
+
+      // إظهار الإشعار التفاعلي الأنيق
+      if (formToast) {
+        formToast.classList.add('show');
+      }
+
+      setTimeout(() => {
+        if (formToast) {
+          formToast.classList.remove('show');
+        }
+        window.open(whatsappUrl, '_blank');
+      }, 1500);
     });
   }
 
@@ -600,9 +667,22 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
     });
   }
 
+  // زر العودة إلى الأعلى (Back to Top)
+  const backtopBtn = document.getElementById('backtop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backtopBtn.classList.add('show');
+    } else {
+      backtopBtn.classList.remove('show');
+    }
+  });
+
+  backtopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
   // ==========================================
   // منظومة الصوت الذكية مع الإشعار الاحترافي
-  // (بدون تشغيل تلقائي عند التفاعل/اللمس)
   // ==========================================
   (function () {
     const audio = document.getElementById('ambientAudio');
@@ -720,7 +800,6 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
       }
     }, 2000);
 
-    // إخفاء الإشعار
     function hideToast() {
       if (toast) toast.style.display = 'none';
     }
@@ -729,7 +808,6 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
       toastCloseBtn.addEventListener('click', hideToast);
     }
 
-    // عند الضغط على "استماع الآن" من الإشعار
     if (toastPlayBtn) {
       toastPlayBtn.addEventListener('click', () => {
         startSound();
@@ -737,7 +815,6 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
       });
     }
 
-    // التحكم عبر زر الصوت الأساسي في الشاشة
     btn.addEventListener('click', () => {
       hideToast();
       if (isOn()) {
