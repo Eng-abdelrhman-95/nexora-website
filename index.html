@@ -59,14 +59,14 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
 .sound-btn.is-playing{background:linear-gradient(135deg,var(--cyan),var(--purple));color:#04101b;border-color:transparent;animation:pulseSound 2s infinite}
 @keyframes pulseSound{0%{box-shadow:0 0 0 0 rgba(41,182,255,0.4)}70%{box-shadow:0 0 0 12px rgba(41,182,255,0)}100%{box-shadow:0 0 0 0 rgba(41,182,255,0)}}
 
-/* تأثير الوميض (Glow Pulse) لصندوق أرسل تفاصيل طلبك (6 مرات دقيقة) */
+/* تأثير الوميض (Glow Pulse) لصندوق أرسل تفاصيل طلبك متوافق تماماً مع الموبايل */
 @keyframes formGlow {
   0% { border-color: var(--line); box-shadow: var(--shadow); background: rgba(11,24,48,0.94); }
-  50% { border-color: var(--cyan); box-shadow: 0 0 40px rgba(41,182,255,0.8); background: rgba(13,35,65,0.99); }
+  50% { border-color: var(--cyan); box-shadow: 0 0 35px rgba(41,182,255,0.85); background: rgba(13,35,65,0.99); }
   100% { border-color: var(--line); box-shadow: var(--shadow); background: rgba(11,24,48,0.94); }
 }
 .glow-highlight {
-  animation: formGlow 0.4s ease-in-out 6 !important;
+  animation: formGlow 0.45s ease-in-out 6 !important;
 }
 
 .hero{padding:76px 0 65px;min-height:610px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:42px}.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 12px;border:1px solid rgba(41,182,255,.25);border-radius:99px;background:rgba(11,24,48,.65);font-size:.82rem;color:#c7eaff}.dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px var(--cyan)}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;margin:22px 0}.gradient{background:linear-gradient(100deg,var(--cyan),#9acbff 52%,#c49aff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-copy{font-size:1.12rem;color:#c3cede;max-width:670px}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 20px}.hero-note{color:#91a2b9;font-size:.83rem;max-width:650px}.hero-art{position:relative;display:flex;align-items:center;justify-content:center;min-height:410px}.hero-art:before{content:"";position:absolute;width:min(380px,95%);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(41,182,255,.12),rgba(139,63,232,.06) 45%,transparent 70%);filter:blur(8px)}.hero-logo{position:relative;width:min(330px,88%);border-radius:50%;filter:drop-shadow(0 0 34px rgba(41,182,255,.18))}
@@ -80,7 +80,6 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
 [dir="ltr"] .list-check li{padding:7px 0 7px 28px}[dir="ltr"] .list-check li:before{right:auto;left:0}[dir="ltr"] .notice{border-inline-start:0;border-inline-end:3px solid var(--purple);padding-inline-start:0;padding-inline-end:12px}
 @media(max-width:900px){.navlinks{gap:13px}.navlinks a{font-size:.82rem}.hero{grid-template-columns:1fr .72fr;gap:15px}.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}.about-layout,.demo,.contact-layout{grid-template-columns:1fr}.hero-art{min-height:300px}.hero-logo{width:min(270px,75%)}}
 @media(max-width:700px){.container{width:min(100% - 26px,1160px)}.nav{min-height:70px}.brand img{width:48px;height:48px}.menu-btn{display:inline-flex}.navlinks{display:none;position:absolute;top:70px;left:13px;right:13px;background:#071021;border:1px solid var(--line);border-radius:16px;padding:14px;flex-direction:column;align-items:stretch;gap:0;box-shadow:var(--shadow)}.navlinks.open{display:flex}.navlinks a{padding:11px 9px;border-bottom:1px solid rgba(117,164,220,.1);font-size:.95rem}.navlinks a:last-child{border:0}.nav-actions .btn{display:none}.hero{padding:48px 0 36px;grid-template-columns:1fr;min-height:0}.hero-art{grid-row:1;min-height:220px}.hero-logo{width:210px}h1{font-size:2.45rem;letter-spacing:-.8px}.hero-copy{font-size:1rem}.hero-actions .btn{flex:1}.section{padding:55px 0}.grid-3,.grid-2{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.card{padding:21px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.footer-main{align-items:flex-start;flex-direction:column}.credential{align-items:flex-start;flex-direction:column}.credential-actions{width:100%}.credential-actions button{flex:1}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -397,18 +396,30 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
     if (e.target === modal) modal.classList.remove('open');
   });
 
-  // دالة مشتركة لتفعيل وميض صندوق أرسل تفاصيل طلبك بدقة (6 مرات)
+  // دالة متواقفة مع أجهزة الموبايل للوميض والانتقال السلس
   function triggerFormGlow() {
     const formCard = document.getElementById('contactFormCard');
     if (formCard) {
       formCard.classList.remove('glow-highlight');
-      void formCard.offsetWidth; // إعادة تهيئة الـ DOM لإعادة تشغيل الـ Animation
+      void formCard.offsetWidth; // Force Reflow
       formCard.classList.add('glow-highlight');
     }
   }
 
-  // ربط زر "ناقش الخدمة معنا" داخل النافذة المنبثقة
-  modalContact.addEventListener('click', () => {
+  function goToContactAndGlow() {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // استخدام مهلة زمنية ناعمة لضمان انتهاء التمرير أو إغلاق النافذة المنبثقة في الموبايل
+      setTimeout(() => {
+        triggerFormGlow();
+      }, 350);
+    }
+  }
+
+  // ربط زر "ناقش الخدمة معنا" داخل النافذة المنبثقة للعمل على الموبايل والكمبيوتر
+  modalContact.addEventListener('click', function(e) {
+    e.preventDefault();
     modal.classList.remove('open');
     
     const serviceSelect = document.getElementById('service');
@@ -421,24 +432,22 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
       }
     }
 
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    triggerFormGlow();
+    goToContactAndGlow();
   });
 
   // ربط أزرار "ناقش مشروعك" وغيرها ممن تحمل الكلاس glow-trigger
   document.querySelectorAll('.glow-trigger').forEach(trigger => {
-    trigger.addEventListener('click', function(e) {
+    const handleAction = function(e) {
       e.preventDefault();
-      const contactSection = document.getElementById('contact');
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
-      }
-      triggerFormGlow();
-    });
+      
+      // إغلاق القائمة في الهواتف المحمولة في حال تم الضغط عليها داخل الموبايل
+      const navlinks = document.getElementById('navlinks');
+      if (navlinks) navlinks.classList.remove('open');
+
+      goToContactAndGlow();
+    };
+
+    trigger.addEventListener('click', handleAction);
   });
 
   // تفعيل إرسال النموذج عبر واتساب بشكل صحيح
