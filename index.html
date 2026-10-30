@@ -23,8 +23,21 @@
 }
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:92px}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,"Segoe UI",sans-serif;line-height:1.8;overflow-x:hidden;transition:background 0.3s, color 0.3s}
-body:before{content:"";position:fixed;inset:0;z-index:-2;background:linear-gradient(180deg,var(--hero-bg-op),var(--hero-bg-op)),url("assets/nexora-background.jpg") center top/cover no-repeat;opacity:.78}
-body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 80% 10%,rgba(41,182,255,.08),transparent 35%),radial-gradient(ellipse at 10% 35%,rgba(139,63,232,.09),transparent 32%)}
+
+/* خلفية متحركة واضحة وديناميكية (Moving Animated Background) */
+@keyframes bgPan {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+body:before{
+  content:""; position:fixed; inset:-20px; z-index:-2;
+  background:linear-gradient(135deg, var(--hero-bg-op), rgba(139,63,232,0.25), var(--hero-bg-op)), url("assets/nexora-background.jpg") center/cover no-repeat;
+  animation: bgPan 25s ease infinite alternate;
+  opacity:.85; filter: contrast(110%);
+}
+body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 80% 10%,rgba(41,182,255,.12),transparent 35%),radial-gradient(ellipse at 10% 35%,rgba(139,63,232,.15),transparent 32%)}
+
 a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}button,a{ -webkit-tap-highlight-color:transparent}button{cursor:pointer}.container{width:min(1160px,calc(100% - 36px));margin:auto}
 .topbar{position:sticky;top:0;z-index:50;background:var(--hero-bg-op);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
 .nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;min-width:175px}.brand img{width:58px;height:58px;object-fit:contain}.brand-name{font-size:1rem;font-weight:800;letter-spacing:.5px;line-height:1.35}.brand-name small{display:block;color:var(--muted);font-size:.76rem;font-weight:400;letter-spacing:0}
@@ -144,7 +157,6 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
 .footer-links{display:flex;flex-wrap:wrap;gap:15px;color:var(--muted);font-size:.86rem}
 .copyright{color:var(--muted);font-size:.8rem;margin:20px 0 0}
 
-/* زر العودة لأعلى مضبوط وواضح تماماً */
 .backtop{
   position:fixed; bottom:24px; right:24px; z-index:95;
   width:46px; height:46px; border-radius:50%;
@@ -155,8 +167,8 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
 }
 .backtop.show{display:flex}
 .backtop:hover{transform:scale(1.08); background:var(--cyan); color:#000;}
-
 [dir="ltr"] .backtop{right:auto; left:24px;}
+
 .modal{position:fixed;inset:0;z-index:100;background:rgba(1,3,8,.78);backdrop-filter:blur(9px);display:none;align-items:center;justify-content:center;padding:20px}
 .modal.open{display:flex}
 .modal-box{width:min(640px,100%);max-height:85vh;overflow:auto;background:var(--modal-bg);border:1px solid rgba(41,182,255,.3);border-radius:22px;padding:28px;box-shadow:0 30px 90px rgba(0,0,0,0.5)}
@@ -164,6 +176,7 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
 .modal-close{border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--text);padding:6px 11px}
 .modal-body{color:var(--muted);margin:18px 0}.hidden{display:none!important}
 [dir="ltr"] .list-check li{padding:7px 0 7px 28px}[dir="ltr"] .list-check li:before{right:auto;left:0}
+
 @media(max-width:900px){.navlinks{gap:13px}.hero{grid-template-columns:1fr .72fr;gap:15px}.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}.about-layout,.demo,.contact-layout{grid-template-columns:1fr}}
 @media(max-width:700px){.container{width:min(100% - 26px,1160px)}.nav{min-height:70px}.brand img{width:48px;height:48px}.menu-btn{display:inline-flex}.navlinks{display:none;position:absolute;top:70px;left:13px;right:13px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;flex-direction:column;align-items:stretch;gap:0;box-shadow:var(--shadow)}.navlinks.open{display:flex}.navlinks a{padding:11px 9px;border-bottom:1px solid var(--line);font-size:.95rem}.nav-actions .btn{display:none}.hero{padding:48px 0 36px;grid-template-columns:1fr}.hero-art{grid-row:1;min-height:220px}.hero-logo{width:210px}h1{font-size:2.45rem}}
 </style>
@@ -311,7 +324,6 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
 </main>
 <footer class="footer"><div class="container"><div class="footer-main"><a class="brand" href="#home"><img src="assets/nexora-logo.png" alt=""><span class="brand-name">NEXORA <small data-i18n="footerTagline">حلول ذكية لإدارة وتطوير الأعمال</small></span></a><nav class="footer-links"><a href="#about" data-i18n="navAbout">عن نكسورا</a><a href="#services" data-i18n="navServices">الخدمات</a><a href="#method" data-i18n="navMethod">منهجية العمل</a><a href="#demo" data-i18n="navDemo">عرض النظام</a><a href="#contact" data-i18n="navContact">تواصل معنا</a></nav></div><p class="copyright">© <span id="year"></span> NEXORA | نكسورا. <span data-i18n="rights">جميع الحقوق محفوظة.</span></p></div></footer>
 
-<!-- زر العودة لأعلى -->
 <button class="backtop" id="backtop" type="button" aria-label="العودة إلى الأعلى"><i class="fas fa-arrow-up"></i></button>
 
 <div class="modal" id="serviceModal" role="dialog" aria-modal="true">
@@ -442,7 +454,6 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     }
   };
 
-  // تفعيل نظام الوضع (الداكن والفاتح) مع حفظه في المتصفح
   let currentTheme = localStorage.getItem('nexoraTheme') || 'dark';
   function applyTheme(theme) {
     currentTheme = theme;
@@ -459,7 +470,6 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
   });
 
-  // تفعيل نظام اللغات مع الحفظ
   let currentLang = localStorage.getItem('nexoraLang') || 'ar';
   function switchLanguage(lang) {
     currentLang = lang;
@@ -486,7 +496,6 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     switchLanguage(currentLang === 'ar' ? 'en' : 'ar');
   });
 
-  // النافذة المنبثقة
   const modal = document.getElementById('serviceModal');
   const modalTitle = document.getElementById('modalTitle');
   const modalBody = document.getElementById('modalBody');
@@ -551,7 +560,6 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     });
   });
 
-  // نموذج واتساب مع مدة قراءة مثالية (2.2 ثانية)
   const contactForm = document.getElementById('contactForm');
   const formToast = document.getElementById('formToast');
 
@@ -574,7 +582,6 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
 
       if (formToast) formToast.classList.add('show');
 
-      // 2200 مللي ثانية (مدة مناسبة تماماً لقراءة الإشعار)
       setTimeout(() => {
         if (formToast) formToast.classList.remove('show');
         window.open(whatsappUrl, '_blank');
@@ -582,7 +589,6 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     });
   }
 
-  // نسخ وإظهار بيانات النظام
   document.addEventListener('click', function (e) {
     if (e.target && e.target.classList.contains('copy-btn')) {
       const btn = e.target;
@@ -611,7 +617,6 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     }
   });
 
-  // قائمة الجوال
   const menuToggle = document.getElementById('menuToggle');
   const navlinks = document.getElementById('navlinks');
   if (menuToggle && navlinks) {
@@ -622,7 +627,6 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     });
   }
 
-  // زر العودة إلى الأعلى (Back to Top) الفعال
   const backtopBtn = document.getElementById('backtop');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 300) {
@@ -636,7 +640,6 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // الصوت والإشعار الصوتي
   (function () {
     const audio = document.getElementById('ambientAudio');
     const btn = document.getElementById('soundToggle');
