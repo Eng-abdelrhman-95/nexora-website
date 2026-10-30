@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#05070F">
-<meta name="description" content="شركة نكسورا لحلول وإدارة الأعمال ونظام الـ ERP المتكامل للشركات والمحلات الصغيرة والمتوسطة.">
+<meta name="description" content="شركة نكسورا لحلول وإدارة الأعمال ونظام الـ ERP المتكامل للشركات والمحلات ومختلف الأنشطة التجارية.">
 <title>شركة نكسورا لحلول وإدارة الأعمال ونظام الـ ERP المتكامل</title>
 <link rel="icon" type="image/png" href="assets/nexora-logo.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -40,11 +40,27 @@ body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;back
 a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}button,a{ -webkit-tap-highlight-color:transparent}button{cursor:pointer}.container{width:min(1160px,calc(100% - 36px));margin:auto}
 .topbar{position:sticky;top:0;z-index:50;background:var(--hero-bg-op);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
 .nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;min-width:175px}.brand img{width:58px;height:58px;object-fit:contain}.brand-name{font-size:1rem;font-weight:800;letter-spacing:.5px;line-height:1.35}.brand-name small{display:block;color:var(--muted);font-size:.76rem;font-weight:400;letter-spacing:0}
-.navlinks{display:flex;align-items:center;gap:22px}.navlinks a{font-size:.9rem;color:var(--text);transition:.2s}.navlinks a:hover,.navlinks a.active{color:var(--cyan)}.nav-actions{display:flex;align-items:center;gap:9px}
+.navlinks{display:flex;align-items:center;gap:22px}.navlinks a{font-size:.9rem;color:var(--text);transition:.2s}.navlinks a:hover,.navlinks a.active{color:var(--cyan)}.nav-actions{display:flex;align-items:center;gap:9px;position:relative}
 
 .menu-btn{display:none}
 .action-icon-btn, .lang-btn, .menu-btn{border:1px solid var(--line);color:var(--text);background:var(--card);border-radius:12px;padding:9px 12px;transition:all 0.25s ease;display:inline-flex;align-items:center;justify-content:center}
 .action-icon-btn:hover, .lang-btn:hover, .menu-btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(41,182,255,.1)}
+
+/* تلميح زر الإضاءة الذكي */
+.theme-hint-tooltip {
+  position: absolute; top: 55px; right: 0; background: var(--cyan); color: #04101b;
+  font-size: 0.75rem; font-weight: 700; padding: 5px 10px; border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(41,182,255,0.4); white-space: nowrap; z-index: 60;
+  animation: bounceHint 1.5s infinite ease-in-out; pointer-events: none;
+}
+.theme-hint-tooltip:after {
+  content: ""; position: absolute; top: -5px; right: 15px; width: 8px; height: 8px;
+  background: var(--cyan); transform: rotate(45deg);
+}
+@keyframes bounceHint {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 19px;border-radius:13px;border:1px solid transparent;font-weight:700;transition:all .25s ease;background:none;color:var(--text);text-align:center}
 .btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(41,182,255,.25);border-color:var(--cyan);color:var(--cyan)}
@@ -283,11 +299,12 @@ h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.2;letter-spacing:-1.5px;marg
    <a href="#services" data-i18n="navServices">خدماتنا وحلولنا</a>
    <a href="#gallery" data-i18n="navGallery">معرض واجهات الـ ERP</a>
    <a href="#method" data-i18n="navMethod">منهجية العمل</a>
-   <a href="#demo" data-i18n="navDemo">عرض النظام</a>
+   <a href="#demo" data-i18n="navDemo">Demo</a>
    <a href="#contact" data-i18n="navContact">تواصل معنا</a>
   </nav>
   <div class="nav-actions">
     <button class="action-icon-btn" id="themeToggle" type="button" aria-label="تبديل الوضع"><i class="fas fa-moon" id="themeIcon"></i></button>
+    <div class="theme-hint-tooltip" id="themeHint">جرب تغيير الإضاءة! ✨</div>
     <button class="lang-btn" id="langToggle" type="button" aria-label="Switch language">EN</button>
     <a class="btn btn-primary btn-small glow-trigger" href="#contactFormCard" data-i18n="navStart">اطلب نسختك الآن</a>
     <button class="menu-btn" id="menuToggle" type="button" aria-label="فتح القائمة" aria-expanded="false">☰</button>
@@ -323,22 +340,22 @@ h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.2;letter-spacing:-1.5px;marg
  <div>
   <span class="eyebrow"><span class="dot"></span><span data-i18n="eyebrow">NEXORA · Business Solutions & Management</span></span>
   <h1 data-i18n-html="heroTitle">شركة نكسورا لحلول وإدارة الأعمال<br><span class="gradient">ونظام الـ ERP المتكامل</span></h1>
-  <p class="hero-copy" data-i18n="heroCopy">نقدم أحدث الحلول الإدارية وأنظمة الـ ERP المتكاملة للشركات والمحلات الصغيرة والمتوسطة، لإدارة الحسابات، المبيعات، المشتريات، المخازن، وشؤون الموظفين بدقة واحترافية عالية.</p>
+  <p class="hero-copy" data-i18n="heroCopy">نقدم أحدث الحلول الإدارية وأنظمة الـ ERP المتكاملة للشركات والمحلات ومختلف الأنشطة التجارية، لإدارة الحسابات، المبيعات، المشتريات، المخازن، وشؤون الموظفين بدقة واحترافية عالية.</p>
   <div class="hero-actions">
-    <a class="btn btn-primary" href="#demo" data-i18n="exploreServices">تجربة النظام المباشر <span aria-hidden="true">←</span></a>
+    <a class="btn btn-primary" href="#demo" data-i18n="exploreServices">تجربة Demo المباشر <span aria-hidden="true">←</span></a>
     <a class="btn btn-outline" href="#gallery" data-i18n="viewGallery">استعرض شاشات النظام</a>
   </div>
-  <p class="hero-note" data-i18n="heroNote">أساس أعمالنا هو تقديم نظام ERP حسابات متكامل مخصص لكافة المجالات التجارية والخدمية.</p>
+  <p class="hero-note" data-i18n="heroNote">أساس أعمالنا هو تقديم نظام ERP حسابات متكامل مخصص لمختلف الأنشطة والشركات والمحلات التجارية.</p>
  </div>
  <div class="hero-art"><img class="hero-logo" src="assets/nexora-logo.png" alt="NEXORA — نكسورا"></div>
 </section>
 
 <section class="section" id="about">
  <div class="container">
-  <div class="section-head"><span class="kicker" data-i18n="aboutKicker">عن نكسورا</span><h2 data-i18n="aboutTitle">بداية رؤيتنا وهندسة الأعمال الحديثة</h2><p data-i18n="aboutIntro">انطلقت شركة نكسورا برؤية طموحة لحلول وإدارة الأعمال المتكاملة، بهدف تمكين المؤسسات نحو التحول الرقمي الفعّال.</p></div>
+  <div class="section-head"><span class="kicker" data-i18n="aboutKicker">عن نكسورا</span><h2 data-i18n="aboutTitle">بداية رؤيتنا وهندسة الأعمال الحديثة</h2><p data-i18n="aboutIntro">انطلقت شركة نكسورا برؤية طموحة لحلول وإدارة الأعمال المتكاملة، بهدف تمكين المؤسسات والأنشطة التجارية نحو التحول الرقمي الفعّال.</p></div>
   <div class="about-layout">
-   <article class="card about-panel"><div class="iconbox">⌘</div><h3 data-i18n="philosophyTitle">منهجية نكسورا وتخصصاتنا</h3><p data-i18n="philosophyCopy">نعتمد على معايير تشغيلية وهندسية متقدمة لتقديم حلول إدارية مرنة ومستدامة.</p><ul class="list-check"><li data-i18n="aboutPoint1">تطوير أنظمة ERP متكاملة وقواعد بيانات آمنة ومرنة</li><li data-i18n="aboutPoint2">أتمتة العمليات الإدارية والتشغيلية والتحول الرقمي</li><li data-i18n="aboutPoint3">تنفيذ وتجهيز الحلول المناسبة لمختلف الأنشطة التجارية</li></ul></article>
-   <article class="card about-panel"><div class="iconbox">◎</div><h3 data-i18n="whatWeDoTitle">لماذا يثق بنا العملاء؟</h3><p data-i18n="whatWeDoCopy">نحن نجمع بين الخبرة الإدارية العميقة والفهم الواقعي لاحتياجات الأسواق.</p><ul class="list-check"><li data-i18n="aboutPoint4">دراسات جدوى وتحليل دقيق للمشروعات قبل التنفيذ</li><li data-i18n="aboutPoint5">التوثيق الكامل والتدريب والدعم الفني المستمر</li><li data-i18n="aboutPoint6">التزام تام بأعلى معايير الجودة وسرية وأمان البيانات</li></ul><a class="text-link glow-trigger" href="#contactFormCard" data-i18n="discussNeed">تواصل معنا لبدء مشروعك ←</a></article>
+   <article class="card about-panel"><div class="iconbox">⌘</div><h3 data-i18n="philosophyTitle">منهجية نكسورا وتخصصاتنا</h3><p data-i18n="philosophyCopy">نعتمد على معايير تشغيلية وهندسية متقدمة لتقديم حلول إدارية مرنة ومستدامة.</p><ul class="list-check"><li data-i18n="aboutPoint1">تطوير أنظمة ERP متكاملة وقواعد بيانات آمنة ومرنة</li><li data-i18n="aboutPoint2">أتمتة العمليات الإدارية والتشغيلية والتحول الرقمي</li><li data-i18n="aboutPoint3">تنفيذ وتجهيز الحلول المناسبة لمختلف الأنشطة والشركات</li></ul></article>
+   <article class="card about-panel"><div class="iconbox">◎</div><h3 data-i18n="whatWeDoTitle">مميزات وهندسة النظام</h3><p data-i18n="whatWeDoCopy">نحن نجمع بين الهندسة البرمجية المتقدمة والفهم الواقعي لاحتياجات الإدارة والتشغيل.</p><ul class="list-check"><li data-i18n="aboutPoint4">هندسة قواعد بيانات متقدمة وتحليل دقيق للمتطلبات التقنية</li><li data-i18n="aboutPoint5">التوثيق التقني الشامل وأدلة التشغيل والتدريب الاحترافي</li><li data-i18n="aboutPoint6">التزام تام بأعلى معايير الجودة وسرية وأمان البيانات</li></ul><a class="text-link glow-trigger" href="#contactFormCard" data-i18n="discussNeed">تواصل معنا لبدء مشروعك ←</a></article>
   </div>
  </div>
 </section>
@@ -347,7 +364,7 @@ h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.2;letter-spacing:-1.5px;marg
  <div class="container">
   <div class="section-head"><span class="kicker" data-i18n="servicesKicker">خدمات وحلول نكسورا الفعليه</span><h2 data-i18n="servicesTitle">منظومة متكاملة من الخدمات التقنية والأعمال</h2><p data-i18n="servicesIntro">نقدم حزمة شاملة من الخدمات المصممة لتمكين مؤسستك من التفوق الإداري وإدارة مواردها بكفاءة.</p></div>
   <div class="grid grid-3">
-   <article class="card"><div class="iconbox">▦</div><span class="service-tag" data-i18n="tagERP">الخدمة الأساسية</span><h3 data-i18n="svc1Title">أنظمة ERP وحلول إدارة الأعمال</h3><p data-i18n="svc1Desc">نظام ERP حسابات متكامل لمختلف المجالات يناسب الشركات والمحلات الصغيرة والمتوسطة بمرونة فائقة.</p><button class="text-link detail-btn" data-service="erp" data-i18n="details">تفاصيل الخدمة ←</button></article>
+   <article class="card"><div class="iconbox">▦</div><span class="service-tag" data-i18n="tagERP">الخدمة الأساسية</span><h3 data-i18n="svc1Title">أنظمة ERP وحلول إدارة الأعمال</h3><p data-i18n="svc1Desc">نظام ERP حسابات متكامل لمختلف المجالات والشركات والمحلات التجارية بمرونة فائقة ودقة متناهية.</p><button class="text-link detail-btn" data-service="erp" data-i18n="details">تفاصيل الخدمة ←</button></article>
    
    <article class="card"><div class="iconbox">📈</div><span class="service-tag" data-i18n="tagFeasibility">تخطيط وتأسيس</span><h3 data-i18n="svc2Title">دراسات الجدوى وتحليل المشروعات</h3><p data-i18n="svc2Desc">تحليل شامل لمتطلبات مشروعك وتحديد نقاط القوة والفرص لضمان تحقيق أعلى عائد على الاستثمار.</p><button class="text-link detail-btn" data-service="feasibility" data-i18n="details">تفاصيل الخدمة ←</button></article>
 
@@ -355,7 +372,7 @@ h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.2;letter-spacing:-1.5px;marg
 
    <article class="card"><div class="iconbox">🔄</div><span class="service-tag" data-i18n="tagAutomation">تحول رقمي</span><h3 data-i18n="svc4Title">الأتمتة والتحول الرقمي</h3><p data-i18n="svc4Desc">تحويل المعاملات اليدوية والورقية إلى حلول رقمية ذكية وأوتوماتيكية بالكامل لتوفير الوقت والجهد.</p><button class="text-link detail-btn" data-service="automation" data-i18n="details">تفاصيل الخدمة ←</button></article>
 
-   <article class="card"><div class="iconbox">🧩</div><span class="service-tag" data-i18n="tagTailored">تخصيص احترافي</span><h3 data-i18n="svc5Title">تنفيذ وتجهيز الحلول المناسبة لكل مشروع</h3><p data-i18n="svc5Desc">تكييف وتصميم المنظومة التقنية لتناسب الاحتياجات الخاصة وطبيعة عمل كل مشروع بدقة.</p><button class="text-link detail-btn" data-service="tailored" data-i18n="details">تفاصيل الخدمة ←</button></article>
+   <article class="card"><div class="iconbox">🧩</div><span class="service-tag" data-i18n="tagTailored">تخصيص احترافي</span><h3 data-i18n="svc5Title">تنفيذ وتجهيز الحلول المناسبة لمشروعك</h3><p data-i18n="svc5Desc">تكييف وتصميم المنظومة التقنية لتناسب الاحتياجات الخاصة وطبيعة عمل كل مشروع بدقة.</p><button class="text-link detail-btn" data-service="tailored" data-i18n="details">تفاصيل الخدمة ←</button></article>
 
    <article class="card"><div class="iconbox">🎓</div><span class="service-tag" data-i18n="tagSupport">متابعة واستدامة</span><h3 data-i18n="svc6Title">التوثيق والتدريب والدعم</h3><p data-i18n="svc6Desc">تقديم أدلة توثيق شاملة، تدريب طاقم العمل بمهنية، ودعم فني مستمر لضمان استقرار العمليات.</p><button class="text-link detail-btn" data-service="support" data-i18n="details">تفاصيل الخدمة ←</button></article>
   </div>
@@ -614,7 +631,7 @@ h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.2;letter-spacing:-1.5px;marg
   <div class="steps">
    <div class="step"><b>01</b><span data-i18n="step1">تواصل معنا</span></div>
    <div class="step"><b>02</b><span data-i18n="step2">تحديد المتطلبات</span></div>
-   <div class="step"><b>03</b><span data-i18n="step3">تجربة الديمو</span></div>
+   <div class="step"><b>03</b><span data-i18n="step3">تجربة Demo</span></div>
    <div class="step"><b>04</b><span data-i18n="step4">التخصيص والإعداد</span></div>
    <div class="step"><b>05</b><span data-i18n="step5">تدريب الفريق</span></div>
    <div class="step"><b>06</b><span data-i18n="step6">التشغيل الفعلي</span></div>
@@ -626,9 +643,9 @@ h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.2;letter-spacing:-1.5px;marg
 
 <section class="section" id="demo">
  <div class="container">
-  <div class="section-head"><span class="kicker" data-i18n="demoKicker">عرض توضيحي</span><h2 data-i18n="demoTitle">جرب نظام NEXORA ERP V.1.1 الآن</h2><p data-i18n="demoIntro">يمكنك فتح صفحة تسجيل الدخول واستخدام الحساب التجريبي المخصص للاستعراض المباشر.</p></div>
+  <div class="section-head"><span class="kicker" data-i18n="demoKicker">Live Demo</span><h2 data-i18n="demoTitle">جرب نظام NEXORA ERP V.1.1 الآن</h2><p data-i18n="demoIntro">يمكنك فتح صفحة تسجيل الدخول واستخدام الحساب التجريبي المخصص للاستعراض المباشر.</p></div>
   <div class="demo">
-   <article class="card demo-visual"><div class="iconbox">▦</div><h3 data-i18n="demoCardTitle">NEXORA ERP V.1.1 — Live Demo</h3><p data-i18n="demoCardCopy">مساحة مخصصة لاستعراض تجربة النظام الحية.</p><div><a class="btn btn-primary" href="https://nexora-erp-eta.vercel.app/login" target="_blank" rel="noopener noreferrer" data-i18n="openSystem">فتح النظام في نافذة جديدة ↗</a></div><p class="notice" data-i18n="demoDisclaimer">بيانات الحساب التجريبي متاحة للاختبار المباشر.</p></article>
+   <article class="card demo-visual"><div class="iconbox">▦</div><h3 data-i18n="demoCardTitle">NEXORA ERP V.1.1 — Live Demo</h3><p data-i18n="demoCardCopy">مساحة مخصصة لاستعراض تجربة النظام الحية.</p><div><a class="btn btn-primary" href="https://nexora-erp-eta.vercel.app/login" target="_blank" rel="noopener noreferrer" data-i18n="openSystem">فتح Demo النظام في نافذة جديدة ↗</a></div><p class="notice" data-i18n="demoDisclaimer">بيانات الحساب التجريبي متاحة للاختبار المباشر.</p></article>
    <article class="card"><h3 data-i18n="credentialsTitle">بيانات الدخول التجريبية</h3><p data-i18n="credentialsCopy">انسخ بيانات الدخول ثم افتح صفحة النظام.</p>
     <label for="demoUser" data-i18n="usernameLabel">اسم المستخدم</label>
     <div class="credential"><code id="demoUser">demo.nexora</code><div class="credential-actions"><button class="icon-btn copy-btn" data-copy="demoUser" type="button" data-i18n="copy">نسخ</button></div></div>
@@ -659,7 +676,7 @@ h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.2;letter-spacing:-1.5px;marg
     <form id="contactForm">
      <div class="form-grid">
       <div class="field"><label for="name" data-i18n="nameLabel">الاسم</label><input id="name" name="name" autocomplete="name" required placeholder="اكتب اسمك"></div>
-      <div class="field"><label for="business" data-i18n="businessLabel">اسم النشاط / الشركة (اختياري)</label><input id="business" name="business" placeholder="اسم الشركة أو المحل"></div>
+      <div class="field"><label for="business" data-i18n="businessLabel">اسم النشاط / الشركة (اختياري)</label><input id="business" name="business" placeholder="اسم الشركة أو النشاط"></div>
       <div class="field full">
         <label for="service" data-i18n="serviceLabel">نوع الطلب / الخدمة</label>
         <select id="service" name="service" required>
@@ -683,7 +700,7 @@ h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.2;letter-spacing:-1.5px;marg
  </div>
 </section>
 </main>
-<footer class="footer"><div class="container"><div class="footer-main"><a class="brand" href="#home"><img src="assets/nexora-logo.png" alt=""><span class="brand-name">NEXORA <small data-i18n="footerTagline">شركة نكسورا لحلول وإدارة الأعمال</small></span></a><nav class="footer-links"><a href="#about" data-i18n="navAbout">عن نكسورا</a><a href="#services" data-i18n="navServices">الخدمات</a><a href="#gallery" data-i18n="navGallery">معرض الواجهات</a><a href="#demo" data-i18n="navDemo">عرض النظام</a><a href="#contact" data-i18n="navContact">تواصل معنا</a></nav></div><p class="copyright">© <span id="year"></span> NEXORA | نكسورا. <span data-i18n="rights">جميع الحقوق محفوظة.</span></p></div></footer>
+<footer class="footer"><div class="container"><div class="footer-main"><a class="brand" href="#home"><img src="assets/nexora-logo.png" alt=""><span class="brand-name">NEXORA <small data-i18n="footerTagline">شركة نكسورا لحلول وإدارة الأعمال</small></span></a><nav class="footer-links"><a href="#about" data-i18n="navAbout">عن نكسورا</a><a href="#services" data-i18n="navServices">الخدمات</a><a href="#gallery" data-i18n="navGallery">معرض الواجهات</a><a href="#demo" data-i18n="navDemo">Demo</a><a href="#contact" data-i18n="navContact">تواصل معنا</a></nav></div><p class="copyright">© <span id="year"></span> NEXORA | نكسورا. <span data-i18n="rights">جميع الحقوق محفوظة.</span></p></div></footer>
 
 <button class="backtop" id="backtop" type="button" aria-label="العودة إلى الأعلى"><i class="fas fa-arrow-up"></i></button>
 
@@ -755,8 +772,8 @@ h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.2;letter-spacing:-1.5px;marg
   // تفاصيل خدمات نكسورا الفعلية المطابقة للطلب
   const serviceDetails = {
     erp: {
-      ar: { title: "أنظمة ERP وحلول إدارة الأعمال", desc: "نظام حسابات ERP متكامل وشامل مصمم خصيصاً لمختلف الأنشطة للشركات والمحلات الصغيرة والمتوسطة. يشمل المبيعات والمشتريات والمخازن والحسابات العامة وشؤون الموظفين." },
-      en: { title: "ERP Systems & Business Management", desc: "Integrated ERP accounting system tailored for SMEs across various business sectors." }
+      ar: { title: "أنظمة ERP وحلول إدارة الأعمال", desc: "نظام حسابات ERP متكامل وشامل مصمم خصيصاً لمختلف الأنشطة والشركات والمحلات التجارية. يشمل المبيعات والمشتريات والمخازن والحسابات العامة وشؤون الموظفين." },
+      en: { title: "ERP Systems & Business Management", desc: "Integrated ERP accounting system tailored for various business sectors and commercial activities." }
     },
     feasibility: {
       ar: { title: "دراسات الجدوى وتحليل المشروعات", desc: "دراسة شاملة لكل جوانب المشروع المالية والتشغيلية والفنية لتحديد الفرص والمتطلبات وضمان التأسيس الصحيح والربحية." },
@@ -783,22 +800,22 @@ h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.2;letter-spacing:-1.5px;marg
   const translations = {
     ar: {
       brandSub: "شركة نكسورا للحلول والإدارة",
-      navHome: "الرئيسية", navAbout: "عن نكسورا", navServices: "خدماتنا وحلولنا", navGallery: "معرض واجهات الـ ERP", navMethod: "منهجية العمل", navDemo: "عرض النظام", navContact: "تواصل معنا", navStart: "اطلب نسختك الآن",
+      navHome: "الرئيسية", navAbout: "عن نكسورا", navServices: "خدماتنا وحلولنا", navGallery: "معرض واجهات الـ ERP", navMethod: "منهجية العمل", navDemo: "Demo", navContact: "تواصل معنا", navStart: "اطلب نسختك الآن",
       eyebrow: "NEXORA · Business Solutions & Management",
       heroTitle: 'شركة نكسورا لحلول وإدارة الأعمال<br><span class="gradient">ونظام الـ ERP المتكامل</span>',
-      heroCopy: "نقدم أحدث الحلول الإدارية وأنظمة الـ ERP المتكاملة للشركات والمحلات الصغيرة والمتوسطة، لإدارة الحسابات، المبيعات، المشتريات، المخازن، وشؤون الموظفين بدقة واحترافية عالية.",
-      exploreServices: "تجربة النظام المباشر ←", viewGallery: "استعرض شاشات النظام",
-      heroNote: "أساس أعمالنا هو تقديم نظام ERP حسابات متكامل مخصص لكافة المجالات التجارية والخدمية.",
+      heroCopy: "نقدم أحدث الحلول الإدارية وأنظمة الـ ERP المتكاملة للشركات والمحلات ومختلف الأنشطة التجارية، لإدارة الحسابات، المبيعات، المشتريات، المخازن، وشؤون الموظفين بدقة واحترافية عالية.",
+      exploreServices: "تجربة Demo المباشر ←", viewGallery: "استعرض شاشات النظام",
+      heroNote: "أساس أعمالنا هو تقديم نظام ERP حسابات متكامل مخصص لمختلف الأنشطة والشركات والمحلات التجارية.",
       aboutKicker: "عن نكسورا", aboutTitle: "بداية رؤيتنا وهندسة الأعمال الحديثة",
-      aboutIntro: "انطلقت شركة نكسورا برؤية طموحة لحلول وإدارة الأعمال المتكاملة، بهدف تمكين المؤسسات نحو التحول الرقمي الفعّال.",
+      aboutIntro: "انطلقت شركة نكسورا برؤية طموحة لحلول وإدارة الأعمال المتكاملة، بهدف تمكين المؤسسات والأنشطة التجارية نحو التحول الرقمي الفعّال.",
       philosophyTitle: "منهجية نكسورا وتخصصاتنا", philosophyCopy: "نعتمد على معايير تشغيلية وهندسية متقدمة لتقديم حلول إدارية مرنة ومستدامة.",
-      aboutPoint1: "تطوير أنظمة ERP متكاملة وقواعد بيانات آمنة ومرنة", aboutPoint2: "أتمتة العمليات الإدارية والتشغيلية والتحول الرقمي", aboutPoint3: "تنفيذ وتجهيز الحلول المناسبة لمختلف الأنشطة التجارية",
-      whatWeDoTitle: "لماذا يثق بنا العملاء؟", whatWeDoCopy: "نحن نجمع بين الخبرة الإدارية العميقة والفهم الواقعي لاحتياجات الأسواق.",
-      aboutPoint4: "دراسات جدوى وتحليل دقيق للمشروعات قبل التنفيذ", aboutPoint5: "التوثيق الكامل والتدريب والدعم الفني المستمر", aboutPoint6: "التزام تام بأعلى معايير الجودة وسرية وأمان البيانات",
+      aboutPoint1: "تطوير أنظمة ERP متكاملة وقواعد بيانات آمنة ومرنة", aboutPoint2: "أتمتة العمليات الإدارية والتشغيلية والتحول الرقمي", aboutPoint3: "تنفيذ وتجهيز الحلول المناسبة لمختلف الأنشطة والشركات",
+      whatWeDoTitle: "مميزات وهندسة النظام", whatWeDoCopy: "نحن نجمع بين الهندسة البرمجية المتقدمة والفهم الواقعي لاحتياجات الإدارة والتشغيل.",
+      aboutPoint4: "هندسة قواعد بيانات متقدمة وتحليل دقيق للمتطلبات التقنية", aboutPoint5: "التوثيق التقني الشامل وأدلة التشغيل والتدريب الاحترافي", aboutPoint6: "التزام تام بأعلى معايير الجودة وسرية وأمان البيانات",
       discussNeed: "تواصل معنا لبدء مشروعك ←",
       servicesKicker: "خدمات وحلول نكسورا الفعليه", servicesTitle: "منظومة متكاملة من الخدمات التقنية والأعمال", servicesIntro: "نقدم حزمة شاملة من الخدمات المصممة لتمكين مؤسستك من التفوق الإداري وإدارة مواردها بكفاءة.",
       tagERP: "الخدمة الأساسية", tagFeasibility: "تخطيط وتأسيس", tagOperations: "تطوير وهيكلة", tagAutomation: "تحول رقمي", tagTailored: "تخصيص احترافي", tagSupport: "متابعة واستدامة",
-      svc1Title: "أنظمة ERP وحلول إدارة الأعمال", svc1Desc: "نظام ERP حسابات متكامل لمختلف المجالات يناسب الشركات والمحلات الصغيرة والمتوسطة بمرونة فائقة.",
+      svc1Title: "أنظمة ERP وحلول إدارة الأعمال", svc1Desc: "نظام ERP حسابات متكامل لمختلف المجالات والشركات والمحلات التجارية بمرونة فائقة ودقة متناهية.",
       svc2Title: "دراسات الجدوى وتحليل المشروعات", svc2Desc: "تحليل شامل لمتطلبات مشروعك وتحديد نقاط القوة والفرص لضمان تحقيق أعلى عائد على الاستثمار.",
       svc3Title: "تطوير العمليات الإدارية والتشغيلية", svc3Desc: "إعادة هيكلة سير العمل داخل المؤسسة وتقليل الهدر وتسهيل دورة المستندات المالية والإدارية.",
       svc4Title: "الأتمتة والتحول الرقمي", svc4Desc: "تحويل المعاملات اليدوية والورقية إلى حلول رقمية ذكية وأوتوماتيكية بالكامل لتوفير الوقت والجهد.",
@@ -806,10 +823,10 @@ h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.2;letter-spacing:-1.5px;marg
       svc6Title: "التوثيق والتدريب والدعم", svc6Desc: "تقديم أدلة توثيق شاملة، تدريب طاقم العمل بمهنية، ودعم فني مستمر لضمان استقرار العمليات.",
       details: "تفاصيل الخدمة ←",
       methodKicker: "منهجية العمل", methodTitle: "خطوات واضحة لاقتناء وربط الحلول بمؤسستك", methodIntro: "تسلسل عملي يساعد على وضوح القرار والتوقعات.",
-      step1: "تواصل معنا", step2: "تحديد المتطلبات", step3: "تجربة الديمو", step4: "التخصيص والإعداد", step5: "تدريب الفريق", step6: "التشغيل الفعلي", step7: "الدعم الفني", step8: "التطوير المستمر",
-      demoKicker: "عرض توضيحي", demoTitle: "جرب نظام NEXORA ERP V.1.1 الآن", demoIntro: "يمكنك فتح صفحة تسجيل الدخول واستخدام الحساب التجريبي المخصص للاستعراض المباشر.",
+      step1: "تواصل معنا", step2: "تحديد المتطلبات", step3: "تجربة Demo", step4: "التخصيص والإعداد", step5: "تدريب الفريق", step6: "التشغيل الفعلي", step7: "الدعم الفني", step8: "التطوير المستمر",
+      demoKicker: "Live Demo", demoTitle: "جرب نظام NEXORA ERP V.1.1 الآن", demoIntro: "يمكنك فتح صفحة تسجيل الدخول واستخدام الحساب التجريبي المخصص للاستعراض المباشر.",
       demoCardTitle: "NEXORA ERP V.1.1 — Live Demo", demoCardCopy: "مساحة مخصصة لاستعراض تجربة النظام الحية.",
-      openSystem: "فتح النظام في نافذة جديدة ↗",
+      openSystem: "فتح Demo النظام في نافذة جديدة ↗",
       demoDisclaimer: "بيانات الحساب التجريبي متاحة للاختبار المباشر.",
       credentialsTitle: "بيانات الدخول التجريبية", credentialsCopy: "انسخ بيانات الدخول ثم افتح صفحة النظام.",
       usernameLabel: "اسم المستخدم", passwordLabel: "كلمة المرور", copy: "نسخ", show: "إظهار", hide: "إخفاء",
@@ -826,22 +843,22 @@ h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.2;letter-spacing:-1.5px;marg
     },
     en: {
       brandSub: "NEXORA | Business Solutions",
-      navHome: "Home", navAbout: "About Us", navServices: "Services", navGallery: "ERP Gallery", navMethod: "Workflow", navDemo: "Live Demo", navContact: "Contact Us", navStart: "Get Your Copy",
+      navHome: "Home", navAbout: "About Us", navServices: "Services", navGallery: "ERP Gallery", navMethod: "Workflow", navDemo: "Demo", navContact: "Contact Us", navStart: "Get Your Copy",
       eyebrow: "NEXORA · Business Solutions & Management",
       heroTitle: 'Nexora Business Solutions<br>& <span class="gradient">Integrated ERP System</span>',
-      heroCopy: "We offer modern management solutions and integrated ERP systems for SMEs, handling accounting, sales, inventory, and HR.",
-      exploreServices: "Try Live System →", viewGallery: "View ERP Gallery",
-      heroNote: "Our core solution is a full accounting ERP for SMEs across all industries.",
+      heroCopy: "We offer modern management solutions and integrated ERP systems for various businesses, handling accounting, sales, inventory, and HR.",
+      exploreServices: "Try Live Demo →", viewGallery: "View ERP Gallery",
+      heroNote: "Our core solution is a full accounting ERP for diverse commercial activities and businesses.",
       aboutKicker: "About Nexora", aboutTitle: "Our Vision & Business Engineering",
       aboutIntro: "Nexora started with an ambitious vision for business solutions and management.",
       philosophyTitle: "Our Methodology", philosophyCopy: "We rely on advanced operational standards to deliver flexible solutions.",
       aboutPoint1: "Integrated ERP development and secure databases", aboutPoint2: "Operations development & digital transformation", aboutPoint3: "Tailored solutions for various commercial activities",
-      whatWeDoTitle: "Why Clients Trust Us?", whatWeDoCopy: "We combine deep managerial expertise with market understanding.",
-      aboutPoint4: "Feasibility studies & accurate project analysis", aboutPoint5: "Full documentation, training, and continuous support", aboutPoint6: "Commitment to quality and data security",
+      whatWeDoTitle: "System Features & Engineering", whatWeDoCopy: "We combine advanced software engineering with practical management understanding.",
+      aboutPoint4: "Advanced database engineering & technical requirements analysis", aboutPoint5: "Comprehensive technical documentation & professional training", aboutPoint6: "Commitment to quality and data security",
       discussNeed: "Contact us to start your project →",
       servicesKicker: "Actual Nexora Services", servicesTitle: "Integrated Tech & Business Services", servicesIntro: "Comprehensive suite of services designed to empower your business.",
       tagERP: "Core Service", tagFeasibility: "Planning", tagOperations: "Development", tagAutomation: "Transformation", tagTailored: "Customization", tagSupport: "Sustainability",
-      svc1Title: "ERP Systems & Business Solutions", svc1Desc: "Integrated ERP accounting system tailored for SMEs across various sectors.",
+      svc1Title: "ERP Systems & Business Solutions", svc1Desc: "Integrated ERP accounting system tailored for various business sectors and commercial activities.",
       svc2Title: "Feasibility Studies & Project Analysis", svc2Desc: "Comprehensive feasibility analysis to ensure proper establishment and ROI.",
       svc3Title: "Operations Development", svc3Desc: "Restructuring business workflows to enhance operational efficiency.",
       svc4Title: "Automation & Digital Transformation", svc4Desc: "Automating manual tasks into smart automated digital systems.",
@@ -850,9 +867,9 @@ h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.2;letter-spacing:-1.5px;marg
       details: "Service Details →",
       methodKicker: "Workflow", methodTitle: "Clear Steps to Implement Solutions", methodIntro: "Practical sequence for smooth deployment.",
       step1: "Contact Us", step2: "Requirements", step3: "Test Demo", step4: "Customization", step5: "Training", step6: "Go Live", step7: "Support", step8: "Updates",
-      demoKicker: "Demo", demoTitle: "Experience NEXORA ERP V.1.1", demoIntro: "Open login page and test the live demo account.",
+      demoKicker: "Live Demo", demoTitle: "Experience NEXORA ERP V.1.1", demoIntro: "Open login page and test the live demo account.",
       demoCardTitle: "NEXORA ERP V.1.1 — Live Demo", demoCardCopy: "Dedicated space to test the live system.",
-      openSystem: "Open System in New Window ↗",
+      openSystem: "Open Demo System in New Window ↗",
       demoDisclaimer: "Demo account data is publicly available.",
       credentialsTitle: "Demo Credentials", credentialsCopy: "Copy credentials then open system page.",
       usernameLabel: "Username", passwordLabel: "Password", copy: "Copy", show: "Show", hide: "Hide",
@@ -869,7 +886,10 @@ h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.2;letter-spacing:-1.5px;marg
     }
   };
 
-  let currentTheme = localStorage.getItem('nexoraTheme') || 'dark';
+  // الكشف الذكي عن وضع الجهاز (Dark/Light mode)
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let currentTheme = localStorage.getItem('nexoraTheme') || (prefersDark ? 'dark' : 'light');
+
   function applyTheme(theme) {
     currentTheme = theme;
     localStorage.setItem('nexoraTheme', theme);
@@ -883,7 +903,17 @@ h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.2;letter-spacing:-1.5px;marg
 
   document.getElementById('themeToggle').addEventListener('click', () => {
     applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    // إخفاء التلميح عند أول تفاعل
+    const hint = document.getElementById('themeHint');
+    if (hint) hint.style.display = 'none';
   });
+
+  // إخفاء تلميح زر الإضاءة بعد 8 ثوانٍ تلقائياً
+  setTimeout(() => {
+    const hint = document.getElementById('themeHint');
+    if (hint) hint.style.opacity = '0';
+    setTimeout(() => { if (hint) hint.style.display = 'none'; }, 500);
+  }, 8000);
 
   let currentLang = localStorage.getItem('nexoraLang') || 'ar';
   function switchLanguage(lang) {
