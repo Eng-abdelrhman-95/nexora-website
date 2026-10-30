@@ -158,8 +158,6 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
 .video-showcase-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px;box-shadow:var(--shadow);margin-top:50px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
 .video-frame-wrap{width:100%;aspect-ratio:16/9;background:#03050c;border-radius:14px;overflow:hidden;border:1px solid var(--line);display:grid;place-items:center;position:relative}
 .video-frame-wrap iframe{width:100%;height:100%;border:none}
-.video-placeholder-text{text-align:center;color:var(--muted);padding:20px}
-.video-placeholder-text i{font-size:3rem;color:#ff0000;margin-bottom:12px;display:block}
 
 .demo{display:grid;grid-template-columns:1fr .9fr;gap:22px;align-items:stretch}
 .demo-visual{min-height:320px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
@@ -546,17 +544,11 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
       <span class="kicker">فيديو ترويجي وتعريفي</span>
       <h3 style="font-size: 1.8rem; margin: 10px 0 15px;">شاهد جولة سريعة داخل NEXORA ERP</h3>
       <p style="color: var(--muted); margin-bottom: 20px;">تعرف في دقائق معدودة على كيفية عمل النظام وقوته في إدارة الأعمال من خلال قناتنا الرسمية على يوتيوب <strong style="color: var(--cyan);">@Nexorabs0</strong>.</p>
-      <a class="btn btn-outline" href="https://www.youtube.com/@Nexorabs0" target="_blank" rel="noopener noreferrer"><i class="fab faس-youtube" style="color: #ff0000;"></i> زيارة القناة الرسمية ↗</a>
+      <a class="btn btn-outline" href="https://www.youtube.com/@Nexorabs0" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube" style="color: #ff0000;"></i> زيارة القناة الرسمية ↗</a>
     </div>
     <div class="video-frame-wrap">
-      <!-- استبدل الرابط أدناه برابط الـ Embed الخاص بفيديو يوتيوب عندما ترسله -->
-      <!-- مثال: src="https://www.youtube.com/embed/رابط_الفيديو" -->
-      <div class="video-placeholder-text">
-        <i class="fab fa-youtube"></i>
-        <strong>قريباً: الفيديو التعريفي للنظام</strong>
-        <p style="font-size: 0.85rem; margin-top: 5px;">سيتم عرض الفيديو التوضيحي هنا فور جاهزيته.</p>
-      </div>
-      <!-- <iframe src="" title="NEXORA ERP Demo Video" allowfullscreen></iframe> -->
+      <!-- تم دمج رابط فيديو يوتيوب الخاص بك مباشرة هنا -->
+      <iframe src="https://www.youtube.com/embed/ip-mJanuBO0" title="NEXORA ERP Demo Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
   </div>
 
@@ -667,7 +659,7 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     });
   });
 
-  // نافذة Lightbox لتكبير الصور
+  // نافذة Lightbox لتكبير الصور وبوضوح تام
   function openLightbox(imgSrc, captionText) {
     const modal = document.getElementById('lightboxModal');
     const img = document.getElementById('lightboxImg');
