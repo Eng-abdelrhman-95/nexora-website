@@ -172,10 +172,15 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
 .contact-link:nth-child(5):hover .iconbox { background: #000; color: #25F4EE; border-color: #000; }
 .contact-link:nth-child(5) .iconbox { color: var(--text); border-color: rgba(150,150,150,0.3); }
 
+/* YouTube */
+.contact-link:nth-child(6):hover { border-color: #ff0000; background: rgba(255,0,0,0.08); }
+.contact-link:nth-child(6):hover .iconbox { background: #ff0000; color: #fff; border-color: #ff0000; }
+.contact-link:nth-child(6) .iconbox { color: #ff0000; border-color: rgba(255,0,0,0.3); }
+
 /* Email */
-.contact-link:nth-child(6):hover { border-color: #ea4335; background: rgba(234,67,53,0.08); }
-.contact-link:nth-child(6):hover .iconbox { background: #ea4335; color: #fff; border-color: #ea4335; }
-.contact-link:nth-child(6) .iconbox { color: #ea4335; border-color: rgba(234,67,53,0.3); }
+.contact-link:nth-child(7):hover { border-color: #ea4335; background: rgba(234,67,53,0.08); }
+.contact-link:nth-child(7):hover .iconbox { background: #ea4335; color: #fff; border-color: #ea4335; }
+.contact-link:nth-child(7) .iconbox { color: #ea4335; border-color: rgba(234,67,53,0.3); }
 
 .contact-link span small{display:block;color:var(--muted);font-size:.8rem}
 .contact-link strong{font-size:.94rem;overflow-wrap:anywhere}
@@ -340,6 +345,7 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     <a class="contact-link" href="https://www.facebook.com/nexorabs" target="_blank" rel="noopener noreferrer"><span class="iconbox"><i class="fab fa-facebook-f"></i></span><span><strong>Facebook</strong><small>facebook.com/nexorabs</small></span></a>
     <a class="contact-link" href="https://www.instagram.com/nexorabs/" target="_blank" rel="noopener noreferrer"><span class="iconbox"><i class="fab fa-instagram"></i></span><span><strong>Instagram</strong><small>instagram.com/nexorabs</small></span></a>
     <a class="contact-link" href="https://www.tiktok.com/@nexorabs0" target="_blank" rel="noopener noreferrer"><span class="iconbox"><i class="fab fa-tiktok"></i></span><span><strong>TikTok</strong><small>@nexorabs0</small></span></a>
+    <a class="contact-link" href="https://www.youtube.com/@Nexorabs0" target="_blank" rel="noopener noreferrer"><span class="iconbox"><i class="fab fa-youtube"></i></span><span><strong>YouTube</strong><small>@Nexorabs0</small></span></a>
     <a class="contact-link" href="mailto:info.nexora.corp@gmail.com"><span class="iconbox"><i class="fas fa-envelope"></i></span><span><strong>Email</strong><small>info.nexora.corp@gmail.com</small></span></a>
    </div></div>
    <div class="card" id="contactFormCard"><h3 data-i18n="messageTitle">أرسل تفاصيل طلبك</h3><form id="contactForm">
@@ -461,11 +467,11 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
       servicesKicker: "Services & Solutions", servicesTitle: "Practical Services from Analysis to Execution", servicesIntro: "Choose a service to view its preliminary scope.",
       tagSystems: "Systems", tagAutomation: "Digital Trans.", tagConsulting: "Consulting", tagData: "Data", tagOperations: "Operations", tagEnable: "Delivery",
       svc1Title: "ERP & Business Management", svc1Desc: "Organize data and workflows within a system tailored to your project scope.",
-      svc2Title: "Automation & Digital Transformation", svc2Desc: "Reduce repetitive tasks and improve data flow between steps.",
-      svc3Title: "Consulting & Needs Analysis", svc3Desc: "Understand current status, identify problems, and explore options.",
-      svc4Title: "Excel & VBA Solutions", svc4Desc: "Organize data, reports, and automate repetitive tasks using Excel.",
-      svc5Title: "Business & Operations Development", svc5Desc: "Improve workflows, define responsibilities and follow-up points.",
-      svc6Title: "Implementation, Documentation & Training", svc6Desc: "Prepare operational manuals, policies, and training according to the agreed scope.",
+      svc2Title: "Automation & Digital Transformation", svc2Desc: "Convert repetitive manual tasks into smart automated workflows using modern tools to increase efficiency.",
+      svc3Title: "Consulting & Needs Analysis", svc3Desc: "Specialized consulting sessions to analyze your current business status and propose optimal technical solutions.",
+      svc4Title: "Excel & VBA Solutions", svc4Desc: "Design advanced Excel templates, automated reports, and custom VBA scripts to organize complex data.",
+      svc5Title: "Business & Operations Development", svc5Desc: "Re-engineering internal processes, clarifying workflows, and defining responsibilities to boost productivity.",
+      svc6Title: "Implementation, Documentation & Training", svc6Desc: "Prepare operational manuals and fully train your team to ensure smooth system implementation.",
       details: "Service Details →",
       methodKicker: "Workflow", methodTitle: "Clear Steps Before Starting", methodIntro: "A practical sequence ensuring clarity of decisions and expectations.",
       step1: "Understand Needs", step2: "Analyze Status", step3: "Define Solution", step4: "Planning & Dev", step5: "Execution", step6: "Delivery & Training", step7: "Support", step8: "Future Updates",
