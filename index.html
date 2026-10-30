@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#05070F">
-<meta name="description" content="NEXORA ERP | نكسورا — النظام المتكامل لإدارة وتطوير الأعمال وحلول الـ ERP للشركات والمؤسسات.">
-<title>NEXORA ERP | نكسورا — المنظومة المتكاملة لإدارة الموارد والأعمال</title>
+<meta name="description" content="NEXORA | نكسورا — الحلول التقنية المتكاملة وتطوير أنظمة الـ ERP والبرمجيات المؤسسية.">
+<title>NEXORA | نكسورا — الحلول التقنية المتكاملة ونظام الـ ERP</title>
 <link rel="icon" type="image/png" href="assets/nexora-logo.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
@@ -42,9 +42,7 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
 .nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;min-width:175px}.brand img{width:58px;height:58px;object-fit:contain}.brand-name{font-size:1rem;font-weight:800;letter-spacing:.5px;line-height:1.35}.brand-name small{display:block;color:var(--muted);font-size:.76rem;font-weight:400;letter-spacing:0}
 .navlinks{display:flex;align-items:center;gap:22px}.navlinks a{font-size:.9rem;color:var(--text);transition:.2s}.navlinks a:hover,.navlinks a.active{color:var(--cyan)}.nav-actions{display:flex;align-items:center;gap:9px}
 
-/* إخفاء زر القائمة افتراضياً في الشاشات الكبيرة، وظهوره فقط في الموبايل */
 .menu-btn{display:none}
-
 .action-icon-btn, .lang-btn, .menu-btn{border:1px solid var(--line);color:var(--text);background:var(--card);border-radius:12px;padding:9px 12px;transition:all 0.25s ease;display:inline-flex;align-items:center;justify-content:center}
 .action-icon-btn:hover, .lang-btn:hover, .menu-btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(41,182,255,.1)}
 
@@ -136,7 +134,7 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
 .gallery-tab-btn{background:var(--card);border:1px solid var(--line);color:var(--muted);padding:10px 18px;border-radius:12px;font-weight:700;font-size:0.9rem;transition:all 0.25s}
 .gallery-tab-btn:hover, .gallery-tab-btn.active{background:var(--cyan);color:#04101b;border-color:var(--cyan);box-shadow:0 0 20px rgba(41,182,255,0.3)}
 
-/* معرض شاشات النظام الـ ERP المحدث */
+/* معرض شاشات النظام الـ ERP */
 .erp-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .erp-mockup-card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);transition:all 0.3s ease;display:none;flex-direction:column}
 .erp-mockup-card:hover{border-color:var(--cyan);transform:translateY(-4px);box-shadow:0 15px 45px rgba(41,182,255,0.18)}
@@ -247,7 +245,6 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
 .modal-body{color:var(--muted);margin:18px 0}.hidden{display:none!important}
 [dir="ltr"] .list-check li{padding:7px 0 7px 28px}[dir="ltr"] .list-check li:before{right:auto;left:0}
 
-/* التجاوب (Media Queries) لضبط ظهور القوائم وزر الموبايل بدقة */
 @media(min-width:901px){
   .navlinks{display:flex!important}
   .menu-btn{display:none!important}
@@ -279,12 +276,12 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
 <body>
 <header class="topbar">
  <div class="container nav">
-  <a class="brand" href="#home" aria-label="NEXORA home"><img src="assets/nexora-logo.png" alt="شعار NEXORA الرسمي"><span class="brand-name">NEXORA ERP <small data-i18n="brandSub">نكسورا | المنظومة المتكاملة</small></span></a>
+  <a class="brand" href="#home" aria-label="NEXORA home"><img src="assets/nexora-logo.png" alt="شعار NEXORA الرسمي"><span class="brand-name">NEXORA <small data-i18n="brandSub">نكسورا | الحلول التقنية المتكاملة</small></span></a>
   <nav class="navlinks" id="navlinks" aria-label="التنقل الرئيسي">
    <a href="#home" data-i18n="navHome">الرئيسية</a>
-   <a href="#about" data-i18n="navAbout">عن النظام</a>
-   <a href="#services" data-i18n="navServices">الوحدات والخدمات</a>
-   <a href="#gallery" data-i18n="navGallery">معرض الواجهات</a>
+   <a href="#about" data-i18n="navAbout">عن نكسورا</a>
+   <a href="#services" data-i18n="navServices">خدماتنا وحلولنا</a>
+   <a href="#gallery" data-i18n="navGallery">معرض واجهات الـ ERP</a>
    <a href="#method" data-i18n="navMethod">منهجية العمل</a>
    <a href="#demo" data-i18n="navDemo">عرض النظام</a>
    <a href="#contact" data-i18n="navContact">تواصل معنا</a>
@@ -324,48 +321,48 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
 
 <section class="container hero" id="home">
  <div>
-  <span class="eyebrow"><span class="dot"></span><span data-i18n="eyebrow">NEXORA ERP V1.1 · Complete Business Management</span></span>
-  <h1 data-i18n-html="heroTitle">المنظومة الذكية<br>لإدارة <span class="gradient">وتطوير مؤسستك</span></h1>
-  <p class="hero-copy" data-i18n="heroCopy">نظام NEXORA ERP المتكامل لإدارة المبيعات، المشتريات، المخزون، الحسابات العامة، الموارد البشرية، والسندات بدقة واحترافية عالية توفر الوقت وترفع الأرباح.</p>
+  <span class="eyebrow"><span class="dot"></span><span data-i18n="eyebrow">NEXORA · Integrated Technology & Business Solutions</span></span>
+  <h1 data-i18n-html="heroTitle">منصة نكسورا المتكاملة<br>لحلول الـ <span class="gradient">ERP والبرمجيات الذكية</span></h1>
+  <p class="hero-copy" data-i18n="heroCopy">نقدم أحدث الحلول التقنية وبرمجيات المؤسسات، ونظام NEXORA ERP V.1.1 المتكامل لإدارة المبيعات، المشتريات، المخزون، الحسابات العامة، وشؤون الموظفين بدقة واحترافية عالية.</p>
   <div class="hero-actions">
     <a class="btn btn-primary" href="#demo" data-i18n="exploreServices">تجربة النظام المباشر <span aria-hidden="true">←</span></a>
     <a class="btn btn-outline" href="#gallery" data-i18n="viewGallery">استعرض شاشات النظام</a>
   </div>
-  <p class="hero-note" data-i18n="heroNote">تحكم كامل، أمان عالي، تقارير مالية لحظية، ودعم متكامل لجميع الأنشطة التجارية والمؤسسية.</p>
+  <p class="hero-note" data-i18n="heroNote">خبرة واسعة في هندسة البرمجيات، أتمتة العمليات، وتطوير منصات الويب والمؤسسات التجارية.</p>
  </div>
- <div class="hero-art"><img class="hero-logo" src="assets/nexora-logo.png" alt="NEXORA ERP — نكسورا"></div>
+ <div class="hero-art"><img class="hero-logo" src="assets/nexora-logo.png" alt="NEXORA — نكسورا"></div>
 </section>
 
 <section class="section" id="about">
  <div class="container">
-  <div class="section-head"><span class="kicker" data-i18n="aboutKicker">عن النظام</span><h2 data-i18n="aboutTitle">قوة تكامل العمليات في شاشة واحدة</h2><p data-i18n="aboutIntro">صُمم نظام NEXORA ERP خصيصاً ليمنح الإدارة رؤية شاملة ولحظية لجميع الأقسام المالية والإدارية والتشغيلية.</p></div>
+  <div class="section-head"><span class="kicker" data-i18n="aboutKicker">عن نكسورا</span><h2 data-i18n="aboutTitle">بداية رؤيتنا وهندسة البرمجيات الحديثة</h2><p data-i18n="aboutIntro">انطلقت نكسورا برؤية طموحة لهندسة البرمجيات وحلول الأعمال المتكاملة، بهدف سد الفجوة التقنية للمؤسسات نحو التحول الرقمي الحقيقي.</p></div>
   <div class="about-layout">
-   <article class="card about-panel"><div class="iconbox">⌘</div><h3 data-i18n="philosophyTitle">مميزات النظام الرئيسية</h3><p data-i18n="philosophyCopy">نظام مرن ومصمم وفق أحدث المعايير المحاسبية والإدارية المعتمدة.</p><ul class="list-check"><li data-i18n="aboutPoint1">تحديث تلقائي للأرصدة والقيود مع كل عملية بيع وشراء</li><li data-i18n="aboutPoint2">إدارة شاملة للموارد البشرية والرواتب والسلف</li><li data-i18n="aboutPoint3">محاسبة دقيقة مع القيود المزدوجة وميزان المراجعة اللحظي</li></ul></article>
-   <article class="card about-panel"><div class="iconbox">◎</div><h3 data-i18n="whatWeDoTitle">لماذا تختار NEXORA ERP؟</h3><p data-i18n="whatWeDoCopy">الحل الأمثل لجميع المؤسسات والمشروعات نحو التحول الرقمي الشامل.</p><ul class="list-check"><li data-i18n="aboutPoint4">رقابة محكمة على حركة المخزون وتسويات الجرد (عجز وتالف)</li><li data-i18n="aboutPoint5">إدارة العملاء والموردين وكشوف الحساب الحدودية</li><li data-i18n="aboutPoint6">لوحة تحكم ذكية ومؤشرات أداء مالي ونسب ربحية مباشرة</li></ul><a class="text-link glow-trigger" href="#contactFormCard" data-i18n="discussNeed">اطلب امتلاك النظام الآن ←</a></article>
+   <article class="card about-panel"><div class="iconbox">⌘</div><h3 data-i18n="philosophyTitle">منهجية نكسورا وتخصصاتنا</h3><p data-i18n="philosophyCopy">نعتمد على معايير هندسية متقدمة لتقديم حلول برمجية مرنة ومستدامة.</p><ul class="list-check"><li data-i18n="aboutPoint1">تطوير الأنظمة السحابية وقواعد البيانات الآمنة والحديثة</li><li data-i18n="aboutPoint2">أتمتة العمليات والربط البرمجي المتقدم لبيئات العمل</li><li data-i18n="aboutPoint3">تصميم واجهات مستخدم عصرية تركز على سهولة الاستخدام والسرعة</li></ul></article>
+   <article class="card about-panel"><div class="iconbox">◎</div><h3 data-i18n="whatWeDoTitle">لماذا يثق بنا العملاء؟</h3><p data-i18n="whatWeDoCopy">نحن نجمع بين الخبرة التقنية العميقة والفهم الواقعي لاحتياجات الأعمال.</p><ul class="list-check"><li data-i18n="aboutPoint4">دعم فني مستمر وتحديثات دورية تضمن استقرار الأنشطة</li><li data-i18n="aboutPoint5">حلول مخصصة تناسب كافة أحجام الشركات والمشروعات الناشئة</li><li data-i18n="aboutPoint6">التزام تام بأعلى معايير جودة الكود وسرية وأمان البيانات</li></ul><a class="text-link glow-trigger" href="#contactFormCard" data-i18n="discussNeed">تواصل معنا لبدء مشروعك ←</a></article>
   </div>
  </div>
 </section>
 
 <section class="section" id="services">
  <div class="container">
-  <div class="section-head"><span class="kicker" data-i18n="servicesKicker">الوحدات والخدمات</span><h2 data-i18n="servicesTitle">وحدات متكاملة تغطي كافة احتياجات مؤسستك</h2><p data-i18n="servicesIntro">تعرف على الوحدات والخدمات الأساسية داخل المنظومة.</p></div>
+  <div class="section-head"><span class="kicker" data-i18n="servicesKicker">خدمات وحلول نكسورا</span><h2 data-i18n="servicesTitle">منظومة متكاملة من الخدمات التقنية والبرمجية</h2><p data-i18n="servicesIntro">نقدم حزمة شاملة من الخدمات المصممة لتمكين مؤسستك من التفوق الرقمي وإدارة مواردها بكفاءة.</p></div>
   <div class="grid grid-3">
-   <article class="card"><div class="iconbox">▦</div><span class="service-tag" data-i18n="tagSystems">المبيعات والمشتريات</span><h3 data-i18n="svc1Title">فواتير البيع والشراء</h3><p data-i18n="svc1Desc">إدارة فواتير البيع والشراء الآجلة والنقدية مع الربط التلقائي بالمخازن والحسابات.</p><button class="text-link detail-btn" data-service="erp" data-i18n="details">تفاصيل الوحدة ←</button></article>
-   <article class="card"><div class="iconbox">⌁</div><span class="service-tag" data-i18n="tagAutomation">المخزون والجرد</span><h3 data-i18n="svc2Title">المخزون والحركة والتسويات</h3><p data-i18n="svc2Desc">تتبع الأرصدة والتقييم لكل صنف ومخزن مع إدارة تسويات الجرد (عجز وتالف).</p><button class="text-link detail-btn" data-service="automation" data-i18n="details">تفاصيل الوحدة ←</button></article>
-   <article class="card"><div class="iconbox">⌕</div><span class="service-tag" data-i18n="tagConsulting">الخزينة والبنك</span><h3 data-i18n="svc3Title">سندات القبض والصرف</h3><p data-i18n="svc3Desc">تسجيل وتحصيل المبالغ وسندات القبض والصرف عبر الخزائن أو الحسابات البنكية.</p><button class="text-link detail-btn" data-service="consulting" data-i18n="details">تفاصيل الوحدة ←</button></article>
-   <article class="card"><div class="iconbox">▤</div><span class="service-tag" data-i18n="tagData">الموارد البشرية</span><h3 data-i18n="svc4Title">شؤون الموظفين والرواتب</h3><p data-i18n="svc4Desc">إدارة ملفات الموظفين، الحضور والانصراف، الورديات، السلف، وحسابات الرواتب.</p><button class="text-link detail-btn" data-service="excel" data-i18n="details">تفاصيل الوحدة ←</button></article>
-   <article class="card"><div class="iconbox">⇄</div><span class="service-tag" data-i18n="tagOperations">الحسابات العامة</span><h3 data-i18n="svc5Title">اليومية العامة والقيود العكسية</h3><p data-i18n="svc5Desc">إدارة القيود المزدوجة وميزان المراجعة مع أداة عكس القيود المتوازنة بأمان.</p><button class="text-link detail-btn" data-service="operations" data-i18n="details">تفاصيل الوحدة ←</button></article>
-   <article class="card"><div class="iconbox">▧</div><span class="service-tag" data-i18n="tagEnable">الإدارة والأمان</span><h3 data-i18n="svc6Title">شاشة الإدخال الموحدة والإعدادات</h3><p data-i18n="svc6Desc">شاشة سريعة للإدخال المباشر، تحكم كامل بالصلاحيات، الفروع، والنسخ الاحتياطي.</p><button class="text-link detail-btn" data-service="delivery" data-i18n="details">تفاصيل الوحدة ←</button></article>
+   <article class="card"><div class="iconbox">▦</div><span class="service-tag" data-i18n="tagERP">حلول الـ ERP المؤسسية</span><h3 data-i18n="svc1Title">نظام NEXORA ERP V.1.1</h3><p data-i18n="svc1Desc">نظام متكامل لإدارة المبيعات، المشتريات، المخازن، الحسابات العامة، وشؤون الموظفين بمرونة تامة.</p><button class="text-link detail-btn" data-service="erp" data-i18n="details">تفاصيل الخدمة ←</button></article>
+   <article class="card"><div class="iconbox">⌁</div><span class="service-tag" data-i18n="tagAutomation">أتمتة الأعمال وسكربتات Google</span><h3 data-i18n="svc2Title">أتمتة العمليات والربط الذكي</h3><p data-i18n="svc2Desc">هندسة سكربتات Google Apps Script وربط خدمات الويب لتوفير الوقت والقضاء على العمل اليدوي.</p><button class="text-link detail-btn" data-service="automation" data-i18n="details">تفاصيل الخدمة ←</button></article>
+   <article class="card"><div class="iconbox">⌕</div><span class="service-tag" data-i18n="tagWeb">تطوير الويب ومنصات المؤسسات</span><h3 data-i18n="svc3Title">برمجة وتصميم واجهات الويب</h3><p data-i18n="svc3Desc">تطوير منصات ومواقع الشركات والمتاجر الإلكترونية بأحدث التقنيات وأعلى معايير الأداء.</p><button class="text-link detail-btn" data-service="web" data-i18n="details">تفاصيل الخدمة ←</button></article>
+   <article class="card"><div class="iconbox">▤</div><span class="service-tag" data-i18n="tagOffice">تحسين الأداء المكتبي</span><h3 data-i18n="svc4Title">تطوير سكربتات وحلول الـ Office</h3><p data-i18n="svc4Desc">تحسين وهندسة أكواد VBA وملفات Microsoft Word و Excel لتسريع إنجاز المهام الإدارية.</p><button class="text-link detail-btn" data-service="office" data-i18n="details">تفاصيل الخدمة ←</button></article>
+   <article class="card"><div class="iconbox">⇄</div><span class="service-tag" data-i18n="tagConsulting">استشارات البنية التقنية</span><h3 data-i18n="svc5Title">الاستشارات التقنية وهندسة النظم</h3><p data-i18n="svc5Desc">توجيه استراتيجي لاختيار التقنيات المناسبة، تأمين البيانات، وتخطيط التحول الرقمي الشامل.</p><button class="text-link detail-btn" data-service="consulting" data-i18n="details">تفاصيل الخدمة ←</button></article>
+   <article class="card"><div class="iconbox">▧</div><span class="service-tag" data-i18n="tagSupport">الدعم والتطوير المستمر</span><h3 data-i18n="svc6Title">خدمات الدعم الفني وتحديث النظم</h3><p data-i18n="svc6Desc">متابعة مستمرة وصيانة دورية للأنظمة والبرمجيات لضمان أعلى كفاءة تشغيلية بدون توقف.</p><button class="text-link detail-btn" data-service="support" data-i18n="details">تفاصيل الخدمة ←</button></article>
   </div>
  </div>
 </section>
 
-<!-- معرض صور الواجهات الحقيقية لنظام ERP مع التابات (Tabs) وخاصية التبديل والإخفاء -->
+<!-- معرض صور واجهات نظام ERP مع التابات (Tabs) وخاصية التبديل والإخفاء -->
 <section class="section" id="gallery">
  <div class="container">
   <div class="section-head">
     <span class="kicker">معرض النظام (Screenshots)</span>
-    <h2>جولة بصرية داخل واجهات NEXORA ERP</h2>
+    <h2>جولة بصرية داخل واجهات NEXORA ERP V.1.1</h2>
     <p>اختر القسم المناسب من الأزرار بالأسفل لعرض الشاشات الخاصة به. (الضغط مرة أخرى على الزر النشط يقوم بإخفاء القوائم).</p>
   </div>
 
@@ -384,7 +381,7 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     <div class="gallery-placeholder" id="galleryPlaceholder">
       <i class="fas fa-hand-pointer"></i>
       <h3>يرجى اختيار أحد الأقسام بالأعلى أو النقر على "عرض الكل"</h3>
-      <p>لتتمكن من استعراض الشاشات وواجهات نظام NEXORA ERP بكل سلاسة.</p>
+      <p>لتتمكن من استعراض الشاشات وواجهات نظام NEXORA ERP V.1.1 بكل سلاسة.</p>
     </div>
 
     <!-- 1. لوحة التحكم التفصيلية -->
@@ -608,7 +605,7 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
 
 <section class="section" id="method">
  <div class="container">
-  <div class="section-head"><span class="kicker" data-i18n="methodKicker">طريقة العمل</span><h2 data-i18n="methodTitle">خطوات واضحة لاقتناء وربط النظام بمؤسستك</h2><p data-i18n="methodIntro">تسلسل عملي يساعد على وضوح القرار والتوقعات.</p></div>
+  <div class="section-head"><span class="kicker" data-i18n="methodKicker">منهجية العمل</span><h2 data-i18n="methodTitle">خطوات واضحة لاقتناء وربط الحلول بمؤسستك</h2><p data-i18n="methodIntro">تسلسل عملي يساعد على وضوح القرار والتوقعات.</p></div>
   <div class="steps">
    <div class="step"><b>01</b><span data-i18n="step1">تواصل معنا</span></div>
    <div class="step"><b>02</b><span data-i18n="step2">تحديد المتطلبات</span></div>
@@ -624,9 +621,9 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
 
 <section class="section" id="demo">
  <div class="container">
-  <div class="section-head"><span class="kicker" data-i18n="demoKicker">عرض توضيحي</span><h2 data-i18n="demoTitle">جرب النظام الآن بنفسك</h2><p data-i18n="demoIntro">يمكنك فتح صفحة تسجيل الدخول واستخدام الحساب التجريبي المخصص للاستعراض المباشر.</p></div>
+  <div class="section-head"><span class="kicker" data-i18n="demoKicker">عرض توضيحي</span><h2 data-i18n="demoTitle">جرب نظام NEXORA ERP V.1.1 الآن</h2><p data-i18n="demoIntro">يمكنك فتح صفحة تسجيل الدخول واستخدام الحساب التجريبي المخصص للاستعراض المباشر.</p></div>
   <div class="demo">
-   <article class="card demo-visual"><div class="iconbox">▦</div><h3 data-i18n="demoCardTitle">NEXORA ERP V1.1 — Live Demo</h3><p data-i18n="demoCardCopy">مساحة مخصصة لاستعراض تجربة النظام الحية.</p><div><a class="btn btn-primary" href="https://nexora-erp-eta.vercel.app/login" target="_blank" rel="noopener noreferrer" data-i18n="openSystem">فتح النظام في نافذة جديدة ↗</a></div><p class="notice" data-i18n="demoDisclaimer">بيانات الحساب التجريبي متاحة للاختبار المباشر.</p></article>
+   <article class="card demo-visual"><div class="iconbox">▦</div><h3 data-i18n="demoCardTitle">NEXORA ERP V.1.1 — Live Demo</h3><p data-i18n="demoCardCopy">مساحة مخصصة لاستعراض تجربة النظام الحية.</p><div><a class="btn btn-primary" href="https://nexora-erp-eta.vercel.app/login" target="_blank" rel="noopener noreferrer" data-i18n="openSystem">فتح النظام في نافذة جديدة ↗</a></div><p class="notice" data-i18n="demoDisclaimer">بيانات الحساب التجريبي متاحة للاختبار المباشر.</p></article>
    <article class="card"><h3 data-i18n="credentialsTitle">بيانات الدخول التجريبية</h3><p data-i18n="credentialsCopy">انسخ بيانات الدخول ثم افتح صفحة النظام.</p>
     <label for="demoUser" data-i18n="usernameLabel">اسم المستخدم</label>
     <div class="credential"><code id="demoUser">demo.nexora</code><div class="credential-actions"><button class="icon-btn copy-btn" data-copy="demoUser" type="button" data-i18n="copy">نسخ</button></div></div>
@@ -640,7 +637,7 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
 
 <section class="section" id="contact">
  <div class="container">
-  <div class="section-head"><span class="kicker" data-i18n="contactKicker">تواصل معنا</span><h2 data-i18n="contactTitle">اطلب نسختك من NEXORA ERP</h2><p data-i18n="contactIntro">أرسل استفسارك أو تواصل معنا مباشرة عبر قنواتنا الرسمية.</p></div>
+  <div class="section-head"><span class="kicker" data-i18n="contactKicker">تواصل معنا</span><h2 data-i18n="contactTitle">اطلب خدمات أو نسختك من نكسورا</h2><p data-i18n="contactIntro">أرسل استفسارك أو تواصل معنا مباشرة عبر قنواتنا الرسمية.</p></div>
   <div class="contact-layout">
    <div class="card"><h3 data-i18n="channelsTitle">قنوات التواصل الرسمية</h3><div class="contact-links">
     <a class="contact-link" href="https://wa.me/201041554942" target="_blank" rel="noopener noreferrer"><span class="iconbox"><i class="fab fa-whatsapp"></i></span><span><strong>WhatsApp</strong><small data-i18n="whatsappLabel">تواصل مباشر مع نكسورا</small></span></a>
@@ -651,11 +648,11 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
     <a class="contact-link" href="https://www.youtube.com/@Nexorabs0" target="_blank" rel="noopener noreferrer"><span class="iconbox"><i class="fab fa-youtube"></i></span><span><strong>YouTube</strong><small>@Nexorabs0</small></span></a>
     <a class="contact-link" href="mailto:info.nexora.corp@gmail.com"><span class="iconbox"><i class="fas fa-envelope"></i></span><span><strong>Email</strong><small>info.nexora.corp@gmail.com</small></span></a>
    </div></div>
-   <div class="card" id="contactFormCard"><h3 data-i18n="messageTitle">اطلب نسختك أو استفسر</h3><form id="contactForm">
+   <div class="card" id="contactFormCard"><h3 data-i18n="messageTitle">اطلب خدماتنا أو استفسر</h3><form id="contactForm">
     <div class="form-grid">
      <div class="field"><label for="name" data-i18n="nameLabel">الاسم</label><input id="name" name="name" autocomplete="name" required placeholder="اكتب اسمك"></div>
      <div class="field"><label for="business" data-i18n="businessLabel">اسم النشاط (اختياري)</label><input id="business" name="business" placeholder="اسم الشركة أو النشاط"></div>
-     <div class="field full"><label for="service" data-i18n="serviceLabel">نوع الطلب / الباقة</label><select id="service" name="service" required><option value="" selected disabled data-i18n="chooseService">اختر الطلب</option><option>طلب ترخيص نظام NEXORA ERP</option><option>استفسار عن أسعار الباقات</option><option>طلب تخصيص وحدات إضافية</option><option>طلب استشارة وتحليل أعمال</option><option>أخرى / غير متأكد</option></select></div>
+     <div class="field full"><label for="service" data-i18n="serviceLabel">نوع الطلب / الخدمة</label><select id="service" name="service" required><option value="" selected disabled data-i18n="chooseService">اختر الطلب</option><option>طلب ترخيص نظام NEXORA ERP V.1.1</option><option>استفسار عن حلول الـ ERP والبرمجيات</option><option>طلب أتمتة العمليات وسكربتات Google</option><option>طلب تطوير واجهات ومنصات الويب</option><option>طلب استشارة تقنية وهندسة أنظمة</option><option>أخرى / غير متأكد</option></select></div>
      <div class="field full"><label for="message" data-i18n="messageLabel">تفاصيل الطلب</label><textarea id="message" name="message" required placeholder="اكتب استفسارك باختصار..."></textarea></div>
     </div>
     <p class="form-help" data-i18n="formHelp">هذا النموذج لا يرسل البيانات إلى خادم. عند الضغط، سيُفتح واتساب.</p>
@@ -665,18 +662,18 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
  </div>
 </section>
 </main>
-<footer class="footer"><div class="container"><div class="footer-main"><a class="brand" href="#home"><img src="assets/nexora-logo.png" alt=""><span class="brand-name">NEXORA ERP <small data-i18n="footerTagline">المنظومة الشاملة لإدارة وتطوير الأعمال</small></span></a><nav class="footer-links"><a href="#about" data-i18n="navAbout">عن النظام</a><a href="#services" data-i18n="navServices">الوحدات</a><a href="#gallery" data-i18n="navGallery">معرض الواجهات</a><a href="#demo" data-i18n="navDemo">عرض النظام</a><a href="#contact" data-i18n="navContact">تواصل معنا</a></nav></div><p class="copyright">© <span id="year"></span> NEXORA ERP | نكسورا. <span data-i18n="rights">جميع الحقوق محفوظة.</span></p></div></footer>
+<footer class="footer"><div class="container"><div class="footer-main"><a class="brand" href="#home"><img src="assets/nexora-logo.png" alt=""><span class="brand-name">NEXORA <small data-i18n="footerTagline">الحلول التقنية المتكاملة وتطوير الأعمال</small></span></a><nav class="footer-links"><a href="#about" data-i18n="navAbout">عن نكسورا</a><a href="#services" data-i18n="navServices">الخدمات</a><a href="#gallery" data-i18n="navGallery">معرض الواجهات</a><a href="#demo" data-i18n="navDemo">عرض النظام</a><a href="#contact" data-i18n="navContact">تواصل معنا</a></nav></div><p class="copyright">© <span id="year"></span> NEXORA | نكسورا. <span data-i18n="rights">جميع الحقوق محفوظة.</span></p></div></footer>
 
 <button class="backtop" id="backtop" type="button" aria-label="العودة إلى الأعلى"><i class="fas fa-arrow-up"></i></button>
 
 <div class="modal" id="serviceModal" role="dialog" aria-modal="true">
   <div class="modal-box">
     <div class="modal-head">
-      <h3 id="modalTitle">تفاصيل الوحدة</h3>
+      <h3 id="modalTitle">تفاصيل الخدمة</h3>
       <button class="modal-close" id="modalClose" type="button">✕</button>
     </div>
     <div class="modal-body" id="modalBody"></div>
-    <button class="btn btn-primary" id="modalContact" type="button" data-i18n="discussService">اطلب النظام الآن</button>
+    <button class="btn btn-primary" id="modalContact" type="button" data-i18n="discussService">اطلب الخدمة الآن</button>
   </div>
 </div>
 
@@ -692,7 +689,6 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
       const filter = btn.getAttribute('data-filter');
       
       if (activeFilter === filter) {
-        // إذا ضغط المستخدم على نفس التاب النشط مسبقاً، يتم إخفاء القوائم وإظهار رسالة التوجيه
         tabButtons.forEach(b => b.classList.remove('active'));
         activeFilter = null;
         if (placeholder) placeholder.style.display = 'block';
@@ -700,7 +696,6 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
         return;
       }
 
-      // وإلا، يتم تفعيل التاب وعرض الصور المطابقة
       tabButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       activeFilter = filter;
@@ -738,115 +733,115 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
 
   const serviceDetails = {
     erp: {
-      ar: { title: "فواتير البيع والشراء", desc: "نظام إدارة المبيعات والمشتريات الآجلة والنقدية، وتوليد الفواتير التلقائي مع ربط مباشر مع المخزون والعملاء والموردين." },
-      en: { title: "Sales & Purchase Invoices", desc: "Manage credit/cash sales and purchase invoices with automated links to inventory and ledgers." }
+      ar: { title: "نظام NEXORA ERP V.1.1", desc: "نظام متكامل لتخطيط موارد المؤسسات، يدير المبيعات، المشتريات، المخازن، الحسابات العامة، وشؤون الموظفين بدقة واحترافية عالية مع تقارير لحظية." },
+      en: { title: "NEXORA ERP V.1.1", desc: "Complete ERP system managing sales, purchases, inventory, general ledger, and HR with real-time reports." }
     },
     automation: {
-      ar: { title: "المخزون والحركة وتسويات الجرد", desc: "تتبع الأرصدة، تقييم المخزون (WAC)، وأرشفة الحركات مع نظام متكامل لتسويات الجرد (عجز وتالف) بمسارات معتمدة." },
-      en: { title: "Inventory, Movement & Stock Adjustments", desc: "Track balances, inventory valuation, and manage shortage/damage adjustments securely." }
+      ar: { title: "أتمتة العمليات والربط الذكي", desc: "هندسة سكربتات Google Apps Script المتقدمة لأتمتة سير العمل، ربط جداول البيانات، وإنشاء منظومات النماذج الذكية بدون تدخل بشري." },
+      en: { title: "Business Automation & Google Scripts", desc: "Advanced Google Apps Script automation and workflow integration to eliminate manual tasks." }
+    },
+    web: {
+      ar: { title: "برمجة وتصميم واجهات الويب", desc: "تطوير منصات ومواقع الشركات والمتاجر الإلكترونية بأحدث التقنيات وأعلى معايير السرعة والأمان وتصميمات الـ Dark Glassmorphism." },
+      en: { title: "Web Development & UI/UX", desc: "Developing corporate platforms and web applications with top standards and modern UI." }
+    },
+    office: {
+      ar: { title: "تطوير سكربتات وحلول الـ Office", desc: "تحسين وهندسة أكواد VBA وملفات Microsoft Word و Excel لتسريع إنجاز المهام الإدارية ومعالجة البيانات." },
+      en: { title: "Office Automation & VBA", desc: "Optimizing VBA scripts and advanced Microsoft Office files for administrative speed." }
     },
     consulting: {
-      ar: { title: "سندات القبض والصرف ورسائل الخزينة", desc: "متابعة سندات المقبوضات والمدفوعات النقدية والبنكية مع الفلترة السريعة وتحديث حسابات العملاء والموردين." },
-      en: { title: "Receipts & Payment Vouchers", desc: "Track cash/bank receipt and payment vouchers instantly with ledger balance updates." }
+      ar: { title: "الاستشارات التقنية وهندسة النظم", desc: "توجيه استراتيجي لاختيار البنية البرمجية المناسبة، تأمين البيانات، وتخطيط مسارات التحول الرقمي للمؤسسات." },
+      en: { title: "IT Consulting & System Architecture", desc: "Strategic technical guidance for infrastructure, data security, and digital transformation." }
     },
-    excel: {
-      ar: { title: "شؤون الموظفين والرواتب (HR)", desc: "إدارة ملفات الموظفين المفصلة، الأجر الأساسي/اليومي/بالساعة، الورديات، الحضور، السلف، وحسابات الرواتب الشهرية." },
-      en: { title: "HR & Payroll Management", desc: "Detailed employee profiles, base/hourly wages, shifts, attendance, advances, and payroll." }
-    },
-    operations: {
-      ar: { title: "الحسابات العامة وعكس القيود", desc: "إدارة القيود المزدوجة وميزان المراجعة، مع وحدة خاصة لعكس القيود المحاسبية بأمان دون حذف الأصل." },
-      en: { title: "General Ledger & Reversals", desc: "Double-entry journal management, trial balance, and balanced entry reversal tool." }
-    },
-    delivery: {
-      ar: { title: "شاشة الإدخال الموحدة والإعدادات", desc: "شاشة سرعة الإدخال الفوري، تحكم كام في أدوار المستخدمين (Admin/Employee)، الفروع، والنسخ الاحتياطي السريع." },
-      en: { title: "Unified Entry & Settings", desc: "Fast unified entry screen, complete control over user roles, branches, and database backups." }
+    support: {
+      ar: { title: "خدمات الدعم الفني وتحديث النظم", desc: "متابعة مستمرة وصيانة دورية للأنظمة والبرمجيات لضمان استقرار العمليات وتقديم التحديثات المستمرة." },
+      en: { title: "Technical Support & System Updates", desc: "Ongoing maintenance and updates to ensure continuous operational stability." }
     }
   };
 
   const translations = {
     ar: {
-      brandSub: "نكسورا | المنظومة المتكاملة",
-      navHome: "الرئيسية", navAbout: "عن النظام", navServices: "الوحدات والخدمات", navGallery: "معرض الواجهات", navMethod: "منهجية العمل", navDemo: "عرض النظام", navContact: "تواصل معنا", navStart: "اطلب نسختك الآن",
-      eyebrow: "NEXORA ERP V1.1 · Complete Business Management",
-      heroTitle: 'المنظومة الذكية<br>لإدارة <span class="gradient">وتطوير مؤسستك</span>',
-      heroCopy: "نظام NEXORA ERP المتكامل لإدارة المبيعات، المشتريات، المخزون، الحسابات العامة، الموارد البشرية، والسندات بدقة واحترافية عالية توفر الوقت وترفع الأرباح.",
+      brandSub: "نكسورا | الحلول التقنية المتكاملة",
+      navHome: "الرئيسية", navAbout: "عن نكسورا", navServices: "خدماتنا وحلولنا", navGallery: "معرض واجهات الـ ERP", navMethod: "منهجية العمل", navDemo: "عرض النظام", navContact: "تواصل معنا", navStart: "اطلب نسختك الآن",
+      eyebrow: "NEXORA · Integrated Technology & Business Solutions",
+      heroTitle: 'منصة نكسورا المتكاملة<br>لحلول الـ <span class="gradient">ERP والبرمجيات الذكية</span>',
+      heroCopy: "نقدم أحدث الحلول التقنية وبرمجيات المؤسسات، ونظام NEXORA ERP V.1.1 المتكامل لإدارة المبيعات، المشتريات، المخزون، الحسابات العامة، وشؤون الموظفين بدقة واحترافية عالية.",
       exploreServices: "تجربة النظام المباشر ←", viewGallery: "استعرض شاشات النظام",
-      heroNote: "تحكم كامل، أمان عالي، تقارير مالية لحظية، ودعم متكامل لجميع الأنشطة التجارية والمؤسسية.",
-      aboutKicker: "عن النظام", aboutTitle: "قوة تكامل العمليات في شاشة واحدة",
-      aboutIntro: "صُمم نظام NEXORA ERP خصيصاً ليمنح الإدارة رؤية شاملة ولحظية لجميع الأقسام المالية والإدارية والتشغيلية.",
-      philosophyTitle: "مميزات النظام الرئيسية", philosophyCopy: "نظام مرن ومصمم وفق أحدث المعايير المحاسبية والإدارية المعتمدة.",
-      aboutPoint1: "تحديث تلقائي للأرصدة والقيود مع كل عملية بيع وشراء", aboutPoint2: "إدارة شاملة للموارد البشرية والرواتب والسلف", aboutPoint3: "محاسبة دقيقة مع القيود المزدوجة وميزان المراجعة اللحظي",
-      whatWeDoTitle: "لماذا تختار NEXORA ERP؟", whatWeDoCopy: "الحل الأمثل لجميع المؤسسات والمشروعات نحو التحول الرقمي الشامل.",
-      aboutPoint4: "رقابة محكمة على حركة المخزون وتسويات الجرد (عجز وتالف)", aboutPoint5: "إدارة العملاء والموردين وكشوف الحساب الحدودية", aboutPoint6: "لوحة تحكم ذكية ومؤشرات أداء مالي ونسب ربحية مباشرة",
-      discussNeed: "اطلب امتلاك النظام الآن ←",
-      servicesKicker: "الوحدات والخدمات", servicesTitle: "وحدات متكاملة تغطي كافة احتياجات مؤسستك", servicesIntro: "تعرف على الوحدات والخدمات الأساسية داخل المنظومة.",
-      tagSystems: "المبيعات والمشتريات", tagAutomation: "المخزون والجرد", tagConsulting: "الخزينة والبنك", tagData: "الموارد البشرية", tagOperations: "الحسابات العامة", tagEnable: "الإدارة والأمان",
-      svc1Title: "فواتير البيع والشراء", svc1Desc: "إدارة فواتير البيع والشراء الآجلة والنقدية مع الربط التلقائي بالمخازن والحسابات.",
-      svc2Title: "المخزون والحركة والتسويات", svc2Desc: "تتبع الأرصدة والتقييم لكل صنف ومخزن مع إدارة تسويات الجرد (عجز وتالف).",
-      svc3Title: "سندات القبض والصرف", svc3Desc: "تسجيل وتحصيل المبالغ وسندات القبض والصرف عبر الخزائن أو الحسابات البنكية.",
-      svc4Title: "شؤون الموظفين والرواتب", svc4Desc: "إدارة ملفات الموظفين، الحضور والانصراف، الورديات، السلف، وحسابات الرواتب.",
-      svc5Title: "اليومية العامة والقيود العكسية", svc5Desc: "إدارة القيود المزدوجة وميزان المراجعة مع أداة عكس القيود المتوازنة بأمان.",
-      svc6Title: "شاشة الإدخال الموحدة والإعدادات", svc6Desc: "شاشة سريعة للإدخال المباشر، تحكم كامل بالصلاحيات، الفروع، والنسخ الاحتياطي.",
-      details: "تفاصيل الوحدة ←",
-      methodKicker: "طريقة العمل", methodTitle: "خطوات واضحة لاقتناء وربط النظام بمؤسستك", methodIntro: "تسلسل عملي يساعد على وضوح القرار والتوقعات.",
+      heroNote: "خبرة واسعة في هندسة البرمجيات، أتمتة العمليات، وتطوير منصات الويب والمؤسسات التجارية.",
+      aboutKicker: "عن نكسورا", aboutTitle: "بداية رؤيتنا وهندسة البرمجيات الحديثة",
+      aboutIntro: "انطلقت نكسورا برؤية طموحة لهندسة البرمجيات وحلول الأعمال المتكاملة، بهدف سد الفجوة التقنية للمؤسسات نحو التحول الرقمي الحقيقي.",
+      philosophyTitle: "منهجية نكسورا وتخصصاتنا", philosophyCopy: "نعتمد على معايير هندسية متقدمة لتقديم حلول برمجية مرنة ومستدامة.",
+      aboutPoint1: "تطوير الأنظمة السحابية وقواعد البيانات الآمنة والحديثة", aboutPoint2: "أتمتة العمليات والربط البرمجي المتقدم لبيئات العمل", aboutPoint3: "تصميم واجهات مستخدم عصرية تركز على سهولة الاستخدام والسرعة",
+      whatWeDoTitle: "لماذا يثق بنا العملاء؟", whatWeDoCopy: "نحن نجمع بين الخبرة التقنية العميقة والفهم الواقعي لاحتياجات الأعمال.",
+      aboutPoint4: "دعم فني مستمر وتحديثات دورية تضمن استقرار الأنشطة", aboutPoint5: "حلول مخصصة تناسب كافة أحجام الشركات والمشروعات الناشئة", aboutPoint6: "التزام تام بأعلى معايير جودة الكود وسرية وأمان البيانات",
+      discussNeed: "تواصل معنا لبدء مشروعك ←",
+      servicesKicker: "خدمات وحلول نكسورا", servicesTitle: "منظومة متكاملة من الخدمات التقنية والبرمجية", servicesIntro: "نقدم حزمة شاملة من الخدمات المصممة لتمكين مؤسستك من التفوق الرقمي وإدارة مواردها بكفاءة.",
+      tagERP: "حلول الـ ERP المؤسسية", tagAutomation: "أتمتة الأعمال وسكربتات Google", tagWeb: "تطوير الويب ومنصات المؤسسات", tagOffice: "تحسين الأداء المكتبي", tagConsulting: "استشارات البنية التقنية", tagSupport: "الدعم والتطوير المستمر",
+      svc1Title: "نظام NEXORA ERP V.1.1", svc1Desc: "نظام متكامل لإدارة المبيعات، المشتريات، المخازن، الحسابات العامة، وشؤون الموظفين بمرونة تامة.",
+      svc2Title: "أتمتة العمليات والربط الذكي", svc2Desc: "هندسة سكربتات Google Apps Script وربط خدمات الويب لتوفير الوقت والقضاء على العمل اليدوي.",
+      svc3Title: "برمجة وتصميم واجهات الويب", svc3Desc: "تطوير منصات ومواقع الشركات والمتاجر الإلكترونية بأحدث التقنيات وأعلى معايير الأداء.",
+      svc4Title: "تطوير سكربتات وحلول الـ Office", svc4Desc: "تحسين وهندسة أكواد VBA وملفات Microsoft Word و Excel لتسريع إنجاز المهام الإدارية.",
+      svc5Title: "الاستشارات التقنية وهندسة النظم", svc5Desc: "توجيه استراتيجي لاختيار التقنيات المناسبة، تأمين البيانات، وإعداد خطط التحول الرقمي.",
+      svc6Title: "خدمات الدعم الفني وتحديث النظم", svc6Desc: "متابعة مستمرة وصيانة دورية للأنظمة والبرمجيات لضمان أعلى كفاءة تشغيلية بدون توقف.",
+      details: "تفاصيل الخدمة ←",
+      methodKicker: "منهجية العمل", methodTitle: "خطوات واضحة لاقتناء وربط الحلول بمؤسستك", methodIntro: "تسلسل عملي يساعد على وضوح القرار والتوقعات.",
       step1: "تواصل معنا", step2: "تحديد المتطلبات", step3: "تجربة الديمو", step4: "التخصيص والإعداد", step5: "تدريب الفريق", step6: "التشغيل الفعلي", step7: "الدعم الفني", step8: "التطوير المستمر",
-      demoKicker: "عرض توضيحي", demoTitle: "جرب النظام الآن بنفسك", demoIntro: "يمكنك فتح صفحة تسجيل الدخول واستخدام الحساب التجريبي المخصص للاستعراض المباشر.",
-      demoCardTitle: "NEXORA ERP V1.1 — Live Demo", demoCardCopy: "مساحة مخصصة لاستعراض تجربة النظام الحية.",
+      demoKicker: "عرض توضيحي", demoTitle: "جرب نظام NEXORA ERP V.1.1 الآن", demoIntro: "يمكنك فتح صفحة تسجيل الدخول واستخدام الحساب التجريبي المخصص للاستعراض المباشر.",
+      demoCardTitle: "NEXORA ERP V.1.1 — Live Demo", demoCardCopy: "مساحة مخصصة لاستعراض تجربة النظام الحية.",
       openSystem: "فتح النظام في نافذة جديدة ↗",
       demoDisclaimer: "بيانات الحساب التجريبي متاحة للاختبار المباشر.",
       credentialsTitle: "بيانات الدخول التجريبية", credentialsCopy: "انسخ بيانات الدخول ثم افتح صفحة النظام.",
       usernameLabel: "اسم المستخدم", passwordLabel: "كلمة المرور", copy: "نسخ", show: "إظهار", hide: "إخفاء",
       credentialsNotice: "هذه البيانات للعرض التجريبي فقط.",
-      contactKicker: "تواصل معنا", contactTitle: "اطلب نسختك من NEXORA ERP", contactIntro: "أرسل استفسارك أو تواصل معنا مباشرة عبر قنواتنا الرسمية.",
+      contactKicker: "تواصل معنا", contactTitle: "اطلب خدمات أو نسختك من نكسورا", contactIntro: "أرسل استفسارك أو تواصل معنا مباشرة عبر قنواتنا الرسمية.",
       channelsTitle: "قنوات التواصل الرسمية", whatsappLabel: "تواصل مباشر مع نكسورا", catalogLabel: "كتالوج واتساب للأعمال",
-      messageTitle: "اطلب نسختك أو استفسر", nameLabel: "الاسم", businessLabel: "اسم النشاط (اختياري)", serviceLabel: "نوع الطلب / الباقة", chooseService: "اختر الطلب", messageLabel: "تفاصيل الطلب",
+      messageTitle: "اطلب خدماتنا أو استفسر", nameLabel: "الاسم", businessLabel: "اسم النشاط (اختياري)", serviceLabel: "نوع الطلب / الخدمة", chooseService: "اختر الطلب", messageLabel: "تفاصيل الطلب",
       formHelp: "هذا النموذج لا يرسل البيانات إلى خادم. عند الضغط، سيُفتح واتساب.",
       sendWhatsApp: "متابعة عبر واتساب ↗",
-      footerTagline: "المنظومة الشاملة لإدارة وتطوير الأعمال", rights: "جميع الحقوق محفوظة.",
-      discussService: "اطلب النظام الآن",
+      footerTagline: "الحلول التقنية المتكاملة وتطوير الأعمال", rights: "جميع الحقوق محفوظة.",
+      discussService: "اطلب الخدمة الآن",
       toastFormTitle: "جاري تحويل بياناتك...",
       toastFormDesc: "تم تجهيز رسالتك باحترافية، سيتم فتح واتساب الآن."
     },
     en: {
-      brandSub: "NEXORA | Integrated System",
-      navHome: "Home", navAbout: "About", navServices: "Modules", navGallery: "Gallery", navMethod: "Workflow", navDemo: "Live Demo", navContact: "Contact Us", navStart: "Get Your Copy",
-      eyebrow: "NEXORA ERP V1.1 · Complete Business Management",
-      heroTitle: 'Smart System<br>for <span class="gradient">Business Growth</span>',
-      heroCopy: "Integrated NEXORA ERP system for sales, purchases, inventory, general ledger, HR, and vouchers management with high accuracy.",
-      exploreServices: "Try Live System →", viewGallery: "View Gallery",
-      heroNote: "Full control, high security, real-time financial reports, and comprehensive support.",
-      aboutKicker: "About System", aboutTitle: "The Power of Integrated Operations",
-      aboutIntro: "NEXORA ERP gives management a real-time view across all financial and operational departments.",
-      philosophyTitle: "Key System Features", philosophyCopy: "Flexible system built on modern certified accounting standards.",
-      aboutPoint1: "Automated ledger/stock updates with every transaction", aboutPoint2: "Comprehensive HR, payroll, and advance management", aboutPoint3: "Precise accounting with double-entry and trial balance",
-      whatWhyTitle: "Why Choose NEXORA ERP?", whatWeDoCopy: "The ideal solution for businesses toward complete digital transformation.",
-      aboutPoint4: "Strict inventory tracking and shortage/damage adjustments", aboutPoint5: "Customer and vendor account management with credit limits", aboutPoint6: "Smart dashboard with real-time financial ratios",
-      discussNeed: "Get the system now →",
-      servicesKicker: "Modules & Services", servicesTitle: "Integrated Modules Covering All Needs", servicesIntro: "Explore core system modules.",
-      tagSystems: "Sales & Purchases", tagAutomation: "Inventory & Stock", tagConsulting: "Treasury & Bank", tagData: "HR", tagOperations: "General Ledger", tagEnable: "Security & Admin",
-      svc1Title: "Sales & Purchase Invoices", svc1Desc: "Manage cash and credit sales/purchase invoices linked to stock and accounts.",
-      svc2Title: "Inventory & Stock Adjustments", svc2Desc: "Track stock balances, valuation (WAC), and shortage/damage adjustments.",
-      svc3Title: "Receipt & Payment Vouchers", svc3Desc: "Record cash/bank payments and collections linked to customer/vendor balances.",
-      svc4Title: "HR & Payroll", svc4Desc: "Manage employee files, attendance, shifts, advances, and monthly payroll.",
-      svc5Title: "General Ledger & Reversals", svc5Desc: "Manage double-entry journals, trial balance, and entry reversals safely.",
-      svc6Title: "Unified Entry & Settings", svc6Desc: "Fast unified entry screen, complete control over user roles, and backups.",
-      details: "Module Details →",
-      methodKicker: "Workflow", methodTitle: "Clear Steps to Acquire the System", methodIntro: "Practical sequence for smooth deployment.",
+      brandSub: "NEXORA | Integrated Tech Solutions",
+      navHome: "Home", navAbout: "About Us", navServices: "Services", navGallery: "ERP Gallery", navMethod: "Workflow", navDemo: "Live Demo", navContact: "Contact Us", navStart: "Get Your Copy",
+      eyebrow: "NEXORA · Integrated Technology & Business Solutions",
+      heroTitle: 'NEXORA Platform<br>for <span class="gradient">ERP & Smart Software</span>',
+      heroCopy: "We provide cutting-edge tech solutions and the NEXORA ERP V.1.1 system for sales, purchases, inventory, general ledger, and HR management.",
+      exploreServices: "Try Live System →", viewGallery: "View ERP Gallery",
+      heroNote: "Extensive expertise in software engineering, workflow automation, and web platforms.",
+      aboutKicker: "About Nexora", aboutTitle: "Our Vision & Modern Software Engineering",
+      aboutIntro: "Nexora started with an ambitious vision for software engineering and integrated business solutions to bridge the tech gap.",
+      philosophyTitle: "Our Methodology", philosophyCopy: "We rely on advanced engineering standards to deliver flexible and sustainable solutions.",
+      aboutPoint1: "Developing secure cloud systems and modern databases", aboutPoint2: "Workflow automation and advanced API integration", aboutPoint3: "Modern UI/UX design focused on speed and ease of use",
+      whatWeDoTitle: "Why Clients Trust Us?", whatWeDoCopy: "We combine deep technical expertise with practical business understanding.",
+      aboutPoint4: "Ongoing technical support and regular updates", aboutPoint5: "Custom solutions tailored for all business sizes", aboutPoint6: "Commitment to top-tier code quality and data security",
+      discussNeed: "Contact us to start your project →",
+      servicesKicker: "Nexora Services & Solutions", servicesTitle: "An Integrated Suite of Tech Services", servicesIntro: "We offer comprehensive services to empower your enterprise with digital excellence.",
+      tagERP: "Enterprise ERP Solutions", tagAutomation: "Business Automation & Google Scripts", tagWeb: "Web & Enterprise Platforms", tagOffice: "Office Performance Optimization", tagConsulting: "Technical IT Consulting", tagSupport: "Continuous Support & Updates",
+      svc1Title: "NEXORA ERP V.1.1", svc1Desc: "Complete system for sales, purchases, inventory, general ledger, and HR management.",
+      svc2Title: "Workflow Automation & Smart Integration", svc2Desc: "Advanced Google Apps Script engineering to automate workflows and eliminate manual tasks.",
+      svc3Title: "Web Development & UI/UX", svc3Desc: "Developing corporate platforms and e-commerce websites with high performance.",
+      svc4Title: "Office Solutions & VBA", svc4Desc: "Optimizing VBA scripts and advanced Microsoft Office files for administrative speed.",
+      svc5Title: "IT Consulting & Architecture", svc5Desc: "Strategic guidance for architecture, data security, and digital transformation.",
+      svc6Title: "Technical Support & Updates", svc6Desc: "Ongoing maintenance and regular system updates to ensure seamless operations.",
+      details: "Service Details →",
+      methodKicker: "Workflow", methodTitle: "Clear Steps to Implement Solutions", methodIntro: "Practical sequence for smooth deployment.",
       step1: "Contact Us", step2: "Requirements", step3: "Test Demo", step4: "Customization", step5: "Training", step6: "Go Live", step7: "Support", step8: "Updates",
-      demoKicker: "Demo", demoTitle: "Experience the Demo System", demoIntro: "Open login page and test the demo account.",
-      demoCardTitle: "NEXORA ERP V1.1 — Live Demo", demoCardCopy: "Dedicated space to test the live system.",
+      demoKicker: "Demo", demoTitle: "Experience NEXORA ERP V.1.1", demoIntro: "Open login page and test the live demo account.",
+      demoCardTitle: "NEXORA ERP V.1.1 — Live Demo", demoCardCopy: "Dedicated space to test the live system.",
       openSystem: "Open System in New Window ↗",
       demoDisclaimer: "Demo account data is publicly available.",
       credentialsTitle: "Demo Credentials", credentialsCopy: "Copy credentials then open system page.",
       usernameLabel: "Username", passwordLabel: "Password", copy: "Copy", show: "Show", hide: "Hide",
       credentialsNotice: "For demonstration purposes only.",
-      contactKicker: "Contact Us", contactTitle: "Get Your Copy of NEXORA ERP", contactIntro: "Send your inquiry or contact us via official channels.",
+      contactKicker: "Contact Us", contactTitle: "Get Your Services or Copy from Nexora", contactIntro: "Send your inquiry or contact us via official channels.",
       channelsTitle: "Official Channels", whatsappLabel: "Direct WhatsApp with Nexora", catalogLabel: "WhatsApp Business Catalog",
-      messageTitle: "Request Your Copy", nameLabel: "Name", businessLabel: "Business Name (Optional)", serviceLabel: "Request Type", chooseService: "Choose Request", messageLabel: "Request Details",
+      messageTitle: "Request Services or Inquire", nameLabel: "Name", businessLabel: "Business Name (Optional)", serviceLabel: "Request Type", chooseService: "Choose Request", messageLabel: "Request Details",
       formHelp: "This form doesn't send data to a server. Clicking will open WhatsApp.",
       sendWhatsApp: "Continue via WhatsApp ↗",
-      footerTagline: "Complete System for Business Management", rights: "All rights reserved.",
-      discussService: "Get System Now",
+      footerTagline: "Integrated Tech Solutions & Business Growth", rights: "All rights reserved.",
+      discussService: "Get Service Now",
       toastFormTitle: "Preparing your data...",
       toastFormDesc: "Your message is ready. Opening WhatsApp now."
     }
@@ -969,7 +964,7 @@ h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;m
       const service = document.getElementById('service').value;
       const message = document.getElementById('message').value.trim();
 
-      let text = `مرحباً نكسورا، أرغب في طلب نسخة من النظام أو الاستفسار.\n\n`;
+      let text = `مرحباً نكسورا، أرغب في الاستفسار أو طلب خدمة.\n\n`;
       if (name) text += `*الاسم:* ${name}\n`;
       if (business) text += `*اسم النشاط:* ${business}\n`;
       if (service) text += `*نوع الطلب:* ${service}\n`;
