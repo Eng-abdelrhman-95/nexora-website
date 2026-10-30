@@ -192,6 +192,39 @@ h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.2;letter-spacing:-1.5px;marg
 .icon-btn{background:rgba(41,182,255,.09);border:1px solid rgba(41,182,255,.23);border-radius:9px;padding:7px 9px;color:var(--cyan);transition:all 0.2s}
 .icon-btn:hover{background:var(--cyan);color:#000}
 .notice{font-size:.82rem;color:var(--muted);border-inline-start:3px solid var(--purple);padding-inline-start:12px;margin:14px 0 0}
+
+/* تنسيق بطاقات النماذج الجديدة */
+.forms-hub-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 30px; }
+.form-hub-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 25px;
+  box-shadow: var(--shadow); display: flex; flex-direction: column; justify-content: space-between;
+  transition: all 0.3s ease; position: relative; overflow: hidden;
+}
+.form-hub-card:hover { border-color: var(--cyan); transform: translateY(-4px); box-shadow: 0 15px 40px rgba(41,182,255,0.15); }
+.form-hub-card::before { content: ""; position: absolute; top: 0; right: 0; width: 4px; height: 100%; background: var(--cyan); }
+.form-hub-card.jobs::before { background: var(--purple); }
+.form-hub-card.survey::before { background: var(--blue); }
+
+.form-hub-head { display: flex; align-items: center; gap: 14px; margin-bottom: 15px; }
+.form-hub-icon {
+  width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center;
+  background: rgba(41,182,255,0.12); color: var(--cyan); font-size: 1.3rem; border: 1px solid rgba(41,182,255,0.3);
+}
+.form-hub-card.jobs .form-hub-icon { background: rgba(139,63,232,0.12); color: var(--purple); border-color: rgba(139,63,232,0.3); }
+.form-hub-card.survey .form-hub-icon { background: rgba(62,123,250,0.12); color: var(--blue); border-color: rgba(62,123,250,0.3); }
+
+.form-hub-head h3 { font-size: 1.15rem; margin: 0; color: var(--text); }
+.form-hub-card p { color: var(--muted); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.6; }
+.form-hub-actions { display: flex; gap: 10px; margin-top: auto; }
+.form-link-btn {
+  flex: 1; padding: 10px 14px; border-radius: 11px; font-weight: 700; font-size: 0.85rem;
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px; border: 1px solid var(--line);
+  background: var(--bg); color: var(--text); transition: all 0.25s ease; text-align: center;
+}
+.form-link-btn:hover { background: var(--cyan); color: #04101b; border-color: var(--cyan); box-shadow: 0 0 15px rgba(41,182,255,0.4); }
+.form-hub-card.jobs .form-link-btn:hover { background: var(--purple); color: #fff; border-color: var(--purple); box-shadow: 0 0 15px rgba(139,63,232,0.4); }
+.form-hub-card.survey .form-link-btn:hover { background: var(--blue); color: #fff; border-color: var(--blue); box-shadow: 0 0 15px rgba(62,123,250,0.4); }
+
 .contact-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:20px}
 .contact-links{display:grid;gap:11px}
 
@@ -270,6 +303,7 @@ h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.2;letter-spacing:-1.5px;marg
   .navlinks{gap:13px}
   .hero{grid-template-columns:1fr .72fr;gap:15px}
   .grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .forms-hub-grid { grid-template-columns: 1fr; }
   .about-layout,.demo,.contact-layout,.video-showcase-card,.erp-gallery{grid-template-columns:1fr}
 }
 
@@ -653,6 +687,58 @@ h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.2;letter-spacing:-1.5px;marg
     <div class="credential"><code id="demoPass" data-password="nexora@3595.com">••••••••••••</code><div class="credential-actions"><button class="icon-btn" id="showPass" type="button" data-i18n="show">إظهار</button><button class="icon-btn copy-btn" data-copy="demoPass" type="button" data-i18n="copy">نسخ</button></div></div>
     <p class="notice" data-i18n="credentialsNotice">هذه البيانات للعرض التجريبي فقط.</p>
    </article>
+  </div>
+ </div>
+</section>
+
+<!-- قسم نماذج و استبيانات نكسورا المباشرة -->
+<section class="section" id="forms-hub">
+ <div class="container">
+  <div class="section-head">
+    <span class="kicker">بوابة النماذج الرقمية</span>
+    <h2>نماذج وخدمات نكسورا التفاعلية</h2>
+    <p>بوابتك السريعة لتقديم طلبات الأعمال، التوظيف والانضمام لفريقنا، أو مشاركتنا تقييمك وملاحظاتك لضمان أفضل خدمة.</p>
+  </div>
+  
+  <div class="forms-hub-grid">
+    <!-- 1. نموذج طلب خدمات الأعمال -->
+    <article class="form-hub-card business">
+      <div class="form-hub-head">
+        <div class="form-hub-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+        <h3>نماذج طلب خدمات الأعمال</h3>
+      </div>
+      <p>تُستخدم لطلب خدمة جديدة، تفعيل أنظمة الـ ERP، أو تقديم تفاصيل مشروعك التجاري لنبدأ العمل معاً.</p>
+      <div class="form-hub-actions">
+        <a class="form-link-btn" href="https://forms.gle/GaMr4L5Z96SvLYoc8" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> اللغة العربية</a>
+        <a class="form-link-btn" href="https://forms.gle/xxwXQgiYCuRj5UaC9" target="_blank" rel="noopener noreferrer"><i class="fas fa-language"></i> English</a>
+      </div>
+    </article>
+
+    <!-- 2. نموذج التوظيف والانضمام -->
+    <article class="form-hub-card jobs">
+      <div class="form-hub-head">
+        <div class="form-hub-icon"><i class="fas fa-users-gear"></i></div>
+        <h3>التوظيف والانضمام للفريق</h3>
+      </div>
+      <p>انضم إلى عائلة نكسورا! استخدم هذا النموذج للتقديم على الشواغر الوظيفية وفرص التعاون التقني والإداري.</p>
+      <div class="form-hub-actions">
+        <a class="form-link-btn" href="https://forms.gle/xY7KocNC1wuhCnLU8" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> اللغة العربية</a>
+        <a class="form-link-btn" href="https://forms.gle/NiHkq3cgnf7YMP169" target="_blank" rel="noopener noreferrer"><i class="fas fa-language"></i> English</a>
+      </div>
+    </article>
+
+    <!-- 3. استبيان رضا العملاء والمتابعة -->
+    <article class="form-hub-card survey">
+      <div class="form-hub-head">
+        <div class="form-hub-icon"><i class="fas fa-star-half-stroke"></i></div>
+        <h3>استبيان رضا العملاء والمتابعة</h3>
+      </div>
+      <p>رأيك يهمنا ويصنع الفارق. شاركنا تقييمك ومقترحاتك حول جودة الخدمات وأنظمة الـ ERP لتطوير تجربتك دائماً.</p>
+      <div class="form-hub-actions">
+        <a class="form-link-btn" href="https://forms.gle/k7gXbq7NJe5Gvf1k8" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> اللغة العربية</a>
+        <a class="form-link-btn" href="https://forms.gle/PjzKnntAGUA5PrCQ6" target="_blank" rel="noopener noreferrer"><i class="fas fa-language"></i> English</a>
+      </div>
+    </article>
   </div>
  </div>
 </section>
