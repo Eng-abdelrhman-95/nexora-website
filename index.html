@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,190 +9,163 @@
 <link rel="icon" type="image/png" href="assets/nexora-logo.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-:root{--bg:#05070F;--card:#0B1830;--cyan:#29B6FF;--purple:#8B3FE8;--blue:#3E7BFA;--text:#E9EEF7;--muted:#AAB8CC;--line:rgba(117,164,220,.19);--shadow:0 20px 60px rgba(0,0,0,.34);--radius:22px}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:92px}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,"Segoe UI",sans-serif;line-height:1.8;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(5,7,15,.76),rgba(5,7,15,.95)),url("assets/nexora-background.jpg") center top/cover no-repeat;opacity:.78}
+:root[data-theme="dark"]{
+  --bg:#05070F; --card:#0B1830; --cyan:#29B6FF; --purple:#8B3FE8; --blue:#3E7BFA;
+  --text:#E9EEF7; --muted:#AAB8CC; --line:rgba(117,164,220,.19);
+  --shadow:0 20px 60px rgba(0,0,0,.34); --hero-bg-op:rgba(5,7,15,.76);
+  --form-bg:#060c18; --form-border:#263a55; --modal-bg:#09152a;
+}
+:root[data-theme="light"]{
+  --bg:#F2F6FC; --card:#FFFFFF; --cyan:#0284C7; --purple:#7C3AED; --blue:#2563EB;
+  --text:#1E293B; --muted:#64748B; --line:rgba(148,163,184,.25);
+  --shadow:0 15px 40px rgba(0,0,0,.08); --hero-bg-op:rgba(242,246,252,.85);
+  --form-bg:#F8FAFC; --form-border:#CBD5E1; --modal-bg:#FFFFFF;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:92px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,"Segoe UI",sans-serif;line-height:1.8;overflow-x:hidden;transition:background 0.3s, color 0.3s}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:linear-gradient(180deg,var(--hero-bg-op),var(--hero-bg-op)),url("assets/nexora-background.jpg") center top/cover no-repeat;opacity:.78}
 body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 80% 10%,rgba(41,182,255,.08),transparent 35%),radial-gradient(ellipse at 10% 35%,rgba(139,63,232,.09),transparent 32%)}
 a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}button,a{ -webkit-tap-highlight-color:transparent}button{cursor:pointer}.container{width:min(1160px,calc(100% - 36px));margin:auto}
-.topbar{position:sticky;top:0;z-index:50;background:rgba(5,7,15,.9);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.topbar{position:sticky;top:0;z-index:50;background:var(--hero-bg-op);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
 .nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;min-width:175px}.brand img{width:58px;height:58px;object-fit:contain}.brand-name{font-size:1rem;font-weight:800;letter-spacing:.5px;line-height:1.35}.brand-name small{display:block;color:var(--muted);font-size:.76rem;font-weight:400;letter-spacing:0}
-.navlinks{display:flex;align-items:center;gap:22px}.navlinks a{font-size:.9rem;color:#d5dfef;transition:.2s}.navlinks a:hover,.navlinks a.active{color:var(--cyan)}.nav-actions{display:flex;align-items:center;gap:9px}.menu-btn{display:none}.lang-btn,.menu-btn{border:1px solid var(--line);color:var(--text);background:rgba(11,24,48,.8);border-radius:12px;padding:9px 12px;transition:all 0.25s ease}
-.lang-btn:hover,.menu-btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(41,182,255,.1)}
+.navlinks{display:flex;align-items:center;gap:22px}.navlinks a{font-size:.9rem;color:var(--text);transition:.2s}.navlinks a:hover,.navlinks a.active{color:var(--cyan)}.nav-actions{display:flex;align-items:center;gap:9px}.menu-btn{display:none}
+.action-icon-btn, .lang-btn, .menu-btn{border:1px solid var(--line);color:var(--text);background:var(--card);border-radius:12px;padding:9px 12px;transition:all 0.25s ease;display:inline-flex;align-items:center;justify-content:center}
+.action-icon-btn:hover, .lang-btn:hover, .menu-btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(41,182,255,.1)}
 
-/* تلوين وتحسين الأزرار والروابط وتأثيرات الوقوف والضغط */
+/* تلوين وتحسين الأزرار */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 19px;border-radius:13px;border:1px solid transparent;font-weight:700;transition:all .25s ease;background:none;color:var(--text);text-align:center}
 .btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(41,182,255,.25);border-color:var(--cyan);color:var(--cyan)}
 .btn:active{transform:translateY(0);background:rgba(41,182,255,.2)}
 .btn-primary{color:#04101b;background:linear-gradient(110deg,var(--cyan),#69d2ff);box-shadow:0 8px 28px rgba(41,182,255,.15)}
 .btn-primary:hover{background:linear-gradient(110deg,#3ec2ff,#7ce7ff);box-shadow:0 10px 32px rgba(41,182,255,.35);color:#000;transform:translateY(-2px)}
-.btn-outline{border-color:rgba(41,182,255,.55);background:rgba(11,24,48,.7)}
+.btn-outline{border-color:rgba(41,182,255,.55);background:var(--card)}
 .btn-outline:hover{border-color:var(--cyan);background:rgba(41,182,255,.15);color:var(--cyan)}
-.btn-muted{border-color:var(--line);background:rgba(11,24,48,.55)}
-.btn-muted:hover{border-color:var(--purple);background:rgba(139,63,232,.2);color:#e2c9ff}
+.btn-muted{border-color:var(--line);background:var(--card)}
+.btn-muted:hover{border-color:var(--purple);background:rgba(139,63,232,.2);color:var(--purple)}
 .btn-small{padding:8px 12px;font-size:.86rem}
 
-/* زر تفاصيل الخدمة الواضح والمضيء */
 .text-link {
-  color: var(--cyan);
-  font-weight: 700;
-  display: inline-flex;
-  gap: 7px;
-  align-items: center;
-  background: rgba(41, 182, 255, 0.12);
-  border: 1px solid rgba(41, 182, 255, 0.35);
-  padding: 8px 14px;
-  border-radius: 10px;
-  transition: all 0.25s ease;
-  margin-top: 10px;
-  width: fit-content;
+  color: var(--cyan); font-weight: 700; display: inline-flex; gap: 7px; align-items: center;
+  background: rgba(41, 182, 255, 0.12); border: 1px solid rgba(41, 182, 255, 0.35);
+  padding: 8px 14px; border-radius: 10px; transition: all 0.25s ease; margin-top: 10px; width: fit-content;
 }
-.text-link:hover {
-  color: #fff;
-  background: var(--cyan);
-  border-color: var(--cyan);
-  box-shadow: 0 0 15px rgba(41, 182, 255, 0.4);
-}
+.text-link:hover { color: #fff; background: var(--cyan); border-color: var(--cyan); box-shadow: 0 0 15px rgba(41, 182, 255, 0.4); }
 
-/* زر التحكم في الصوت الاحترافي */
-.sound-btn{position:fixed;bottom:24px;left:24px;z-index:99;width:48px;height:48px;border-radius:50%;background:rgba(11,24,48,0.85);border:1px solid rgba(41,182,255,0.4);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:1.2rem;box-shadow:0 8px 25px rgba(0,0,0,0.4);backdrop-filter:blur(10px);transition:all 0.3s ease}
+/* زر التحكم في الصوت */
+.sound-btn{position:fixed;bottom:24px;left:24px;z-index:99;width:48px;height:48px;border-radius:50%;background:var(--card);border:1px solid rgba(41,182,255,0.4);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:1.2rem;box-shadow:0 8px 25px rgba(0,0,0,0.4);backdrop-filter:blur(10px);transition:all 0.3s ease}
 .sound-btn:hover{transform:scale(1.08);border-color:var(--cyan);box-shadow:0 0 20px rgba(41,182,255,0.4)}
 .sound-btn.is-playing{background:linear-gradient(135deg,var(--cyan),var(--purple));color:#04101b;border-color:transparent;animation:pulseSound 2s infinite}
 @keyframes pulseSound{0%{box-shadow:0 0 0 0 rgba(41,182,255,0.4)}70%{box-shadow:0 0 0 12px rgba(41,182,255,0)}100%{box-shadow:0 0 0 0 rgba(41,182,255,0)}}
 
-/* إشعار الصوت الاحترافي (Toast Notification) */
+/* إشعارات الـ Toast */
 .audio-toast {
-  position: fixed;
-  bottom: 86px;
-  left: 24px;
-  z-index: 105;
-  background: rgba(11, 24, 48, 0.95);
-  border: 1px solid rgba(41, 182, 255, 0.35);
-  backdrop-filter: blur(14px);
-  padding: 14px 18px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  max-width: min(340px, calc(100vw - 48px));
-  animation: slideUpToast 0.4s ease;
-  direction: rtl;
+  position: fixed; bottom: 86px; left: 24px; z-index: 105; background: var(--card);
+  border: 1px solid rgba(41, 182, 255, 0.35); backdrop-filter: blur(14px); padding: 14px 18px;
+  border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 14px;
+  max-width: min(340px, calc(100vw - 48px)); animation: slideUpToast 0.4s ease; direction: rtl;
 }
-.audio-toast p {
-  margin: 0;
-  font-size: 0.85rem;
-  color: #d8e3f2;
-  line-height: 1.5;
-}
-.audio-toast p strong {
-  display: block;
-  color: var(--cyan);
-  margin-bottom: 2px;
-}
-.audio-toast-actions {
-  display: flex;
-  gap: 8px;
-  flex-shrink: 0;
-}
-.audio-toast-btn {
-  background: var(--cyan);
-  color: #04101b;
-  border: none;
-  padding: 7px 12px;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: 0.2s;
-}
-.audio-toast-btn:hover {
-  background: #69d2ff;
-}
-.audio-toast-close {
-  background: transparent;
-  border: 1px solid var(--line);
-  color: var(--muted);
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  font-size: 0.8rem;
-  transition: 0.2s;
-}
-.audio-toast-close:hover {
-  color: var(--text);
-  border-color: var(--text);
-}
-@keyframes slideUpToast {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+.audio-toast p { margin: 0; font-size: 0.85rem; color: var(--text); line-height: 1.5; }
+.audio-toast p strong { display: block; color: var(--cyan); margin-bottom: 2px; }
+.audio-toast-actions { display: flex; gap: 8px; flex-shrink: 0; }
+.audio-toast-btn { background: var(--cyan); color: #04101b; border: none; padding: 7px 12px; border-radius: 10px; font-weight: 700; font-size: 0.8rem; cursor: pointer; }
+.audio-toast-close { background: transparent; border: 1px solid var(--line); color: var(--muted); width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; font-size: 0.8rem; }
 
-/* إشعار إرسال النموذج التفاعلي (Interactive Form Toast) */
 .form-toast {
-  position: fixed;
-  top: 24px;
-  left: 50%;
-  transform: translateX(-50%) translateY(-20px);
-  z-index: 130;
-  background: rgba(11, 24, 48, 0.96);
-  border: 1px solid var(--cyan);
-  backdrop-filter: blur(14px);
-  padding: 16px 22px;
-  border-radius: 16px;
-  box-shadow: 0 15px 40px rgba(41,182,255,0.25);
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  max-width: min(90vw, 420px);
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s ease;
-  direction: rtl;
+  position: fixed; top: 24px; left: 50%; transform: translateX(-50%) translateY(-20px); z-index: 130;
+  background: var(--card); border: 1px solid var(--cyan); backdrop-filter: blur(14px); padding: 16px 22px;
+  border-radius: 16px; box-shadow: 0 15px 40px rgba(41,182,255,0.25); display: flex; align-items: center; gap: 15px;
+  max-width: min(90vw, 420px); opacity: 0; pointer-events: none; transition: all 0.3s ease; direction: rtl;
 }
-.form-toast.show {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
-}
-.form-toast i {
-  color: var(--cyan);
-  font-size: 1.5rem;
-}
-.form-toast p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #d8e3f2;
-}
-.form-toast p strong {
-  display: block;
-  color: var(--cyan);
-  margin-bottom: 3px;
-}
+.form-toast.show { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+.form-toast i { color: var(--cyan); font-size: 1.5rem; }
+.form-toast p { margin: 0; font-size: 0.9rem; color: var(--text); }
+.form-toast p strong { display: block; color: var(--cyan); margin-bottom: 3px; }
 
-/* تأثير الوميض (Glow Pulse) لصندوق أرسل تفاصيل طلبك متوافق تماماً مع الموبايل */
+@keyframes slideUpToast { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
 @keyframes formGlow {
-  0% { border-color: var(--line); box-shadow: var(--shadow); background: rgba(11,24,48,0.94); }
-  50% { border-color: var(--cyan); box-shadow: 0 0 35px rgba(41,182,255,0.85); background: rgba(13,35,65,0.99); }
-  100% { border-color: var(--line); box-shadow: var(--shadow); background: rgba(11,24,48,0.94); }
+  0% { border-color: var(--line); box-shadow: var(--shadow); background: var(--card); }
+  50% { border-color: var(--cyan); box-shadow: 0 0 35px rgba(41,182,255,0.85); background: var(--card); }
+  100% { border-color: var(--line); box-shadow: var(--shadow); background: var(--card); }
 }
-.glow-highlight {
-  animation: formGlow 0.45s ease-in-out 6 !important;
-}
+.glow-highlight { animation: formGlow 0.45s ease-in-out 6 !important; }
 
-.hero{padding:76px 0 65px;min-height:610px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:42px}.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 12px;border:1px solid rgba(41,182,255,.25);border-radius:99px;background:rgba(11,24,48,.65);font-size:.82rem;color:#c7eaff}.dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px var(--cyan)}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;margin:22px 0}.gradient{background:linear-gradient(100deg,var(--cyan),#9acbff 52%,#c49aff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-copy{font-size:1.12rem;color:#c3cede;max-width:670px}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 20px}.hero-note{color:#91a2b9;font-size:.83rem;max-width:650px}.hero-art{position:relative;display:flex;align-items:center;justify-content:center;min-height:410px}.hero-art:before{content:"";position:absolute;width:min(380px,95%);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(41,182,255,.12),rgba(139,63,232,.06) 45%,transparent 70%);filter:blur(8px)}.hero-logo{position:relative;width:min(330px,88%);border-radius:50%;filter:drop-shadow(0 0 34px rgba(41,182,255,.18))}
-.section{padding:76px 0}.section-head{max-width:760px;margin:0 auto 38px;text-align:center}.kicker{color:var(--cyan);font-size:.84rem;font-weight:700;letter-spacing:.6px}.section h2{font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.35;margin:10px 0 14px}.section-head p{color:var(--muted);margin:0}.grid{display:grid;gap:18px}.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}.card{background:linear-gradient(145deg,rgba(11,24,48,.94),rgba(7,14,29,.94));border:1px solid var(--line);border-radius:var(--radius);padding:25px;box-shadow:var(--shadow);min-width:0;transition:all 0.3s ease}.card:hover{border-color:rgba(41,182,255,.36);box-shadow:0 12px 40px rgba(41,182,255,0.12)}.iconbox{width:48px;height:48px;display:grid;place-items:center;border:1px solid rgba(41,182,255,.35);border-radius:15px;background:linear-gradient(135deg,rgba(41,182,255,.12),rgba(139,63,232,.12));color:var(--cyan);font-size:1.35rem;margin-bottom:18px}.card h3{font-size:1.13rem;margin:0 0 10px}.card p{color:var(--muted);font-size:.94rem;margin-bottom:18px}
-.about-layout{display:grid;grid-template-columns:.95fr 1.05fr;gap:24px;align-items:stretch}.about-panel{padding:30px}.about-panel h3{font-size:1.35rem}.list-check{padding:0;margin:20px 0 0;list-style:none}.list-check li{position:relative;padding:7px 28px 7px 0;color:#d3deed}.list-check li:before{content:"✓";position:absolute;right:0;color:var(--cyan);font-weight:bold}.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:24px}.step{border:1px solid var(--line);border-radius:16px;background:rgba(11,24,48,.65);padding:16px;transition:all 0.2s}.step:hover{border-color:var(--cyan);background:rgba(11,24,48,0.9)}.step b{display:block;color:var(--cyan);font-size:.8rem;margin-bottom:5px}.step span{font-weight:700}
-.service-tag{display:inline-block;padding:4px 9px;border-radius:99px;border:1px solid rgba(139,63,232,.35);color:#d7bfff;font-size:.75rem;margin-bottom:14px}
-.demo{display:grid;grid-template-columns:1fr .9fr;gap:22px;align-items:stretch}.demo-visual{min-height:320px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}.demo-visual:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;border:1px solid rgba(41,182,255,.25);box-shadow:0 0 0 28px rgba(139,63,232,.05),0 0 0 58px rgba(41,182,255,.04);left:-80px;bottom:-120px}.demo-visual>*{position:relative;z-index:1}.credential{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 13px;border-radius:12px;background:rgba(5,7,15,.65);border:1px solid var(--line);margin:10px 0}.credential code{font-family:Consolas,monospace;direction:ltr;unicode-bidi:plaintext;overflow-wrap:anywhere;color:#e4f5ff}.credential-actions{display:flex;gap:6px;flex-shrink:0}.icon-btn{background:rgba(41,182,255,.09);border:1px solid rgba(41,182,255,.23);border-radius:9px;padding:7px 9px;color:var(--cyan);transition:all 0.2s}.icon-btn:hover{background:var(--cyan);color:#000}.notice{font-size:.82rem;color:#a9bad0;border-inline-start:3px solid var(--purple);padding-inline-start:12px;margin:14px 0 0}
-.contact-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:20px}.contact-links{display:grid;gap:11px}.contact-link{display:flex;align-items:center;gap:13px;border:1px solid var(--line);border-radius:15px;padding:13px;background:rgba(11,24,48,.55);transition:all .2s}.contact-link:hover{border-color:rgba(41,182,255,.5);transform:translateY(-1px);background:rgba(41,182,255,.08)}.contact-link .iconbox{width:40px;height:40px;margin:0;flex-shrink:0;font-size:1rem}.contact-link span small{display:block;color:var(--muted);font-size:.8rem}.contact-link strong{font-size:.94rem;overflow-wrap:anywhere}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:.88rem;color:#d8e3f2}.field input,.field textarea,.field select{width:100%;background:#060c18;border:1px solid #263a55;border-radius:12px;padding:12px 13px;color:var(--text);outline:none;transition:border-color 0.2s}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(41,182,255,.09)}.field textarea{min-height:120px;resize:vertical}.form-help{font-size:.8rem;color:var(--muted);margin:12px 0 18px}.footer{border-top:1px solid var(--line);padding:30px 0 22px;background:rgba(5,7,15,.75)}.footer-main{display:flex;justify-content:space-between;align-items:center;gap:24px}.footer-links{display:flex;flex-wrap:wrap;gap:15px;color:var(--muted);font-size:.86rem}.copyright{color:#75869e;font-size:.8rem;margin:20px 0 0}.backtop{position:fixed;bottom:20px;inset-inline-end:20px;z-index:40;width:44px;height:44px;border-radius:50%;border:1px solid rgba(41,182,255,.4);background:#0B1830;color:var(--cyan);box-shadow:var(--shadow);display:none;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;transition:all 0.3s}.backtop.show{display:flex}
-.modal{position:fixed;inset:0;z-index:100;background:rgba(1,3,8,.78);backdrop-filter:blur(9px);display:none;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modal-box{width:min(640px,100%);max-height:85vh;overflow:auto;background:#09152a;border:1px solid rgba(41,182,255,.3);border-radius:22px;padding:28px;box-shadow:0 30px 90px #000}.modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.modal-head h3{font-size:1.5rem;margin:0}.modal-close{border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--text);padding:6px 11px}.modal-body{color:#c4d0e1;margin:18px 0}.hidden{display:none!important}
-[dir="ltr"] .list-check li{padding:7px 0 7px 28px}[dir="ltr"] .list-check li:before{right:auto;left:0}[dir="ltr"] .notice{border-inline-start:0;border-inline-end:3px solid var(--purple);padding-inline-start:0;padding-inline-end:12px}
-@media(max-width:900px){.navlinks{gap:13px}.navlinks a{font-size:.82rem}.hero{grid-template-columns:1fr .72fr;gap:15px}.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}.about-layout,.demo,.contact-layout{grid-template-columns:1fr}.hero-art{min-height:300px}.hero-logo{width:min(270px,75%)}}
-@media(max-width:700px){.container{width:min(100% - 26px,1160px)}.nav{min-height:70px}.brand img{width:48px;height:48px}.menu-btn{display:inline-flex}.navlinks{display:none;position:absolute;top:70px;left:13px;right:13px;background:#071021;border:1px solid var(--line);border-radius:16px;padding:14px;flex-direction:column;align-items:stretch;gap:0;box-shadow:var(--shadow)}.navlinks.open{display:flex}.navlinks a{padding:11px 9px;border-bottom:1px solid rgba(117,164,220,.1);font-size:.95rem}.navlinks a:last-child{border:0}.nav-actions .btn{display:none}.hero{padding:48px 0 36px;grid-template-columns:1fr;min-height:0}.hero-art{grid-row:1;min-height:220px}.hero-logo{width:210px}h1{font-size:2.45rem;letter-spacing:-.8px}.hero-copy{font-size:1rem}.hero-actions .btn{flex:1}.section{padding:55px 0}.grid-3,.grid-2{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.card{padding:21px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.footer-main{align-items:flex-start;flex-direction:column}.credential{align-items:flex-start;flex-direction:column}.credential-actions{width:100%}.credential-actions button{flex:1}}
+.hero{padding:76px 0 65px;min-height:610px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:42px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 12px;border:1px solid rgba(41,182,255,.25);border-radius:99px;background:var(--card);font-size:.82rem;color:var(--cyan)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px var(--cyan)}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.18;letter-spacing:-1.5px;margin:22px 0}
+.gradient{background:linear-gradient(100deg,var(--cyan),var(--blue) 52%,var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-copy{font-size:1.12rem;color:var(--muted);max-width:670px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 20px}
+.hero-note{color:var(--muted);font-size:.83rem;max-width:650px}
+.hero-art{position:relative;display:flex;align-items:center;justify-content:center;min-height:410px}
+.hero-art:before{content:"";position:absolute;width:min(380px,95%);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(41,182,255,.12),rgba(139,63,232,.06) 45%,transparent 70%);filter:blur(8px)}
+.hero-logo{position:relative;width:min(330px,88%);border-radius:50%;filter:drop-shadow(0 0 34px rgba(41,182,255,.18))}
+.section{padding:76px 0}.section-head{max-width:760px;margin:0 auto 38px;text-align:center}
+.kicker{color:var(--cyan);font-size:.84rem;font-weight:700;letter-spacing:.6px}
+.section h2{font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.35;margin:10px 0 14px}
+.section-head p{color:var(--muted);margin:0}
+.grid{display:grid;gap:18px}.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:25px;box-shadow:var(--shadow);min-width:0;transition:all 0.3s ease}
+.card:hover{border-color:rgba(41,182,255,.36);box-shadow:0 12px 40px rgba(41,182,255,0.12)}
+.iconbox{width:48px;height:48px;display:grid;place-items:center;border:1px solid rgba(41,182,255,.35);border-radius:15px;background:linear-gradient(135deg,rgba(41,182,255,.12),rgba(139,63,232,.12));color:var(--cyan);font-size:1.35rem;margin-bottom:18px}
+.card h3{font-size:1.13rem;margin:0 0 10px}.card p{color:var(--muted);font-size:.94rem;margin-bottom:18px}
+.about-layout{display:grid;grid-template-columns:.95fr 1.05fr;gap:24px;align-items:stretch}.about-panel{padding:30px}.about-panel h3{font-size:1.35rem}
+.list-check{padding:0;margin:20px 0 0;list-style:none}.list-check li{position:relative;padding:7px 28px 7px 0;color:var(--text)}.list-check li:before{content:"✓";position:absolute;right:0;color:var(--cyan);font-weight:bold}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:24px}
+.step{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:16px;transition:all 0.2s}
+.step:hover{border-color:var(--cyan);background:var(--card)}
+.step b{display:block;color:var(--cyan);font-size:.8rem;margin-bottom:5px}.step span{font-weight:700}
+.service-tag{display:inline-block;padding:4px 9px;border-radius:99px;border:1px solid rgba(139,63,232,.35);color:var(--purple);font-size:.75rem;margin-bottom:14px}
+.demo{display:grid;grid-template-columns:1fr .9fr;gap:22px;align-items:stretch}
+.demo-visual{min-height:320px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.credential{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 13px;border-radius:12px;background:var(--bg);border:1px solid var(--line);margin:10px 0}
+.credential code{font-family:Consolas,monospace;direction:ltr;unicode-bidi:plaintext;overflow-wrap:anywhere;color:var(--cyan)}
+.credential-actions{display:flex;gap:6px;flex-shrink:0}
+.icon-btn{background:rgba(41,182,255,.09);border:1px solid rgba(41,182,255,.23);border-radius:9px;padding:7px 9px;color:var(--cyan);transition:all 0.2s}
+.icon-btn:hover{background:var(--cyan);color:#000}
+.notice{font-size:.82rem;color:var(--muted);border-inline-start:3px solid var(--purple);padding-inline-start:12px;margin:14px 0 0}
+.contact-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:20px}
+.contact-links{display:grid;gap:11px}
+.contact-link{display:flex;align-items:center;gap:13px;border:1px solid var(--line);border-radius:15px;padding:13px;background:var(--card);transition:all .2s}
+.contact-link:hover{border-color:rgba(41,182,255,.5);transform:translateY(-1px);background:rgba(41,182,255,.08)}
+.contact-link .iconbox{width:40px;height:40px;margin:0;flex-shrink:0;font-size:1rem}
+.contact-link span small{display:block;color:var(--muted);font-size:.8rem}.contact-link strong{font-size:.94rem;overflow-wrap:anywhere}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
+.field label{font-size:.88rem;color:var(--text)}
+.field input,.field textarea,.field select{width:100%;background:var(--form-bg);border:1px solid var(--form-border);border-radius:12px;padding:12px 13px;color:var(--text);outline:none;transition:border-color 0.2s}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(41,182,255,.09)}
+.field textarea{min-height:120px;resize:vertical}
+.form-help{font-size:.8rem;color:var(--muted);margin:12px 0 18px}
+.footer{border-top:1px solid var(--line);padding:30px 0 22px;background:var(--hero-bg-op)}
+.footer-main{display:flex;justify-content:space-between;align-items:center;gap:24px}
+.footer-links{display:flex;flex-wrap:wrap;gap:15px;color:var(--muted);font-size:.86rem}
+.copyright{color:var(--muted);font-size:.8rem;margin:20px 0 0}
+
+/* زر العودة لأعلى مضبوط وواضح تماماً */
+.backtop{
+  position:fixed; bottom:24px; right:24px; z-index:95;
+  width:46px; height:46px; border-radius:50%;
+  border:1px solid rgba(41,182,255,0.4); background:var(--card);
+  color:var(--cyan); box-shadow:0 8px 25px rgba(0,0,0,0.3);
+  display:none; align-items:center; justify-content:center;
+  font-size:1.2rem; cursor:pointer; transition:all 0.3s ease;
+}
+.backtop.show{display:flex}
+.backtop:hover{transform:scale(1.08); background:var(--cyan); color:#000;}
+
+[dir="ltr"] .backtop{right:auto; left:24px;}
+.modal{position:fixed;inset:0;z-index:100;background:rgba(1,3,8,.78);backdrop-filter:blur(9px);display:none;align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}
+.modal-box{width:min(640px,100%);max-height:85vh;overflow:auto;background:var(--modal-bg);border:1px solid rgba(41,182,255,.3);border-radius:22px;padding:28px;box-shadow:0 30px 90px rgba(0,0,0,0.5)}
+.modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.modal-head h3{font-size:1.5rem;margin:0}
+.modal-close{border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--text);padding:6px 11px}
+.modal-body{color:var(--muted);margin:18px 0}.hidden{display:none!important}
+[dir="ltr"] .list-check li{padding:7px 0 7px 28px}[dir="ltr"] .list-check li:before{right:auto;left:0}
+@media(max-width:900px){.navlinks{gap:13px}.hero{grid-template-columns:1fr .72fr;gap:15px}.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}.about-layout,.demo,.contact-layout{grid-template-columns:1fr}}
+@media(max-width:700px){.container{width:min(100% - 26px,1160px)}.nav{min-height:70px}.brand img{width:48px;height:48px}.menu-btn{display:inline-flex}.navlinks{display:none;position:absolute;top:70px;left:13px;right:13px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;flex-direction:column;align-items:stretch;gap:0;box-shadow:var(--shadow)}.navlinks.open{display:flex}.navlinks a{padding:11px 9px;border-bottom:1px solid var(--line);font-size:.95rem}.nav-actions .btn{display:none}.hero{padding:48px 0 36px;grid-template-columns:1fr}.hero-art{grid-row:1;min-height:220px}.hero-logo{width:210px}h1{font-size:2.45rem}}
 </style>
 </head>
 <body>
@@ -208,6 +181,7 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
    <a href="#contact" data-i18n="navContact">تواصل معنا</a>
   </nav>
   <div class="nav-actions">
+    <button class="action-icon-btn" id="themeToggle" type="button" aria-label="تبديل الوضع"><i class="fas fa-moon" id="themeIcon"></i></button>
     <button class="lang-btn" id="langToggle" type="button" aria-label="Switch language">EN</button>
     <a class="btn btn-primary btn-small glow-trigger" href="#contactFormCard" data-i18n="navStart">ناقش مشروعك</a>
     <button class="menu-btn" id="menuToggle" type="button" aria-label="فتح القائمة" aria-expanded="false">☰</button>
@@ -216,12 +190,10 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
 </header>
 <main>
 
-<!-- زر التحكم في الصوت وملف التلاوة الرسمي -->
 <button type="button" id="soundToggle" class="sound-btn" aria-label="تشغيل الصوت" aria-pressed="false" title="تشغيل / إيقاف الصوت">
   <i class="fas fa-volume-xmark" aria-hidden="true"></i>
 </button>
 
-<!-- إشعار الصوت الاحترافي -->
 <div id="audioToast" class="audio-toast" style="display:none;">
   <div>
     <p><strong>🎧 تلاوة عطرة للخلفية</strong>هل تود الاستماع إلى تلاوة هادئة أثناء تصفحك للموقع؟</p>
@@ -232,7 +204,6 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
   </div>
 </div>
 
-<!-- إشعار إرسال النموذج الذكي (Form Toast) -->
 <div id="formToast" class="form-toast">
   <i class="fab fa-whatsapp"></i>
   <div>
@@ -251,24 +222,24 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
     <a class="btn btn-primary" href="#services" data-i18n="exploreServices">استكشف خدماتنا <span aria-hidden="true">←</span></a>
     <a class="btn btn-outline" href="#demo" data-i18n="viewDemo">استعرض النظام</a>
   </div>
-  <p class="hero-note" data-i18n="heroNote">نبدأ بفهم طبيعة نشاطك ووضعك الحالي، ثم نحدد نطاق العمل والحل المناسب قبل التنفيذ. لا نعرض بيانات تجريبية باعتبارها نتائج فعلية.</p>
+  <p class="hero-note" data-i18n="heroNote">نبدأ بفهم طبيعة نشاطك ووضعك الحالي، ثم نحدد نطاق العمل والحل المناسب قبل التنفيذ.</p>
  </div>
  <div class="hero-art"><img class="hero-logo" src="assets/nexora-logo.png" alt="NEXORA — نكسورا"></div>
 </section>
 
 <section class="section" id="about">
  <div class="container">
-  <div class="section-head"><span class="kicker" data-i18n="aboutKicker">من نحن</span><h2 data-i18n="aboutTitle">حلول تُبنى على احتياج العمل الفعلي</h2><p data-i18n="aboutIntro">NEXORA | نكسورا علامة متخصصة في تقديم حلول ذكية وعملية تساعد الشركات والمشروعات على تنظيم وإدارة الأعمال، وتطوير العمليات، وبناء الأنظمة المناسبة لاحتياجاتها الفعلية.</p></div>
+  <div class="section-head"><span class="kicker" data-i18n="aboutKicker">من نحن</span><h2 data-i18n="aboutTitle">حلول تُبنى على احتياج العمل الفعلي</h2><p data-i18n="aboutIntro">NEXORA | نكسورا علامة متخصصة في تقديم حلول ذكية وعملية تساعد الشركات والمشروعات على تنظيم وإدارة الأعمال.</p></div>
   <div class="about-layout">
-   <article class="card about-panel"><div class="iconbox">⌘</div><h3 data-i18n="philosophyTitle">فلسفتنا</h3><p data-i18n="philosophyCopy">الحل الجيد ليس مجرد برنامج أو ملف أو دراسة؛ بل منظومة عملية مصممة لخدمة طبيعة العمل. لا نعتمد على حل واحد لجميع العملاء، بل نبدأ بفهم النشاط وحجم المشروع وطريقة العمل الحالية، ثم ندرس الخيارات ونقترح الأنسب.</p><ul class="list-check"><li data-i18n="aboutPoint1">فهم الاحتياج قبل اقتراح الحل</li><li data-i18n="aboutPoint2">وضوح نطاق العمل والمخرجات</li><li data-i18n="aboutPoint3">حلول قابلة للتطوير بحسب المتطلبات</li></ul></article>
-   <article class="card about-panel"><div class="iconbox">◎</div><h3 data-i18n="whatWeDoTitle">ماذا نقدم؟</h3><p data-i18n="whatWeDoCopy">نعمل عبر الإنترنت مع المشروعات والشركات في مختلف الأنشطة، ونساعد في تنظيم العمل واختيار الحلول التقنية وتطوير الإجراءات الداخلية.</p><ul class="list-check"><li data-i18n="aboutPoint4">استشارات وتحليل احتياجات المشروعات</li><li data-i18n="aboutPoint5">أنظمة إدارية ومحاسبية وحلول ERP</li><li data-i18n="aboutPoint6">أتمتة وتوثيق وتدريب ودعم</li></ul><a class="text-link glow-trigger" href="#contactFormCard" data-i18n="discussNeed">ناقش احتياج مشروعك ←</a></article>
+   <article class="card about-panel"><div class="iconbox">⌘</div><h3 data-i18n="philosophyTitle">فلسفتنا</h3><p data-i18n="philosophyCopy">الحل الجيد ليس مجرد برنامج أو ملف؛ بل منظومة عملية مصممة لخدمة طبيعة العمل.</p><ul class="list-check"><li data-i18n="aboutPoint1">فهم الاحتياج قبل اقتراح الحل</li><li data-i18n="aboutPoint2">وضوح نطاق العمل والمخرجات</li><li data-i18n="aboutPoint3">حلول قابلة للتطوير بحسب المتطلبات</li></ul></article>
+   <article class="card about-panel"><div class="iconbox">◎</div><h3 data-i18n="whatWeDoTitle">ماذا نقدم؟</h3><p data-i18n="whatWeDoCopy">نعمل عبر الإنترنت مع المشروعات والشركات في مختلف الأنشطة.</p><ul class="list-check"><li data-i18n="aboutPoint4">استشارات وتحليل احتياجات المشروعات</li><li data-i18n="aboutPoint5">أنظمة إدارية ومحاسبية وحلول ERP</li><li data-i18n="aboutPoint6">أتمتة وتوثيق وتدريب ودعم</li></ul><a class="text-link glow-trigger" href="#contactFormCard" data-i18n="discussNeed">ناقش احتياج مشروعك ←</a></article>
   </div>
  </div>
 </section>
 
 <section class="section" id="services">
  <div class="container">
-  <div class="section-head"><span class="kicker" data-i18n="servicesKicker">الخدمات والحلول</span><h2 data-i18n="servicesTitle">خدمات عملية من التحليل إلى التنفيذ</h2><p data-i18n="servicesIntro">اختر الخدمة لمعرفة نطاقها المبدئي، ثم تواصل معنا لتحديد احتياجات مشروعك بدقة.</p></div>
+  <div class="section-head"><span class="kicker" data-i18n="servicesKicker">الخدمات والحلول</span><h2 data-i18n="servicesTitle">خدمات عملية من التحليل إلى التنفيذ</h2><p data-i18n="servicesIntro">اختر الخدمة لمعرفة نطاقها المبدئي.</p></div>
   <div class="grid grid-3">
    <article class="card"><div class="iconbox">▦</div><span class="service-tag" data-i18n="tagSystems">الأنظمة</span><h3 data-i18n="svc1Title">حلول ERP وإدارة الأعمال</h3><p data-i18n="svc1Desc">تنظيم بيانات وعمليات العمل ضمن نظام يناسب نطاق المشروع ومتطلباته.</p><button class="text-link detail-btn" data-service="erp" data-i18n="details">تفاصيل الخدمة ←</button></article>
    <article class="card"><div class="iconbox">⌁</div><span class="service-tag" data-i18n="tagAutomation">التحول الرقمي</span><h3 data-i18n="svc2Title">الأتمتة والتحول الرقمي</h3><p data-i18n="svc2Desc">تقليل الأعمال المتكررة وتحسين تدفق البيانات بين خطوات العمل.</p><button class="text-link detail-btn" data-service="automation" data-i18n="details">تفاصيل الخدمة ←</button></article>
@@ -282,7 +253,7 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
 
 <section class="section" id="method">
  <div class="container">
-  <div class="section-head"><span class="kicker" data-i18n="methodKicker">طريقة العمل</span><h2 data-i18n="methodTitle">خطوات واضحة قبل البدء</h2><p data-i18n="methodIntro">تختلف التفاصيل حسب المشروع، لكننا نستخدم تسلسلًا عمليًا يساعد على وضوح القرار والتوقعات.</p></div>
+  <div class="section-head"><span class="kicker" data-i18n="methodKicker">طريقة العمل</span><h2 data-i18n="methodTitle">خطوات واضحة قبل البدء</h2><p data-i18n="methodIntro">تسلسل عملي يساعد على وضوح القرار والتوقعات.</p></div>
   <div class="steps">
    <div class="step"><b>01</b><span data-i18n="step1">فهم الاحتياج</span></div>
    <div class="step"><b>02</b><span data-i18n="step2">تحليل الوضع الحالي</span></div>
@@ -298,15 +269,15 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
 
 <section class="section" id="demo">
  <div class="container">
-  <div class="section-head"><span class="kicker" data-i18n="demoKicker">عرض توضيحي</span><h2 data-i18n="demoTitle">تعرّف على تجربة النظام</h2><p data-i18n="demoIntro">يمكنك فتح صفحة تسجيل الدخول وتجربة الحساب المخصص للعرض، مع مراعاة أن بعض البيانات أو الشاشات قد تكون تجريبية.</p></div>
+  <div class="section-head"><span class="kicker" data-i18n="demoKicker">عرض توضيحي</span><h2 data-i18n="demoTitle">تعرّف على تجربة النظام</h2><p data-i18n="demoIntro">يمكنك فتح صفحة تسجيل الدخول وتجربة الحساب المخصص للعرض.</p></div>
   <div class="demo">
-   <article class="card demo-visual"><div class="iconbox">▦</div><h3 data-i18n="demoCardTitle">NEXORA ERP — Demo</h3><p data-i18n="demoCardCopy">مساحة مخصصة لاستعراض تجربة النظام. لا تستخدم بيانات شخصية أو مالية حقيقية في الحساب التجريبي.</p><div><a class="btn btn-primary" href="https://nexora-erp-eta.vercel.app/login" target="_blank" rel="noopener noreferrer" data-i18n="openSystem">فتح النظام في نافذة جديدة ↗</a></div><p class="notice" data-i18n="demoDisclaimer">بيانات الحساب التجريبي متاحة علنًا على هذه الصفحة؛ لذلك يجب أن يظل الحساب خاليًا من المعلومات الحساسة.</p></article>
+   <article class="card demo-visual"><div class="iconbox">▦</div><h3 data-i18n="demoCardTitle">NEXORA ERP — Demo</h3><p data-i18n="demoCardCopy">مساحة مخصصة لاستعراض تجربة النظام.</p><div><a class="btn btn-primary" href="https://nexora-erp-eta.vercel.app/login" target="_blank" rel="noopener noreferrer" data-i18n="openSystem">فتح النظام في نافذة جديدة ↗</a></div><p class="notice" data-i18n="demoDisclaimer">بيانات الحساب التجريبي متاحة علنًا على هذه الصفحة.</p></article>
    <article class="card"><h3 data-i18n="credentialsTitle">بيانات الدخول التجريبية</h3><p data-i18n="credentialsCopy">انسخ بيانات الدخول ثم افتح صفحة النظام.</p>
     <label for="demoUser" data-i18n="usernameLabel">اسم المستخدم</label>
     <div class="credential"><code id="demoUser">demo.nexora</code><div class="credential-actions"><button class="icon-btn copy-btn" data-copy="demoUser" type="button" data-i18n="copy">نسخ</button></div></div>
     <label for="demoPass" data-i18n="passwordLabel">كلمة المرور</label>
     <div class="credential"><code id="demoPass" data-password="nexora@3595.com">••••••••••••</code><div class="credential-actions"><button class="icon-btn" id="showPass" type="button" data-i18n="show">إظهار</button><button class="icon-btn copy-btn" data-copy="demoPass" type="button" data-i18n="copy">نسخ</button></div></div>
-    <p class="notice" data-i18n="credentialsNotice">هذه البيانات للعرض فقط. إذا تغيّرت بيانات الحساب، حدّثها هنا قبل نشر الموقع.</p>
+    <p class="notice" data-i18n="credentialsNotice">هذه البيانات للعرض فقط.</p>
    </article>
   </div>
  </div>
@@ -314,7 +285,7 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
 
 <section class="section" id="contact">
  <div class="container">
-  <div class="section-head"><span class="kicker" data-i18n="contactKicker">تواصل معنا</span><h2 data-i18n="contactTitle">ابدأ بمناقشة احتياج مشروعك</h2><p data-i18n="contactIntro">أرسل ملخصًا عن نشاطك أو استخدم إحدى قنوات التواصل الرسمية. سنحتاج إلى فهم النطاق قبل تأكيد إمكانية التنفيذ أو تفاصيله.</p></div>
+  <div class="section-head"><span class="kicker" data-i18n="contactKicker">تواصل معنا</span><h2 data-i18n="contactTitle">ابدأ بمناقشة احتياج مشروعك</h2><p data-i18n="contactIntro">أرسل ملخصًا عن نشاطك أو استخدم إحدى قنوات التواصل الرسمية.</p></div>
   <div class="contact-layout">
    <div class="card"><h3 data-i18n="channelsTitle">قنوات التواصل الرسمية</h3><div class="contact-links">
     <a class="contact-link" href="https://wa.me/201041554942" target="_blank" rel="noopener noreferrer"><span class="iconbox"><i class="fab fa-whatsapp"></i></span><span><strong>WhatsApp</strong><small data-i18n="whatsappLabel">تواصل مباشر مع نكسورا</small></span></a>
@@ -331,24 +302,18 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
      <div class="field full"><label for="service" data-i18n="serviceLabel">الخدمة المطلوبة</label><select id="service" name="service" required><option value="" selected disabled data-i18n="chooseService">اختر الخدمة</option><option>حلول ERP وإدارة الأعمال</option><option>الأتمتة والتحول الرقمي</option><option>الاستشارات وتحليل الاحتياجات</option><option>Excel وVBA</option><option>تطوير الأعمال والعمليات</option><option>التنفيذ والتوثيق والتدريب</option><option>أخرى / غير متأكد</option></select></div>
      <div class="field full"><label for="message" data-i18n="messageLabel">نبذة عن احتياجك</label><textarea id="message" name="message" required placeholder="اشرح المطلوب باختصار..."></textarea></div>
     </div>
-    <p class="form-help" data-i18n="formHelp">هذا النموذج لا يرسل البيانات إلى خادم. عند الضغط، سيُفتح واتساب برسالة مُعدّة لتراجعها وترسلها بنفسك.</p>
+    <p class="form-help" data-i18n="formHelp">هذا النموذج لا يرسل البيانات إلى خادم. عند الضغط، سيُفتح واتساب.</p>
     <button class="btn btn-primary" type="submit" data-i18n="sendWhatsApp">متابعة عبر واتساب ↗</button>
    </form></div>
   </div>
-  <div class="card" style="margin-top:20px"><h3 data-i18n="formsTitle">نماذج نكسورا</h3><p data-i18n="formsIntro">استخدم النموذج المناسب حسب نوع الطلب.</p><div class="hero-actions" style="margin-bottom:0">
-   <a class="btn btn-outline" href="https://forms.gle/GaMr4L5Z96SvLYoc8" target="_blank" rel="noopener noreferrer">طلب خدمات الأعمال — عربي ↗</a>
-   <a class="btn btn-outline" href="https://forms.gle/xxwXQgiYCuRj5UaC9" target="_blank" rel="noopener noreferrer">Business Services Request — English ↗</a>
-   <a class="btn btn-muted" href="https://forms.gle/xY7KocNC1wuhCnLU8" target="_blank" rel="noopener noreferrer">التقديم للعمل والانضمام للفريق ↗</a>
-   <a class="btn btn-muted" href="https://forms.gle/YkrGusYyvTUsC7sD6" target="_blank" rel="noopener noreferrer">استبيان رضا العملاء — عربي ↗</a>
-   <a class="btn btn-muted" href="https://forms.gle/45rtNA6qMpWXs6ak7" target="_blank" rel="noopener noreferrer">Customer Satisfaction — English ↗</a>
-  </div></div>
  </div>
 </section>
 </main>
 <footer class="footer"><div class="container"><div class="footer-main"><a class="brand" href="#home"><img src="assets/nexora-logo.png" alt=""><span class="brand-name">NEXORA <small data-i18n="footerTagline">حلول ذكية لإدارة وتطوير الأعمال</small></span></a><nav class="footer-links"><a href="#about" data-i18n="navAbout">عن نكسورا</a><a href="#services" data-i18n="navServices">الخدمات</a><a href="#method" data-i18n="navMethod">منهجية العمل</a><a href="#demo" data-i18n="navDemo">عرض النظام</a><a href="#contact" data-i18n="navContact">تواصل معنا</a></nav></div><p class="copyright">© <span id="year"></span> NEXORA | نكسورا. <span data-i18n="rights">جميع الحقوق محفوظة.</span></p></div></footer>
-<button class="backtop" id="backtop" type="button" aria-label="العودة إلى الأعلى">↑</button>
 
-<!-- نافذة التفاصيل المنبثقة (Modal) -->
+<!-- زر العودة لأعلى -->
+<button class="backtop" id="backtop" type="button" aria-label="العودة إلى الأعلى"><i class="fas fa-arrow-up"></i></button>
+
 <div class="modal" id="serviceModal" role="dialog" aria-modal="true">
   <div class="modal-box">
     <div class="modal-head">
@@ -361,7 +326,6 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
 </div>
 
 <script>
-  // بيانات تفاصيل الخدمات باللغتين العربية والإنجليزية
   const serviceDetails = {
     erp: {
       ar: { title: "حلول ERP وإدارة الأعمال", desc: "نظام متكامل يربط أقسام شركتك (الحسابات، المبيعات، المخازن، والموارد البشرية) في منصة واحدة لتسهيل اتخاذ القرار وتوفير الوقت." },
@@ -389,14 +353,13 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
     }
   };
 
-  // نظام تبديل اللغات (عربي / إنجليزي)
   const translations = {
     ar: {
       brandSub: "نكسورا | حلول الأعمال",
       navHome: "الرئيسية", navAbout: "عن نكسورا", navServices: "الخدمات", navMethod: "منهجية العمل", navDemo: "عرض النظام", navContact: "تواصل معنا", navStart: "ناقش مشروعك",
       eyebrow: "Business Solutions · Digital Transformation",
       heroTitle: 'حلول ذكية<br>لإدارة <span class="gradient">وتطوير الأعمال</span>',
-      heroCopy: "NEXORA علامة متخصصة في تقديم حلول ذكية وعملية تساعد الشركات والمشروعات على تنظيم وإدارة الأعمال.",
+      heroCopy: "نحلل احتياجاتك، نفهم تحدياتك، ونصمم حلولًا عملية تساعدك على تنظيم أعمالك وتطويرها.",
       exploreServices: "استكشف خدماتنا ←", viewDemo: "استعرض النظام",
       heroNote: "نبدأ بفهم طبيعة نشاطك ووضعك الحالي، ثم نحدد نطاق العمل والحل المناسب قبل التنفيذ.",
       aboutKicker: "من نحن", aboutTitle: "حلول تُبنى على احتياج العمل الفعلي",
@@ -429,7 +392,6 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
       messageTitle: "أرسل تفاصيل طلبك", nameLabel: "الاسم", businessLabel: "اسم النشاط (اختياري)", serviceLabel: "الخدمة المطلوبة", chooseService: "اختر الخدمة", messageLabel: "نبذة عن احتياجك",
       formHelp: "هذا النموذج لا يرسل البيانات إلى خادم. عند الضغط، سيُفتح واتساب.",
       sendWhatsApp: "متابعة عبر واتساب ↗",
-      formsTitle: "نماذج نكسورا", formsIntro: "استخدم النموذج المناسب حسب نوع الطلب.",
       footerTagline: "حلول ذكية لإدارة وتطوير الأعمال", rights: "جميع الحقوق محفوظة.",
       discussService: "ناقش الخدمة معنا",
       toastFormTitle: "جاري تحويل بياناتك...",
@@ -473,7 +435,6 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
       messageTitle: "Send Your Request", nameLabel: "Name", businessLabel: "Business Name (Optional)", serviceLabel: "Required Service", chooseService: "Choose Service", messageLabel: "Briefly describe your need",
       formHelp: "This form doesn't send data to a server. Clicking will open WhatsApp.",
       sendWhatsApp: "Continue via WhatsApp ↗",
-      formsTitle: "Nexora Forms", formsIntro: "Use the appropriate form based on your request type.",
       footerTagline: "Smart Solutions for Business Management & Growth", rights: "All rights reserved.",
       discussService: "Discuss This Service",
       toastFormTitle: "Preparing your data...",
@@ -481,8 +442,25 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
     }
   };
 
-  let currentLang = localStorage.getItem('nexoraLang') || 'ar';
+  // تفعيل نظام الوضع (الداكن والفاتح) مع حفظه في المتصفح
+  let currentTheme = localStorage.getItem('nexoraTheme') || 'dark';
+  function applyTheme(theme) {
+    currentTheme = theme;
+    localStorage.setItem('nexoraTheme', theme);
+    document.documentElement.setAttribute('data-theme', theme);
+    const icon = document.getElementById('themeIcon');
+    if (icon) {
+      icon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+    }
+  }
+  applyTheme(currentTheme);
 
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+  });
+
+  // تفعيل نظام اللغات مع الحفظ
+  let currentLang = localStorage.getItem('nexoraLang') || 'ar';
   function switchLanguage(lang) {
     currentLang = lang;
     localStorage.setItem('nexoraLang', lang);
@@ -502,21 +480,18 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
       if (translations[lang][key]) el.innerHTML = translations[lang][key];
     });
   }
-
-  // تطبيق اللغة المحفوظة تلقائياً عند الفتح
   switchLanguage(currentLang);
 
   document.getElementById('langToggle').addEventListener('click', () => {
     switchLanguage(currentLang === 'ar' ? 'en' : 'ar');
   });
 
-  // تشغيل النافذة المنبثقة (Modal) لتفاصيل الخدمات
+  // النافذة المنبثقة
   const modal = document.getElementById('serviceModal');
   const modalTitle = document.getElementById('modalTitle');
   const modalBody = document.getElementById('modalBody');
   const modalClose = document.getElementById('modalClose');
   const modalContact = document.getElementById('modalContact');
-
   let activeServiceName = '';
 
   document.querySelectorAll('.detail-btn').forEach(btn => {
@@ -533,11 +508,8 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
   });
 
   modalClose.addEventListener('click', () => modal.classList.remove('open'));
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) modal.classList.remove('open');
-  });
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
 
-  // دالة النزول لنموذج التواصل وإحداث الوميض
   function triggerFormGlow() {
     const formCard = document.getElementById('contactFormCard');
     if (formCard) {
@@ -551,16 +523,13 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
     const formCard = document.getElementById('contactFormCard');
     if (formCard) {
       formCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      setTimeout(() => {
-        triggerFormGlow();
-      }, 300);
+      setTimeout(triggerFormGlow, 300);
     }
   }
 
   modalContact.addEventListener('click', function(e) {
     e.preventDefault();
     modal.classList.remove('open');
-    
     const serviceSelect = document.getElementById('service');
     if (serviceSelect && activeServiceName) {
       for (let option of serviceSelect.options) {
@@ -570,7 +539,6 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
         }
       }
     }
-
     scrollToFormAndGlow();
   });
 
@@ -583,7 +551,7 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
     });
   });
 
-  // إشعار إرسال النموذج التفاعلي (Interactive Form Toast)
+  // نموذج واتساب مع مدة قراءة مثالية (2.2 ثانية)
   const contactForm = document.getElementById('contactForm');
   const formToast = document.getElementById('formToast');
 
@@ -604,48 +572,35 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
       const encodedText = encodeURIComponent(text);
       const whatsappUrl = `https://wa.me/201041554942?text=${encodedText}`;
 
-      // إظهار الإشعار التفاعلي الأنيق
-      if (formToast) {
-        formToast.classList.add('show');
-      }
+      if (formToast) formToast.classList.add('show');
 
+      // 2200 مللي ثانية (مدة مناسبة تماماً لقراءة الإشعار)
       setTimeout(() => {
-        if (formToast) {
-          formToast.classList.remove('show');
-        }
+        if (formToast) formToast.classList.remove('show');
         window.open(whatsappUrl, '_blank');
-      }, 1500);
+      }, 2200);
     });
   }
 
-  // دوال النسخ والإظهار لبيانات النظام
+  // نسخ وإظهار بيانات النظام
   document.addEventListener('click', function (e) {
     if (e.target && e.target.classList.contains('copy-btn')) {
       const btn = e.target;
       const targetId = btn.getAttribute('data-copy');
       const el = document.getElementById(targetId);
       let textToCopy = el ? (el.getAttribute('data-password') || el.innerText) : '';
-      
       if (textToCopy) {
         navigator.clipboard.writeText(textToCopy).then(() => {
           const originalText = btn.innerText;
           btn.innerText = currentLang === 'ar' ? 'تم النسخ!' : 'Copied!';
-          btn.style.background = '#29B6FF';
-          btn.style.color = '#000';
-          setTimeout(() => {
-            btn.innerText = originalText;
-            btn.style.background = '';
-            btn.style.color = '';
-          }, 1500);
+          setTimeout(() => { btn.innerText = originalText; }, 1500);
         });
       }
     }
-
     if (e.target && e.target.id === 'showPass') {
       const passEl = document.getElementById('demoPass');
       const realPass = passEl.getAttribute('data-password');
       const btn = e.target;
-
       if (passEl.innerText === '••••••••••••') {
         passEl.innerText = realPass;
         btn.innerText = currentLang === 'ar' ? 'إخفاء' : 'Hide';
@@ -656,7 +611,7 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
     }
   });
 
-  // قائمة الجوال المتجاوبة
+  // قائمة الجوال
   const menuToggle = document.getElementById('menuToggle');
   const navlinks = document.getElementById('navlinks');
   if (menuToggle && navlinks) {
@@ -667,7 +622,7 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
     });
   }
 
-  // زر العودة إلى الأعلى (Back to Top)
+  // زر العودة إلى الأعلى (Back to Top) الفعال
   const backtopBtn = document.getElementById('backtop');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 300) {
@@ -681,9 +636,7 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // ==========================================
-  // منظومة الصوت الذكية مع الإشعار الاحترافي
-  // ==========================================
+  // الصوت والإشعار الصوتي
   (function () {
     const audio = document.getElementById('ambientAudio');
     const btn = document.getElementById('soundToggle');
@@ -695,9 +648,7 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
     const TARGET_VOLUME = 0.35;
     let fadeTimer = null;
     let resumeAfterHidden = false;
-
-    let ctx = null;   
-    let gain = null;  
+    let ctx = null, gain = null;
     const isOn = () => !audio.paused && !audio.muted && (!ctx || ctx.state === 'running');
 
     const volumeSettable = (function () {
@@ -725,8 +676,7 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
       }, 40);
     }
 
-    const IOS = /iP(hone|ad|od)/.test(navigator.userAgent) ||
-                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const IOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     const useGain = IOS || !volumeSettable;
 
     function ensureGraph() {
@@ -743,11 +693,7 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
 
     function muteGain() {
       if (!gain) return;
-      try {
-        const t = ctx.currentTime;
-        gain.gain.cancelScheduledValues(t);
-        gain.gain.setValueAtTime(0, t);
-      } catch (e) { try { gain.gain.value = 0; } catch (_) {} }
+      try { const t = ctx.currentTime; gain.gain.cancelScheduledValues(t); gain.gain.setValueAtTime(0, t); } catch (e) { try { gain.gain.value = 0; } catch (_) {} }
     }
 
     function rampGain(v) {
@@ -771,20 +717,15 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
       ensureGraph();
       audio.muted = false;
       if (gain) muteGain(); else audio.volume = 0;
-      
       let p;
       try { p = audio.play(); } catch (e) { p = Promise.reject(e); }
       const resumed = (ctx && ctx.state !== 'running') ? ctx.resume().catch(() => {}) : null;
 
       Promise.resolve(p).then(() => resumed).then(() => {
-        if (ctx && ctx.state !== 'running') {
-          audio.pause(); setUI(false); return;
-        }
+        if (ctx && ctx.state !== 'running') { audio.pause(); setUI(false); return; }
         setUI(true);
         if (gain) rampGain(TARGET_VOLUME); else fadeTo(TARGET_VOLUME);
-      }).catch(() => {
-        setUI(false);
-      });
+      }).catch(() => { setUI(false); });
     }
 
     function stopSound() {
@@ -793,35 +734,14 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
       fadeTo(0, () => audio.pause());
     }
 
-    // إظهار إشعار الصوت بعد ثانيتين من فتح الموقع
-    setTimeout(() => {
-      if (toast && !isOn()) {
-        toast.style.display = 'flex';
-      }
-    }, 2000);
-
-    function hideToast() {
-      if (toast) toast.style.display = 'none';
-    }
-
-    if (toastCloseBtn) {
-      toastCloseBtn.addEventListener('click', hideToast);
-    }
-
-    if (toastPlayBtn) {
-      toastPlayBtn.addEventListener('click', () => {
-        startSound();
-        hideToast();
-      });
-    }
+    setTimeout(() => { if (toast && !isOn()) { toast.style.display = 'flex'; } }, 2000);
+    function hideToast() { if (toast) toast.style.display = 'none'; }
+    if (toastCloseBtn) toastCloseBtn.addEventListener('click', hideToast);
+    if (toastPlayBtn) toastPlayBtn.addEventListener('click', () => { startSound(); hideToast(); });
 
     btn.addEventListener('click', () => {
       hideToast();
-      if (isOn()) {
-        stopSound();
-      } else {
-        startSound();
-      }
+      if (isOn()) stopSound(); else startSound();
     });
 
     document.addEventListener('visibilitychange', () => {
@@ -834,7 +754,6 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
     });
   })();
 
-  // ضبط سنة الفوتر تلقائياً
   document.getElementById('year').innerText = new Date().getFullYear();
 </script>
 </body>
